@@ -16,30 +16,55 @@
 package earthquakedetector.simulations;
 
 import earthquakedetector.Txc;
-
+import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
+import inet.node.inet.INetworkNode;
+import inet.physicallayer.contract.packetlevel.IRadioMedium;
+import inet.visualizer.contract.IIntegratedVisualizer;
 //
 // Two instances (tic and toc) of Txc connected.
 //
 network EarthquakeDetector
 {
     parameters:
+        @display("bgb=650,500;bgg=100,1,grey95");
+        @figure[title](type=label; pos=0,-1; anchor=sw; color=darkblue);
+
+        @figure[rcvdPkText](type=indicatorText; pos=380,20; anchor=w; font=,18; textFormat="packets received: %g"; initialValue=0);
+        @statistic[packetReceived](source=hostB.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
+        
         //int numSlaves;  // number of slaves
-        @display("bgi=background/terrain,s;bgb=600,600");
+        //@display("bgi=background/terrain,s;bgb=600,600");
     //submodules:
         //master: Txc;
         //slave[numSlaves]: Txc {}
-     types:
-        channel Channel extends ned.DelayChannel {
-            delay = 100ms;
-        }
+     //types:
+        //channel Channel extends ned.DelayChannel {
+            //delay = 100ms;
+        //}
 
      submodules:
-	    tic[6]: Txc;
-     connections:
-        tic[0].gate++ <--> Channel <--> tic[1].gate++;
-        tic[1].gate++ <--> Channel <--> tic[2].gate++;
-        tic[1].gate++ <--> Channel <--> tic[4].gate++;
-        tic[3].gate++ <--> Channel <--> tic[4].gate++;
-        tic[4].gate++ <--> Channel <--> tic[5].gate++;
+         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
+            @display("p=580,125");
+        }
+        configurator: Ipv4NetworkConfigurator {
+            @display("p=580,200");
+        }
+        radioMedium: <default("UnitDiskRadioMedium")> like IRadioMedium {
+            @display("p=580,275");
+        }
+        hostA: <default("WirelessHost")> like INetworkNode {
+            @display("p=50,325");
+        }
+        hostB: <default("WirelessHost")> like INetworkNode {
+            @display("p=450,325");
+        }
+	    //tic[6]: Txc;
         
+     //connections:
+        //tic[0].gate++ <--> Channel <--> tic[1].gate++;
+        //tic[1].gate++ <--> Channel <--> tic[2].gate++;
+        //tic[1].gate++ <--> Channel <--> tic[4].gate++;
+        //tic[3].gate++ <--> Channel <--> tic[4].gate++;
+        //tic[4].gate++ <--> Channel <--> tic[5].gate++;
+    
 }
