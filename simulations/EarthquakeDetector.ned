@@ -16,7 +16,6 @@
 package earthquakedetector.simulations;
 
 import earthquakedetector.Txc;
-import inet.networklayer.contract.packetlevel.IRadioMedium;
 
 //
 // Two instances (tic and toc) of Txc connected.
@@ -24,12 +23,23 @@ import inet.networklayer.contract.packetlevel.IRadioMedium;
 network EarthquakeDetector
 {
     parameters:
-        int numSlaves;  // number of slaves
+        //int numSlaves;  // number of slaves
         @display("bgi=background/terrain,s;bgb=600,600");
-    submodules:
-        master: Txc;
-        slave[numSlaves]: Txc {}
-    connections:
-        master.out --> {delay = 1ms;} --> slave.in;
-        master.in <-- {delay = 1ms;} <-- slave.out;
+    //submodules:
+        //master: Txc;
+        //slave[numSlaves]: Txc {}
+     types:
+        channel Channel extends ned.DelayChannel {
+            delay = 100ms;
+        }
+
+     submodules:
+	    tic[6]: Txc;
+     connections:
+        tic[0].gate++ <--> Channel <--> tic[1].gate++;
+        tic[1].gate++ <--> Channel <--> tic[2].gate++;
+        tic[1].gate++ <--> Channel <--> tic[4].gate++;
+        tic[3].gate++ <--> Channel <--> tic[4].gate++;
+        tic[4].gate++ <--> Channel <--> tic[5].gate++;
+        
 }

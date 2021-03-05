@@ -22,8 +22,7 @@ package earthquakedetector;
 simple Txc
 {
     parameters:
-        bool sendInitialMessage = default(false);
+        @display("i=block/routing");
     gates:
-        input in;
-        output out;
+        inout gate[];  // declare two way connections
 }

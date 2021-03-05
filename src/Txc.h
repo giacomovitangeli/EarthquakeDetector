@@ -16,7 +16,11 @@
 #ifndef __EARTHQUAKEDETECTOR_TCX_H
 #define __EARTHQUAKEDETECTOR_TCX_H
 
+#include "Txc.h"
+#include <stdio.h>
+#include <string.h>
 #include <omnetpp.h>
+#include "tictoc_m.h"
 
 using namespace omnetpp;
 
@@ -27,9 +31,15 @@ namespace earthquakedetector {
  */
 class Txc : public cSimpleModule
 {
-  protected:
-    virtual void initialize();
-    virtual void handleMessage(cMessage *msg);
+    private:
+        long numSent;
+        long numReceived;
+    protected:
+        virtual TicTocMsg *generateMessage();
+        virtual void forwardMessage(TicTocMsg *msg);
+        virtual void initialize() override;
+        virtual void handleMessage(cMessage *msg) override;
+        virtual void refreshDisplay() const override;
 };
 
 }; // namespace
