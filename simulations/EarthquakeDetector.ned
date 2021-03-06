@@ -20,6 +20,7 @@ import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.inet.INetworkNode;
 import inet.physicallayer.contract.packetlevel.IRadioMedium;
 import inet.visualizer.contract.IIntegratedVisualizer;
+import inet.environment.common.PhysicalEnvironment;
 //
 // Two instances (tic and toc) of Txc connected.
 //
@@ -66,6 +67,10 @@ network EarthquakeDetector
         }
         hostR3: <default("WirelessHost")> like INetworkNode {
             @display("p=350,450");
+        }
+        //obstacles
+        physicalEnvironment: PhysicalEnvironment {
+            @display("p=580,425");
         }
 	    //tic[6]: Txc;
         
