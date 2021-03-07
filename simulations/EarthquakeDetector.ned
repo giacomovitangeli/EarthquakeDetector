@@ -31,7 +31,7 @@ network EarthquakeDetector
         @figure[title](type=label; pos=0,-1; anchor=sw; color=darkblue);
 
         @figure[rcvdPkText](type=indicatorText; pos=380,20; anchor=w; font=,18; textFormat="packets received: %g"; initialValue=0);
-        @statistic[packetReceived](source=hostB.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
+        @statistic[packetReceived](source=hostS1.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
         
         //int numSlaves;  // number of slaves
         //@display("bgi=background/terrain,s;bgb=600,600");
@@ -53,20 +53,20 @@ network EarthquakeDetector
         radioMedium: <default("UnitDiskRadioMedium")> like IRadioMedium {
             @display("p=580,275");
         }
-        hostA: <default("WirelessHost")> like INetworkNode {
-            @display("p=50,325");
+        hostM: <default("WirelessHost")> like INetworkNode {
+            @display("p=250,250");
         }
-        hostB: <default("WirelessHost")> like INetworkNode {
-            @display("p=450,325");
+        hostS1: <default("WirelessHost")> like INetworkNode {
+            @display("p=450,150");
         }
-        hostR1: <default("WirelessHost")> like INetworkNode {
-            @display("p=250,300");
+        hostS2: <default("WirelessHost")> like INetworkNode {
+            @display("p=450,350");
         }
-        hostR2: <default("WirelessHost")> like INetworkNode {
-            @display("p=150,450");
+        hostS3: <default("WirelessHost")> like INetworkNode {
+            @display("p=50,350");
         }
-        hostR3: <default("WirelessHost")> like INetworkNode {
-            @display("p=350,450");
+        hostS4: <default("WirelessHost")> like INetworkNode {
+            @display("p=50,150");
         }
         //obstacles
         physicalEnvironment: PhysicalEnvironment {
