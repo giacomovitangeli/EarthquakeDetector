@@ -1,21 +1,21 @@
-file 22730 1615139986                                           
+file 5458558 1615222618                                         
 version 2
-run General-0-20210307-18:58:16-11353
+run General-0-20210308-17:56:38-11764
 attr configname General
-attr datetime 20210307-18:58:16
+attr datetime 20210308-17:56:38
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network EarthquakeDetector
-attr processid 11353
+attr processid 11764
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
-param *.configurator.config "xml(\"<config><interface hosts='**' address='10.0.0.x' netmask='255.255.255.0'/><autoroute metric='errorRate'/></config>\")"
+param *.configurator.config "xmldoc(\"netconfig.xml\")"
 param *.configurator.optimizeRoutes false
 param *.configurator.addStaticRoutes false
 param *.radioMedium.typename "\"ApskScalarRadioMedium\""
@@ -26,13 +26,13 @@ param *.host*.typename "\"AodvRouter\""
 param *.host*.ipv4.arp.typename "\"GlobalArp\""
 param *.hostM.numApps 1
 param *.hostM.app[0].typename "\"UdpBasicApp\""
-param *.hostM.app[0].destAddresses "\"hostS1\""
+param *.hostM.app[0].destAddresses "\"hostS1 hostS2 hostS3 hostS4\""
 param *.hostM.app[0].destPort 5000
 param *.hostM.app[0].messageLength 1000B
 param *.hostM.app[0].sendInterval exponential(12ms)
 param *.hostM.app[0].packetName "\"UDPData\""
-param *.hostS*.numApps 1
-param *.hostS*.app[0].typename "\"UdpSink\""
+param *.hostS1.numApps 1
+param *.hostS1.app[0].typename "\"UdpSink\""
 param *.hostS1.app[0].localPort 5000
 param *.host*.wlan[0].typename "\"WirelessInterface\""
 param *.host*.wlan[0].mac.useAck true
@@ -51,14 +51,14 @@ param *.host*.wlan[0].radio.receiver.sensitivity -85dBm
 param *.host*.wlan[0].radio.receiver.energyDetection -85dBm
 param *.host*.wlan[0].radio.receiver.snirThreshold 4dB
 param *.hostM.wlan[0].radio.displayInterferenceRange false
-param *.hostM.wlan[0].radio.displayCommunicationRange false
-param *.hostS1.wlan[0].radio.displayCommunicationRange false
+param *.hostM.wlan[0].radio.displayCommunicationRange true
+param *.hostS1.wlan[0].radio.displayCommunicationRange true
 param *.hostS2.wlan[0].radio.displayCommunicationRange false
 param *.host*.**.bitrate 1Mbps
 param *.host*.forwarding true
 param *.host*.ipv4.routingTable.netmaskRoutes "\"\""
 param *.visualizer.sceneVisualizer.descriptionFigure "\"title\""
-param *.visualizer.mediumVisualizer.displaySignals true
+param *.visualizer.mediumVisualizer.displaySignals false
 param *.visualizer.physicalLinkVisualizer.displayLinks true
 param *.visualizer.physicalLinkVisualizer.packetFilter "\"UDPData*\""
 param *.visualizer.dataLinkVisualizer.displayLinks true
@@ -77,9 +77,12 @@ param *.host*.wlan[0].radio.energyConsumer.receiverReceivingPowerConsumption 10m
 param *.host*.wlan[0].radio.energyConsumer.transmitterIdlePowerConsumption 2mW
 param *.host*.wlan[0].radio.energyConsumer.transmitterTransmittingPowerConsumption 100mW
 param *.host*.energyStorage.typename "\"IdealEpEnergyStorage\""
+param *.host*.mobility.initialZ 1.7m
 param *.host*.wlan[0].mac.queue.packetCapacity 10
 param *.visualizer.mobilityVisualizer.displayVelocities true
 param *.visualizer.mobilityVisualizer.displayMovementTrails true
+param *.physicalEnvironment.config "xmldoc(\"walls.xml\")"
+param *.radioMedium.obstacleLoss.typename "\"IdealObstacleLoss\""
 param *.physicalEnvironment.ground.typename "\"FlatGround\""
 param *.physicalEnvironment.ground.elevation 0m
 
@@ -194,57 +197,334 @@ vector 27 EarthquakeDetector.hostM.wlan[0].radio transmissionState:vector ETV
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, vector"
-0	9394 1042 0 421 0 1.467197521952 45 0 0.1 0.442 0.040084
-1	10436 44 0 0 0 0 5 0 0.002 0.002 4e-06
-2	10480 44 0 0 0 0 5 0 0.002 0.002 4e-06
-3	10524 44 0 0 0 0 5 0 0.002 0.002 4e-06
-4	10568 44 0 0 0 0 5 0 0.002 0.002 4e-06
-5	10612 206 0 421 0 1.467197521952 11 0 3 22 56
-6	10818 1034 0 421 0 1.467197521952 44 0 0.1 0.442 0.040084
-7	11852 24 0 0 0 0 3 0 2 2 4
-8	11876 36 0 0 0 0 4 0 0.002 0.002 4e-06
-9	11912 24 0 0 0 0 3 0 2 2 4
-10	11936 40 0 0 0 0 4 0 0.002 0.002 4e-06
-11	11976 27 0 0 0 0 3 0 2 2 4
-12	12003 40 0 0 0 0 4 0 0.002 0.002 4e-06
-13	12043 27 0 0 0 0 3 0 2 2 4
-14	12070 40 0 0 0 0 4 0 0.002 0.002 4e-06
-15	12110 199 0 421 0 1.467197521952 9 0 1 5 5
-16	12309 9 0 0 0 0 1 1 1 1 1
-17	12318 9 0 0 0 0 1 1 1 1 1
-18	12327 9 0 0 0 0 1 1 1 1 1
-19	12336 9 0 0 0 0 1 1 1 1 1
-20	12345 3582 23 499 0.022315250545 1.71670208092 134 1000 1000 134000 134000000
-21	15927 3655 25 497 0.022315250545 1.707461158605 137 32 1008 134192 135140608
-22	19582 99 30 413 0.024232458152 1.465941521952 4 79 79 316 24964
-23	19681 190 30 413 0.024232458152 1.465941521952 8 0 1 4 4
-24	19871 99 30 413 0.024232458152 1.465941521952 4 79 79 316 24964
-25	19970 95 30 413 0.024232458152 1.465941521952 4 0 0 0 0
-26	20065 325 32 421 0.024302458152 1.467197521952 8 -0.003211147043904 -4.8604916304e-05 -0.0117593633547 2.811493406714e-05
-27	20390 380 32 421 0.024302458152 1.467197521952 16 0 2 16 24
-vector 28 EarthquakeDetector.hostM.app[0] throughput:vector ETV
+vector 28 EarthquakeDetector.hostS1.energyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 29 EarthquakeDetector.hostS2.energyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 30 EarthquakeDetector.hostS4.energyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 31 EarthquakeDetector.hostS2.wlan[0].radio bitErrorRate:vector ETV
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate, vector"
+vector 32 EarthquakeDetector.hostS1.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 33 EarthquakeDetector.hostS1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 34 EarthquakeDetector.hostS2.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 35 EarthquakeDetector.hostS2.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 36 EarthquakeDetector.hostS4.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 37 EarthquakeDetector.hostS4.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 38 EarthquakeDetector.hostS1.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 39 EarthquakeDetector.hostS1.wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 40 EarthquakeDetector.hostS1.wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 41 EarthquakeDetector.hostS1.wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 42 EarthquakeDetector.hostS1.wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 43 EarthquakeDetector.hostS1.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 44 EarthquakeDetector.hostS4.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 45 EarthquakeDetector.hostS4.wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 46 EarthquakeDetector.hostS4.wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 47 EarthquakeDetector.hostM.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 48 EarthquakeDetector.hostM.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 49 EarthquakeDetector.hostS4.wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 50 EarthquakeDetector.hostS4.wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 51 EarthquakeDetector.hostS4.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 52 EarthquakeDetector.hostS3.energyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 53 EarthquakeDetector.hostS3.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 54 EarthquakeDetector.hostS3.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 55 EarthquakeDetector.hostS3.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 56 EarthquakeDetector.hostS3.wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 57 EarthquakeDetector.hostS3.wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 58 EarthquakeDetector.hostS3.wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 59 EarthquakeDetector.hostS3.wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 60 EarthquakeDetector.hostS3.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 61 EarthquakeDetector.hostS2.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 62 EarthquakeDetector.hostS2.wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 63 EarthquakeDetector.hostS2.wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 64 EarthquakeDetector.hostS2.wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 65 EarthquakeDetector.hostS2.wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 66 EarthquakeDetector.hostS2.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 67 EarthquakeDetector.hostS2.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, vector(packetBytes)"
+vector 68 EarthquakeDetector.hostS4.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, vector(packetBytes)"
+vector 69 EarthquakeDetector.hostS1.app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 70 EarthquakeDetector.hostS1.app[0] endToEndDelay:vector ETV
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, vector"
+attr unit s
+vector 71 EarthquakeDetector.hostS1.app[0] rcvdPkSeqNo:vector ETV
+attr interpolationmode none
+attr source appPkSeqNo(packetReceived)
+attr title "received packet sequence number, vector"
+vector 72 EarthquakeDetector.hostS3.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, vector(packetBytes)"
+vector 73 EarthquakeDetector.hostS1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, vector(packetBytes)"
+vector 74 EarthquakeDetector.hostS2.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), vector(count)"
+vector 75 EarthquakeDetector.hostS4.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), vector(count)"
+vector 76 EarthquakeDetector.hostM.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, vector(packetBytes)"
+vector 77 EarthquakeDetector.hostS3.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), vector(count)"
+vector 78 EarthquakeDetector.hostS4.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, vector(packetBytes)"
+vector 79 EarthquakeDetector.hostS1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, vector(packetBytes)"
+vector 80 EarthquakeDetector.hostS1.app[0] throughput:vector ETV
 attr source throughput(packetReceived)
 attr title "throughput, vector"
 attr unit bps
-vector 29 EarthquakeDetector.hostS1.app[0] throughput:vector ETV
+vector 81 EarthquakeDetector.hostS3.wlan[0].mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drop: retry limit reached, vector(packetBytes)"
+vector 82 EarthquakeDetector.hostS2.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, vector(packetBytes)"
+vector 83 EarthquakeDetector.hostM.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, vector(packetBytes)"
+vector 84 EarthquakeDetector.hostM.wlan[0].mac.queue packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, vector(packetBytes)"
+vector 85 EarthquakeDetector.hostM.wlan[0].mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, vector(packetBytes)"
+vector 86 EarthquakeDetector.hostS4.wlan[0].mac.queue packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, vector(packetBytes)"
+vector 87 EarthquakeDetector.hostS4.wlan[0].mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, vector(packetBytes)"
+0	21751 426146 0 49373 0 9.123115266696 15768 0 0.1 136.67199999999 11.014364
+1	447897 280916 0 49374 0 9.123115800659 10269 0 0.1 48.502000000002 1.8961639999997
+2	728813 311721 0 49375 0 9.123115800659 11432 0 0.1 67.190000000004 3.8288500000003
+3	1040534 151736 0 49359 0 9.114579399861 5593 0 0.1 39.510000000001 2.74438
+4	1192270 391004 0 49384 0 9.123125800659 14385 0 0.1 106.04099999999 7.5387169999988
+5	1583274 53581 0 49373 0 9.123115266696 2175 0 3 5432 14122
+6	1636855 426138 0 49373 0 9.123115266696 15767 0 0.1 136.67199999999 11.014364
+7	2062993 8224 0 49238 0 9.087780596881 335 0 3 832 2162
+8	2071217 280908 0 49374 0 9.123115800659 10268 0 0.1 48.502000000002 1.8961639999997
+9	2352125 17846 0 49274 0 9.096893664807 725 0 3 1807 4697
+10	2369971 323144 0 49375 0 9.123115800659 11431 0 0.1 67.190000000004 3.8288500000003
+11	2693115 13639 0 49359 0 9.114579399861 535 0 3 1332 3462
+12	2706754 157320 0 49359 0 9.114579399861 5592 0 0.1 39.510000000001 2.74438
+13	2864074 37702 0 49383 0 9.123125800659 1468 0 3 3665 9529
+14	2901776 405380 0 49384 0 9.123125800659 14384 0 0.1 106.04099999999 7.5387169999988
+15	3307156 118746 0 49373 0 9.123115266696 4628 0 3 5997 13355
+16	3425902 119464 0 49374 0 9.123115800659 4649 0 3 8799 21719
+17	3545366 119280 0 49375 0 9.123115800659 4642 0 3 8200 19936
+18	3664646 51279 0 49359 0 9.114579399861 1997 0 3 3195 7587
+19	3715925 129863 0 49383 0 9.123125800659 5053 0 3 7927 18609
+20	3845788 22254 14 49335 0.015071169097 9.112298661449 776 1000 1000 776000 776000000
+21	3868042 22303 16 49336 0.015071169097 9.112298661449 778 32 1008 782272 788467712
+22	3890345 22305 21 49338 0.016558842123 9.112298661449 778 79 1055 818838 863719882
+23	3912650 40095 21 49338 0.016558842123 9.112298661449 1548 0 11 10776 89746
+24	3952745 19133 21 49313 0.016558842123 9.105707266696 667 79 1055 701733 740174107
+25	3971878 25546 21 49313 0.016558842123 9.105707266696 667 0 0.192117623732 58.382050637734 6.4539664087797
+26	3997424 192961 23 49373 0.016728842123 9.123115266696 4627 -0.66240214755573 -3.3457684246e-05 -1528.1208359527 673.4021320425
+27	4190385 111458 23 49373 0.016728842123 9.123115266696 4344 0 2 4344 6516
+28	4301843 197827 25 49374 0.016729376086 9.123115800659 4648 -0.08983944265681 -3.3458752172e-05 -206.05132772937 12.230573020117
+29	4499670 197461 26 49375 0.016729376086 9.123115800659 4641 -0.10218799105011 -3.3458752172e-05 -235.67076467666 15.992476363968
+30	4697131 211876 28 49383 0.016729376086 9.123125800659 5052 -0.27514424408303 -3.3458752172e-05 -668.65397570012 119.49574361652
+31	4909007 85122 31 49375 0.017435376086 9.123115800659 1949 4.6822321405732e-29 0.22819126274975 3.4318614726117 0.78106890069239
+32	4994129 4835 40 49230 0.017435376086 9.087552596881 169 32 1008 165472 166639616
+33	4998964 4568 40 49230 0.017435376086 9.087552596881 169 1 169 14365 1623245
+34	5003532 5200 41 49265 0.017435376086 9.096665664807 182 32 1008 177600 178833408
+35	5008732 142 41 462 0.017435376086 0.055465765282 6 1 6 21 91
+36	5008874 4905 42 49302 0.017435376086 9.105478732733 172 28 1008 167516 168672528
+37	5013779 142 42 430 0.017435376086 0.054208697356 6 1 6 21 91
+38	5013921 49 47 370 0.017718940965 0.046188686503 2 32 32 64 2048
+39	5013970 49 49 372 0.017718940965 0.046188686503 2 79 79 158 12482
+40	5014019 94 49 386 0.017718940965 0.053223029536 4 0 1 2 2
+41	5014113 49 49 386 0.017718940965 0.053223029536 2 79 79 158 12482
+42	5014162 60 49 386 0.017718940965 0.053223029536 2 0 0.007034343033 0.007034343033 4.9481981905916e-05
+43	5014222 17064 51 49238 0.018288940965 9.087780596881 664 0 2 664 996
+44	5031286 73 58 374 0.018798657559 0.046197447446 3 28 32 92 2832
+45	5031359 9076 60 49382 0.018798657559 9.123115800659 328 75 1055 181756 178132656
+46	5040435 16823 60 49382 0.018798657559 9.123115800659 654 0 11 1221 5903
+47	5057258 173 65 447 0.018995474928 0.055465231319 7 28 32 216 6688
+48	5057431 166 65 447 0.018995474928 0.055465231319 7 1 7 28 140
+49	5057597 8879 73 49362 0.018995774875 9.114580066989 321 75 1055 175343 171447617
+50	5066476 11213 73 49362 0.018995774875 9.114580066989 321 0 0.338132912146 13.64335088559 2.2042991249315
+51	5077689 75350 79 49384 0.019165774875 9.123125800659 2930 0 2 2931 4397
+52	5153039 84789 82 49359 0.019166442003 9.114579399861 1996 -0.042953006799722 -3.8332884006e-05 -43.849613004024 1.2613022095836
+53	5237828 6542 94 49345 0.019872442003 9.114351399861 228 32 1008 227872 229632512
+54	5244370 47 94 452 0.019872442003 0.055465364484 2 1 2 3 5
+55	5244417 208 96 41106 0.019872442003 7.575117603946 8 28 36 256 8224
+56	5244625 309 98 41108 0.019872442003 7.575117603946 12 75 83 964 77516
+57	5244934 595 98 41108 0.019872442003 7.575117603946 24 0 4 28 64
+58	5245529 310 98 41108 0.019872442003 7.575117603946 12 75 83 964 77516
+59	5245839 390 98 41108 0.019872442003 7.575117603946 12 0 0.160153565131 0.622372415074 0.080456459610887
+60	5246229 27224 110 49359 0.020202442003 9.114579399861 1064 0 2 1064 1596
+61	5273453 50 144 284 0.022253689906 0.042192893684 2 28 32 60 1808
+62	5273503 4750 146 49267 0.022253689906 9.096665664807 178 75 83 14762 1224330
+63	5278253 9145 146 49268 0.022253689906 9.096675664807 356 0 2 186 194
+64	5287398 4751 146 49268 0.022253689906 9.096675664807 178 75 83 14762 1224330
+65	5292149 5619 146 49268 0.022253689906 9.096675664807 178 0 0.027775203778 0.187946644524 0.0022606944524385
+66	5297768 37088 148 49274 0.022483689906 9.096893664807 1444 0 2 1444 2166
+67	5334856 25286 206 49379 0.032354757832 9.123115800659 892 75 1055 781644 811410732
+68	5360142 12793 207 49263 0.032354757832 9.096665664807 456 75 1055 328468 333874784
+69	5372935 4711 210 49231 0.032354757832 9.087552596881 164 1000 1000 164000 164000000
+70	5377646 6331 210 49231 0.032354757832 9.087552596881 164 0.008684533963 0.186517282355 16.085802034053 1.946633106006
+71	5383977 4525 210 49231 0.032354757832 9.087552596881 164 2 761 62597 31265679
+72	5388502 4783 305 49076 0.043097560812 9.051990060231 179 75 83 14849 1231867
+73	5393285 30810 307 49378 0.043097727594 9.123115800659 1097 75 1055 824895 842687385
+74	5424095 4768 491 49265 0.064149765282 9.096665664807 176 1 176 15576 1832776
+75	5428863 4483 528 49302 0.072982833208 9.105478732733 166 1 166 13861 1538571
+76	5433346 6021 697 49341 0.108455638875 9.114351266696 210 1055 1055 221550 233735250
+77	5439367 6159 701 49345 0.10845577204 9.114351399861 226 1 226 25651 3873301
+78	5445526 1166 740 47358 0.109752439168 8.692685285321 44 18 1055 15117 13556405
+79	5446692 976 1040 48791 0.139497512468 9.018494985547 35 83 1055 23317 23469971
+80	5447668 1688 1190 49231 0.1 9 90 0 400000 13040000 2656000000000
+81	5449356 104 1334 2433 0.198201383374 0.362051266412 4 83 83 332 27556
+82	5449460 1271 1505 48651 0.221506055876 8.991504849695 45 18 1055 37690 39018200
+83	5450731 55 1755 15114 0.265613793617 2.595533676585 2 83 1055 1138 1119914
+84	5450786 2957 1977 48845 0.301034174857 9.019909327887 103 1055 1055 108665 114641575
+85	5453743 2957 1977 48845 0.301034174857 9.019909327887 103 1055 1055 108665 114641575
+86	5456700 145 20495 21342 3.712117702169 3.862816123241 5 1055 1055 5275 5565125
+87	5456845 145 20495 21342 3.712117702169 3.862816123241 5 1055 1055 5275 5565125
+vector 88 EarthquakeDetector.hostM.app[0] throughput:vector ETV
 attr source throughput(packetReceived)
 attr title "throughput, vector"
 attr unit bps
-vector 30 EarthquakeDetector.hostS2.app[0] throughput:vector ETV
-attr source throughput(packetReceived)
-attr title "throughput, vector"
-attr unit bps
-vector 31 EarthquakeDetector.hostS3.app[0] throughput:vector ETV
-attr source throughput(packetReceived)
-attr title "throughput, vector"
-attr unit bps
-vector 32 EarthquakeDetector.hostS4.app[0] throughput:vector ETV
-attr source throughput(packetReceived)
-attr title "throughput, vector"
-attr unit bps
-28	21519 242 499 499 0.1 1.71670208092 18 0 0 0 0
-29	21761 242 499 499 0.1 1.71670208092 18 0 0 0 0
-30	22003 242 499 499 0.1 1.71670208092 18 0 0 0 0
-31	22245 242 499 499 0.1 1.71670208092 18 0 0 0 0
-32	22487 242 499 499 0.1 1.71670208092 18 0 0 0 0
+80	5457139 45 49384 49384 9.1 9.123125800659 2 0 80000 80000 6400000000
+88	5457184 1373 49384 49384 0.1 9.123125800659 92 0 0 0 0
 

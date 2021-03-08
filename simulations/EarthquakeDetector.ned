@@ -30,8 +30,9 @@ network EarthquakeDetector
         @display("bgb=650,500;bgg=100,1,grey95");
         @figure[title](type=label; pos=0,-1; anchor=sw; color=darkblue);
 
-        @figure[rcvdPkText](type=indicatorText; pos=380,20; anchor=w; font=,18; textFormat="packets received: %g"; initialValue=0);
+        @figure[rcvdPkText](type=indicatorText; pos=380,20; anchor=w; font=,18; textFormat="Slave1 packets received: %g"; initialValue=0);
         @statistic[packetReceived](source=hostS1.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
+        
         
         //int numSlaves;  // number of slaves
         //@display("bgi=background/terrain,s;bgb=600,600");
@@ -57,16 +58,16 @@ network EarthquakeDetector
             @display("p=250,250");
         }
         hostS1: <default("WirelessHost")> like INetworkNode {
-            @display("p=450,150");
+            @display("p=375,150");
         }
         hostS2: <default("WirelessHost")> like INetworkNode {
-            @display("p=450,350");
+            @display("p=375,350");
         }
         hostS3: <default("WirelessHost")> like INetworkNode {
-            @display("p=50,350");
+            @display("p=125,350");
         }
         hostS4: <default("WirelessHost")> like INetworkNode {
-            @display("p=50,150");
+            @display("p=125,150");
         }
         //obstacles
         physicalEnvironment: PhysicalEnvironment {
