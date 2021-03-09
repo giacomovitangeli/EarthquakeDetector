@@ -1,14 +1,14 @@
 version 2
-run General-0-20210308-20:34:09-15143
+run General-0-20210309-12:57:42-6252
 attr configname General
-attr datetime 20210308-20:34:09
+attr datetime 20210309-12:57:42
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network EarthquakeDetector
-attr processid 15143
+attr processid 6252
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -25,14 +25,14 @@ param *.host*.typename "\"AodvRouter\""
 param *.host*.ipv4.arp.typename "\"GlobalArp\""
 param *.hostM.numApps 1
 param *.hostM.app[0].typename "\"UdpBasicApp\""
-param *.hostM.app[0].destAddresses "\"hostS1 hostS2 hostS3 hostS4\""
+param *.hostM.app[0].destAddresses "\"hostS1 hostS2 hostS3 hostS4 hostS5\""
 param *.hostM.app[0].destPort 5000
 param *.hostM.app[0].messageLength 1000B
 param *.hostM.app[0].sendInterval exponential(12ms)
 param *.hostM.app[0].packetName "\"UDPData\""
-param *.hostS1.numApps 1
-param *.hostS1.app[0].typename "\"UdpSink\""
-param *.hostS1.app[0].localPort 5000
+param *.hostS*.numApps 1
+param *.hostS*.app[0].typename "\"UdpSink\""
+param *.hostS*.app[0].localPort 5000
 param *.host*.wlan[0].typename "\"WirelessInterface\""
 param *.host*.wlan[0].mac.useAck true
 param *.host*.wlan[0].mac.headerLength 23B
@@ -85,14 +85,14 @@ param *.radioMedium.obstacleLoss.typename "\"IdealObstacleLoss\""
 param *.physicalEnvironment.ground.typename "\"FlatGround\""
 param *.physicalEnvironment.ground.elevation 0m
 
-scalar EarthquakeDetector.radioMedium.propagation "Arrival computation count" 12252
-scalar EarthquakeDetector.radioMedium "transmission count" 3063
-scalar EarthquakeDetector.radioMedium "signal send count" 12252
-scalar EarthquakeDetector.radioMedium "reception computation count" 12252
-scalar EarthquakeDetector.radioMedium "interference computation count" 38498
-scalar EarthquakeDetector.radioMedium "reception decision computation count" 9114
-scalar EarthquakeDetector.radioMedium "listening decision computation count" 17371
-scalar EarthquakeDetector.radioMedium "reception cache hit" 84.088724968183
+scalar EarthquakeDetector.radioMedium.propagation "Arrival computation count" 25975
+scalar EarthquakeDetector.radioMedium "transmission count" 5195
+scalar EarthquakeDetector.radioMedium "signal send count" 25975
+scalar EarthquakeDetector.radioMedium "reception computation count" 25975
+scalar EarthquakeDetector.radioMedium "interference computation count" 81568
+scalar EarthquakeDetector.radioMedium "reception decision computation count" 21013
+scalar EarthquakeDetector.radioMedium "listening decision computation count" 34816
+scalar EarthquakeDetector.radioMedium "reception cache hit" 84.556248550755
 attr unit %
 scalar EarthquakeDetector.radioMedium "interference cache hit" 66.666666666667
 attr unit %
@@ -104,7 +104,7 @@ scalar EarthquakeDetector.radioMedium "reception decision cache hit" 50
 attr unit %
 scalar EarthquakeDetector.radioMedium "reception result cache hit" 0
 attr unit %
-scalar EarthquakeDetector.hostM.energyStorage residualEnergyCapacity:last -0.77717264994649
+scalar EarthquakeDetector.hostM.energyStorage residualEnergyCapacity:last -1.8317796489736
 attr interpolationmode linear
 attr source residualEnergyCapacityChanged
 attr title "Residual energy capacity, last"
@@ -124,89 +124,101 @@ scalar EarthquakeDetector.hostM.lo[0].lo passedUpPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
-scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetPopped:count 785
+scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetPopped:count 1950
 attr interpolationmode none
 attr title "packet popped, count"
-scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetPopped:sum(packetBytes) 826223
+scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetPopped:sum(packetBytes) 2055298
 attr interpolationmode none
 attr title "packet popped, sum(packetBytes)"
 statistic EarthquakeDetector.hostM.wlan[0].mac.queue queueingTime:histogram
-field count 785
-field mean 0.088703623339902
-field stddev 0.044171938396037
+field count 1950
+field mean 0.066434987694162
+field stddev 0.043099668017612
 field min 0
-field max 0.192117623732
-field sum 69.632344321823
-field sqrsum 7.7063507940614
+field max 0.223281820339
+field sum 129.54822600361
+field sqrsum 12.226960916263
 attr interpolationmode none
 attr source queueingTime(packetPopped)
 attr title "queueing times, histogram"
 attr unit s
 bin	-inf	0
-bin	0	31
-bin	0.005	20
-bin	0.01	14
-bin	0.015	22
-bin	0.02	22
-bin	0.025	15
-bin	0.03	10
-bin	0.035	9
-bin	0.04	9
-bin	0.045	6
-bin	0.05	16
-bin	0.055	17
-bin	0.06	13
-bin	0.065	26
-bin	0.07	18
-bin	0.075	30
-bin	0.08	29
-bin	0.085	41
-bin	0.09	45
-bin	0.095	45
+bin	0	113
+bin	0.004	70
+bin	0.008	48
+bin	0.012	50
+bin	0.016	50
+bin	0.02	48
+bin	0.024	48
+bin	0.028	37
+bin	0.032	67
+bin	0.036	51
+bin	0.04	58
+bin	0.044	57
+bin	0.048	53
+bin	0.052	73
+bin	0.056	75
+bin	0.06	71
+bin	0.064	81
+bin	0.068	61
+bin	0.072	77
+bin	0.076	62
+bin	0.08	70
+bin	0.084	72
+bin	0.088	61
+bin	0.092	55
+bin	0.096	42
 bin	0.1	41
-bin	0.105	36
-bin	0.11	43
-bin	0.115	42
-bin	0.12	31
-bin	0.125	25
-bin	0.13	24
-bin	0.135	24
-bin	0.14	14
-bin	0.145	9
-bin	0.15	11
-bin	0.155	9
-bin	0.16	18
-bin	0.165	9
-bin	0.17	4
-bin	0.175	5
-bin	0.18	0
-bin	0.185	1
-bin	0.19	1
-bin	0.195	0
-bin	0.2	0
-bin	0.205	0
-bin	0.21	0
-bin	0.215	0
-bin	0.22	0
+bin	0.104	39
+bin	0.108	32
+bin	0.112	30
+bin	0.116	27
+bin	0.12	25
+bin	0.124	35
+bin	0.128	22
+bin	0.132	27
+bin	0.136	20
+bin	0.14	16
+bin	0.144	17
+bin	0.148	8
+bin	0.152	6
+bin	0.156	6
+bin	0.16	12
+bin	0.164	0
+bin	0.168	8
+bin	0.172	4
+bin	0.176	1
+bin	0.18	4
+bin	0.184	3
+bin	0.188	3
+bin	0.192	2
+bin	0.196	0
+bin	0.2	1
+bin	0.204	1
+bin	0.208	4
+bin	0.212	2
+bin	0.216	2
+bin	0.22	2
+bin	0.224	0
 scalar EarthquakeDetector.hostM.wlan[0].mac.queue queueLength:max 11
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, max"
-scalar EarthquakeDetector.hostM.wlan[0].mac.queue queueLength:timeavg 6.4937990063716
+scalar EarthquakeDetector.hostM.wlan[0].mac.queue queueLength:timeavg 5.1893501346182
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, timeavg"
-scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetPushed:count 908
+scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetPushed:count 2129
 attr interpolationmode none
 attr title "packet pushed, count"
-scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetPushed:sum(packetBytes) 955988
+scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetPushed:sum(packetBytes) 2244143
 attr interpolationmode none
 attr title "packet pushed, sum(packetBytes)"
-scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetDropQueueOverflow:count 120
+scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetDropQueueOverflow:count 176
 attr interpolationmode none
 attr source packetDropReasonIsQueueOverflow(packetDropped)
 attr title "packet drops: queue overflow, count"
-scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetDropQueueOverflow:sum(packetBytes) 126600
+scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetDropQueueOverflow:sum(packetBytes) 185680
 attr interpolationmode none
 attr source packetDropReasonIsQueueOverflow(packetDropped)
 attr title "packet drops: queue overflow, sum(packetBytes)"
@@ -216,35 +228,35 @@ attr title "packets removed, count"
 scalar EarthquakeDetector.hostM.wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
 attr interpolationmode none
 attr title "packets removed, sum(packetBytes)"
-scalar EarthquakeDetector.hostM.wlan[0].mac numRetry 88
-scalar EarthquakeDetector.hostM.wlan[0].mac numSentWithoutRetry 709
+scalar EarthquakeDetector.hostM.wlan[0].mac numRetry 135
+scalar EarthquakeDetector.hostM.wlan[0].mac numSentWithoutRetry 1828
 scalar EarthquakeDetector.hostM.wlan[0].mac numGivenUp 0
-scalar EarthquakeDetector.hostM.wlan[0].mac numCollision 4
-scalar EarthquakeDetector.hostM.wlan[0].mac numSent 782
-scalar EarthquakeDetector.hostM.wlan[0].mac numReceived 393
+scalar EarthquakeDetector.hostM.wlan[0].mac numCollision 0
+scalar EarthquakeDetector.hostM.wlan[0].mac numSent 1947
+scalar EarthquakeDetector.hostM.wlan[0].mac numReceived 2
 scalar EarthquakeDetector.hostM.wlan[0].mac numSentBroadcast 2
-scalar EarthquakeDetector.hostM.wlan[0].mac numReceivedBroadcast 5
-scalar EarthquakeDetector.hostM.wlan[0].mac packetDropIncorrectlyReceived:count 4
+scalar EarthquakeDetector.hostM.wlan[0].mac numReceivedBroadcast 6
+scalar EarthquakeDetector.hostM.wlan[0].mac packetDropIncorrectlyReceived:count 0
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packet drop: incorrectly received, count"
-scalar EarthquakeDetector.hostM.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 1304
+scalar EarthquakeDetector.hostM.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar EarthquakeDetector.hostM.wlan[0].mac packetDropNotAddressedToUs:count 255
+scalar EarthquakeDetector.hostM.wlan[0].mac packetDropNotAddressedToUs:count 602
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, count"
-scalar EarthquakeDetector.hostM.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 269025
+scalar EarthquakeDetector.hostM.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 635110
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar EarthquakeDetector.hostM.wlan[0].mac packetDropQueueOverflow:count 120
+scalar EarthquakeDetector.hostM.wlan[0].mac packetDropQueueOverflow:count 176
 attr interpolationmode none
 attr source packetDropReasonIsQueueOverflow(packetDropped)
 attr title "packet drop: queue overflow, count"
-scalar EarthquakeDetector.hostM.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 126600
+scalar EarthquakeDetector.hostM.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 185680
 attr interpolationmode none
 attr source packetDropReasonIsQueueOverflow(packetDropped)
 attr title "packet drop: queue overflow, sum(packetBytes)"
@@ -260,269 +272,334 @@ scalar EarthquakeDetector.hostM.wlan[0].mac linkBroken:count 0
 attr interpolationmode none
 attr source linkBroken
 attr title "link break, count"
-scalar EarthquakeDetector.hostM.wlan[0].radio radioMode:count 2533
+scalar EarthquakeDetector.hostM.wlan[0].radio radioMode:count 4176
 attr interpolationmode sample-hold
 attr source radioModeChanged
 attr title "Radio mode, count"
-scalar EarthquakeDetector.hostM.wlan[0].radio receptionState:count 5422
+scalar EarthquakeDetector.hostM.wlan[0].radio receptionState:count 9303
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, count"
-scalar EarthquakeDetector.hostM.wlan[0].radio transmissionState:count 5060
+scalar EarthquakeDetector.hostM.wlan[0].radio transmissionState:count 8346
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic EarthquakeDetector.hostM.wlan[0].radio minSnir:histogram
-field count 1440
-field mean 30.864245199498
-field stddev 1.5783747407756
-field min 0.96869866552033
+field count 2558
+field mean 25.099680069407
+field stddev 5.5545594410565
+field min 19.825754809335
 field max 30.947519702377
-field sum 44444.513087277
-field sqrsum 1375331.2826553
+field sum 64204.981617543
+field sqrsum 1690415.9523663
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR, histogram"
 bin	-inf	0
-bin	0	0
-bin	0.5	4
-bin	1	0
-bin	1.5	0
-bin	2	0
-bin	2.5	0
-bin	3	0
-bin	3.5	0
-bin	4	0
-bin	4.5	0
-bin	5	0
-bin	5.5	0
-bin	6	0
-bin	6.5	0
-bin	7	0
-bin	7.5	0
-bin	8	0
-bin	8.5	0
-bin	9	0
-bin	9.5	0
-bin	10	0
-bin	10.5	0
-bin	11	0
-bin	11.5	0
-bin	12	0
-bin	12.5	0
-bin	13	0
-bin	13.5	0
-bin	14	0
-bin	14.5	0
-bin	15	0
-bin	15.5	0
-bin	16	0
-bin	16.5	0
 bin	17	0
-bin	17.5	0
+bin	17.2	0
+bin	17.4	0
+bin	17.6	0
+bin	17.8	0
 bin	18	0
-bin	18.5	0
+bin	18.2	0
+bin	18.4	0
+bin	18.6	0
+bin	18.8	0
 bin	19	0
-bin	19.5	0
+bin	19.2	0
+bin	19.4	0
+bin	19.6	0
+bin	19.8	1345
 bin	20	0
-bin	20.5	0
+bin	20.2	0
+bin	20.4	0
+bin	20.6	0
+bin	20.8	0
 bin	21	0
-bin	21.5	0
+bin	21.2	0
+bin	21.4	0
+bin	21.6	0
+bin	21.8	0
 bin	22	0
-bin	22.5	0
+bin	22.2	0
+bin	22.4	0
+bin	22.6	0
+bin	22.8	0
 bin	23	0
-bin	23.5	0
+bin	23.2	0
+bin	23.4	0
+bin	23.6	0
+bin	23.8	0
 bin	24	0
-bin	24.5	0
+bin	24.2	0
+bin	24.4	0
+bin	24.6	0
+bin	24.8	0
 bin	25	0
-bin	25.5	0
+bin	25.2	0
+bin	25.4	0
+bin	25.6	0
+bin	25.8	0
 bin	26	0
-bin	26.5	0
+bin	26.2	0
+bin	26.4	0
+bin	26.6	0
+bin	26.8	0
 bin	27	0
-bin	27.5	0
+bin	27.2	0
+bin	27.4	0
+bin	27.6	0
+bin	27.8	0
 bin	28	0
-bin	28.5	0
+bin	28.2	0
+bin	28.4	0
+bin	28.6	0
+bin	28.8	0
 bin	29	0
-bin	29.5	0
+bin	29.2	0
+bin	29.4	0
+bin	29.6	0
+bin	29.8	0
 bin	30	0
-bin	30.5	1436
+bin	30.2	0
+bin	30.4	0
+bin	30.6	0
+bin	30.8	1213
 bin	31	0
-bin	31.5	0
+bin	31.2	0
+bin	31.4	0
+bin	31.6	0
+bin	31.8	0
 bin	32	0
-bin	32.5	0
+bin	32.2	0
+bin	32.4	0
+bin	32.6	0
+bin	32.8	0
 bin	33	0
-bin	33.5	0
-bin	34	0
-bin	34.5	0
-bin	35	0
-bin	35.5	0
-bin	36	0
-bin	36.5	0
-bin	37	0
-bin	37.5	0
-bin	38	0
-bin	38.5	0
+bin	33.2	0
+bin	33.4	0
+bin	33.6	0
+bin	33.8	0
 statistic EarthquakeDetector.hostM.wlan[0].radio packetErrorRate:histogram
-field count 1440
-field mean 0.002777777748022
-field stddev 0.052649659635982
+field count 2558
+field mean 0
+field stddev 0
 field min 0
-field max 1
-field sum 3.9999999571516
-field sqrsum 3.9999999143033
+field max 0
+field sum 0
+field sqrsum 0
 attr source packetErrorRate(packetSentToUpper)
 attr title "Packet error rate, histogram"
 bin	-inf	0
-bin	0	1439
-bin	1	1
-bin	2	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	2558
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
 statistic EarthquakeDetector.hostM.wlan[0].radio bitErrorRate:histogram
-field count 1440
-field mean 6.8078201869323e-05
-field stddev 0.0012903459103601
+field count 2558
+field mean 1.4006883004079e-19
+field stddev 1.3304411387324e-19
 field min 4.6822321405732e-29
-field max 0.024508152672956
-field sum 0.098032610691826
-field sqrsum 0.0024025981897638
+field max 2.6639112802048e-19
+field sum 3.5829606724434e-16
+field sqrsum 9.5446893503391e-35
 attr source bitErrorRate(packetSentToUpper)
 attr title "Bit error rate, histogram"
 bin	-inf	0
-bin	0	1436
-bin	0.0005	0
-bin	0.001	0
-bin	0.0015	0
-bin	0.002	0
-bin	0.0025	0
-bin	0.003	0
-bin	0.0035	0
-bin	0.004	0
-bin	0.0045	0
-bin	0.005	0
-bin	0.0055	0
-bin	0.006	0
-bin	0.0065	0
-bin	0.007	0
-bin	0.0075	0
-bin	0.008	0
-bin	0.0085	0
-bin	0.009	0
-bin	0.0095	0
-bin	0.01	0
-bin	0.0105	0
-bin	0.011	0
-bin	0.0115	0
-bin	0.012	0
-bin	0.0125	0
-bin	0.013	0
-bin	0.0135	0
-bin	0.014	0
-bin	0.0145	0
-bin	0.015	0
-bin	0.0155	0
-bin	0.016	0
-bin	0.0165	0
-bin	0.017	0
-bin	0.0175	0
-bin	0.018	0
-bin	0.0185	0
-bin	0.019	0
-bin	0.0195	0
-bin	0.02	0
-bin	0.0205	0
-bin	0.021	0
-bin	0.0215	0
-bin	0.022	0
-bin	0.0225	0
-bin	0.023	0
-bin	0.0235	0
-bin	0.024	0
-bin	0.0245	4
-bin	0.025	0
-bin	0.0255	0
-bin	0.026	0
-bin	0.0265	0
-bin	0.027	0
-bin	0.0275	0
-bin	0.028	0
-bin	0.0285	0
-bin	0.029	0
-bin	0.0295	0
-bin	0.03	0
-bin	0.0305	0
-bin	0.031	0
+bin	0	1213
+bin	5e-21	0
+bin	1e-20	0
+bin	1.5e-20	0
+bin	2e-20	0
+bin	2.5e-20	0
+bin	3e-20	0
+bin	3.5e-20	0
+bin	4e-20	0
+bin	4.5e-20	0
+bin	5e-20	0
+bin	5.5e-20	0
+bin	6e-20	0
+bin	6.5e-20	0
+bin	7e-20	0
+bin	7.5e-20	0
+bin	8e-20	0
+bin	8.5e-20	0
+bin	9e-20	0
+bin	9.5e-20	0
+bin	1e-19	0
+bin	1.05e-19	0
+bin	1.1e-19	0
+bin	1.15e-19	0
+bin	1.2e-19	0
+bin	1.25e-19	0
+bin	1.3e-19	0
+bin	1.35e-19	0
+bin	1.4e-19	0
+bin	1.45e-19	0
+bin	1.5e-19	0
+bin	1.55e-19	0
+bin	1.6e-19	0
+bin	1.65e-19	0
+bin	1.7e-19	0
+bin	1.75e-19	0
+bin	1.8e-19	0
+bin	1.85e-19	0
+bin	1.9e-19	0
+bin	1.95e-19	0
+bin	2e-19	0
+bin	2.05e-19	0
+bin	2.1e-19	0
+bin	2.15e-19	0
+bin	2.2e-19	0
+bin	2.25e-19	0
+bin	2.3e-19	0
+bin	2.35e-19	0
+bin	2.4e-19	0
+bin	2.45e-19	0
+bin	2.5e-19	0
+bin	2.55e-19	0
+bin	2.6e-19	0
+bin	2.65e-19	1345
+bin	2.7e-19	0
+bin	2.75e-19	0
+bin	2.8e-19	0
+bin	2.85e-19	0
+bin	2.9e-19	0
+bin	2.95e-19	0
+bin	3e-19	0
+bin	3.05e-19	0
+bin	3.1e-19	0
+bin	3.15e-19	0
+bin	3.2e-19	0
+bin	3.25e-19	0
+bin	3.3e-19	0
+bin	3.35e-19	0
 statistic EarthquakeDetector.hostM.wlan[0].radio symbolErrorRate:histogram
-field count 1440
-field mean 6.8078201869323e-05
-field stddev 0.0012903459103601
+field count 2558
+field mean 1.4006883004079e-19
+field stddev 1.3304411387324e-19
 field min 4.6822321405732e-29
-field max 0.024508152672956
-field sum 0.098032610691826
-field sqrsum 0.0024025981897638
+field max 2.6639112802048e-19
+field sum 3.5829606724434e-16
+field sqrsum 9.5446893503391e-35
 attr source symbolErrorRate(packetSentToUpper)
 attr title "Symbol error rate, histogram"
 bin	-inf	0
-bin	0	1436
-bin	0.0005	0
-bin	0.001	0
-bin	0.0015	0
-bin	0.002	0
-bin	0.0025	0
-bin	0.003	0
-bin	0.0035	0
-bin	0.004	0
-bin	0.0045	0
-bin	0.005	0
-bin	0.0055	0
-bin	0.006	0
-bin	0.0065	0
-bin	0.007	0
-bin	0.0075	0
-bin	0.008	0
-bin	0.0085	0
-bin	0.009	0
-bin	0.0095	0
-bin	0.01	0
-bin	0.0105	0
-bin	0.011	0
-bin	0.0115	0
-bin	0.012	0
-bin	0.0125	0
-bin	0.013	0
-bin	0.0135	0
-bin	0.014	0
-bin	0.0145	0
-bin	0.015	0
-bin	0.0155	0
-bin	0.016	0
-bin	0.0165	0
-bin	0.017	0
-bin	0.0175	0
-bin	0.018	0
-bin	0.0185	0
-bin	0.019	0
-bin	0.0195	0
-bin	0.02	0
-bin	0.0205	0
-bin	0.021	0
-bin	0.0215	0
-bin	0.022	0
-bin	0.0225	0
-bin	0.023	0
-bin	0.0235	0
-bin	0.024	0
-bin	0.0245	4
-bin	0.025	0
-bin	0.0255	0
-bin	0.026	0
-bin	0.0265	0
-bin	0.027	0
-bin	0.0275	0
-bin	0.028	0
-bin	0.0285	0
-bin	0.029	0
-bin	0.0295	0
-bin	0.03	0
-bin	0.0305	0
-bin	0.031	0
+bin	0	1213
+bin	5e-21	0
+bin	1e-20	0
+bin	1.5e-20	0
+bin	2e-20	0
+bin	2.5e-20	0
+bin	3e-20	0
+bin	3.5e-20	0
+bin	4e-20	0
+bin	4.5e-20	0
+bin	5e-20	0
+bin	5.5e-20	0
+bin	6e-20	0
+bin	6.5e-20	0
+bin	7e-20	0
+bin	7.5e-20	0
+bin	8e-20	0
+bin	8.5e-20	0
+bin	9e-20	0
+bin	9.5e-20	0
+bin	1e-19	0
+bin	1.05e-19	0
+bin	1.1e-19	0
+bin	1.15e-19	0
+bin	1.2e-19	0
+bin	1.25e-19	0
+bin	1.3e-19	0
+bin	1.35e-19	0
+bin	1.4e-19	0
+bin	1.45e-19	0
+bin	1.5e-19	0
+bin	1.55e-19	0
+bin	1.6e-19	0
+bin	1.65e-19	0
+bin	1.7e-19	0
+bin	1.75e-19	0
+bin	1.8e-19	0
+bin	1.85e-19	0
+bin	1.9e-19	0
+bin	1.95e-19	0
+bin	2e-19	0
+bin	2.05e-19	0
+bin	2.1e-19	0
+bin	2.15e-19	0
+bin	2.2e-19	0
+bin	2.25e-19	0
+bin	2.3e-19	0
+bin	2.35e-19	0
+bin	2.4e-19	0
+bin	2.45e-19	0
+bin	2.5e-19	0
+bin	2.55e-19	0
+bin	2.6e-19	0
+bin	2.65e-19	1345
+bin	2.7e-19	0
+bin	2.75e-19	0
+bin	2.8e-19	0
+bin	2.85e-19	0
+bin	2.9e-19	0
+bin	2.95e-19	0
+bin	3e-19	0
+bin	3.05e-19	0
+bin	3.1e-19	0
+bin	3.15e-19	0
+bin	3.2e-19	0
+bin	3.25e-19	0
+bin	3.3e-19	0
+bin	3.35e-19	0
 scalar EarthquakeDetector.hostM.ipv4.ip packetDropAddressResolutionFailed:count 0
 attr interpolationmode none
 attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
@@ -571,23 +648,23 @@ scalar EarthquakeDetector.hostM.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetDropReasonIsUndefined(packetDropped)
 attr title "packet drop: undefined, sum(packetBytes)"
-scalar EarthquakeDetector.hostM.udp packetReceived:count 7
+scalar EarthquakeDetector.hostM.udp packetReceived:count 8
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, count"
-scalar EarthquakeDetector.hostM.udp packetReceived:sum(packetBytes) 216
+scalar EarthquakeDetector.hostM.udp packetReceived:sum(packetBytes) 248
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
-scalar EarthquakeDetector.hostM.udp packetSent:count 908
+scalar EarthquakeDetector.hostM.udp packetSent:count 2129
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, count"
-scalar EarthquakeDetector.hostM.udp packetSent:sum(packetBytes) 913312
+scalar EarthquakeDetector.hostM.udp packetSent:sum(packetBytes) 2144080
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, sum(packetBytes)"
-scalar EarthquakeDetector.hostM.udp passedUpPk:count 7
+scalar EarthquakeDetector.hostM.udp passedUpPk:count 8
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, count"
@@ -599,7 +676,7 @@ scalar EarthquakeDetector.hostM.udp droppedPkBadChecksum:count 0
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-scalar EarthquakeDetector.hostM.app[0] "packets sent" 906
+scalar EarthquakeDetector.hostM.app[0] "packets sent" 2127
 scalar EarthquakeDetector.hostM.app[0] "packets received" 0
 scalar EarthquakeDetector.hostM.app[0] packetReceived:count 0
 attr interpolationmode none
@@ -621,15 +698,15 @@ attr interpolationmode none
 attr source dataAge(packetReceived)
 attr title "received packet lifetime, stats"
 attr unit s
-scalar EarthquakeDetector.hostM.app[0] packetSent:count 906
+scalar EarthquakeDetector.hostM.app[0] packetSent:count 2127
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, count"
-scalar EarthquakeDetector.hostM.app[0] packetSent:sum(packetBytes) 906000
+scalar EarthquakeDetector.hostM.app[0] packetSent:sum(packetBytes) 2127000
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, sum(packetBytes)"
-scalar EarthquakeDetector.hostS1.energyStorage residualEnergyCapacity:last -0.10595338608058
+scalar EarthquakeDetector.hostS1.energyStorage residualEnergyCapacity:last -0.24395283603189
 attr interpolationmode linear
 attr source residualEnergyCapacityChanged
 attr title "Residual energy capacity, last"
@@ -649,126 +726,88 @@ scalar EarthquakeDetector.hostS1.lo[0].lo passedUpPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
-scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetPopped:count 2
+scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetPopped:count 1
 attr interpolationmode none
 attr title "packet popped, count"
-scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetPopped:sum(packetBytes) 158
+scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetPopped:sum(packetBytes) 75
 attr interpolationmode none
 attr title "packet popped, sum(packetBytes)"
 statistic EarthquakeDetector.hostS1.wlan[0].mac.queue queueingTime:histogram
-field count 2
-field mean 0.0035171715165
-field stddev 0.0049740316598266
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 0.007034343033
-field sum 0.007034343033
-field sqrsum 4.9481981905916e-05
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source queueingTime(packetPopped)
 attr title "queueing times, histogram"
 attr unit s
 bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
 bin	0	1
-bin	0.0001	0
-bin	0.0002	0
-bin	0.0003	0
-bin	0.0004	0
-bin	0.0005	0
-bin	0.0006	0
-bin	0.0007	0
-bin	0.0008	0
-bin	0.0009	0
-bin	0.001	0
-bin	0.0011	0
-bin	0.0012	0
-bin	0.0013	0
-bin	0.0014	0
-bin	0.0015	0
-bin	0.0016	0
-bin	0.0017	0
-bin	0.0018	0
-bin	0.0019	0
-bin	0.002	0
-bin	0.0021	0
-bin	0.0022	0
-bin	0.0023	0
-bin	0.0024	0
-bin	0.0025	0
-bin	0.0026	0
-bin	0.0027	0
-bin	0.0028	0
-bin	0.0029	0
-bin	0.003	0
-bin	0.0031	0
-bin	0.0032	0
-bin	0.0033	0
-bin	0.0034	0
-bin	0.0035	0
-bin	0.0036	0
-bin	0.0037	0
-bin	0.0038	0
-bin	0.0039	0
-bin	0.004	0
-bin	0.0041	0
-bin	0.0042	0
-bin	0.0043	0
-bin	0.0044	0
-bin	0.0045	0
-bin	0.0046	0
-bin	0.0047	0
-bin	0.0048	0
-bin	0.0049	0
-bin	0.005	0
-bin	0.0051	0
-bin	0.0052	0
-bin	0.0053	0
-bin	0.0054	0
-bin	0.0055	0
-bin	0.0056	0
-bin	0.0057	0
-bin	0.0058	0
-bin	0.0059	0
-bin	0.006	0
-bin	0.0061	0
-bin	0.0062	0
-bin	0.0063	0
-bin	0.0064	0
-bin	0.0065	0
-bin	0.0066	0
-bin	0.0067	0
-bin	0.0068	0
-bin	0.0069	0
-bin	0.007	1
-bin	0.0071	0
-bin	0.0072	0
-bin	0.0073	0
-bin	0.0074	0
-bin	0.0075	0
-bin	0.0076	0
-bin	0.0077	0
-bin	0.0078	0
-bin	0.0079	0
-bin	0.008	0
-bin	0.0081	0
-bin	0.0082	0
-bin	0.0083	0
-bin	0.0084	0
-bin	0.0085	0
-bin	0.0086	0
-bin	0.0087	0
-bin	0.0088	0
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
 scalar EarthquakeDetector.hostS1.wlan[0].mac.queue queueLength:max 1
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, max"
-scalar EarthquakeDetector.hostS1.wlan[0].mac.queue queueLength:timeavg 0.00065552516489769
+scalar EarthquakeDetector.hostS1.wlan[0].mac.queue queueLength:timeavg 0
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, timeavg"
-scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetPushed:count 2
+scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetPushed:count 1
 attr interpolationmode none
 attr title "packet pushed, count"
-scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetPushed:sum(packetBytes) 158
+scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetPushed:sum(packetBytes) 75
 attr interpolationmode none
 attr title "packet pushed, sum(packetBytes)"
 scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetDropQueueOverflow:count 0
@@ -786,26 +825,26 @@ scalar EarthquakeDetector.hostS1.wlan[0].mac.queue packetRemoved:sum(packetBytes
 attr interpolationmode none
 attr title "packets removed, sum(packetBytes)"
 scalar EarthquakeDetector.hostS1.wlan[0].mac numRetry 0
-scalar EarthquakeDetector.hostS1.wlan[0].mac numSentWithoutRetry 0
+scalar EarthquakeDetector.hostS1.wlan[0].mac numSentWithoutRetry 1
 scalar EarthquakeDetector.hostS1.wlan[0].mac numGivenUp 0
-scalar EarthquakeDetector.hostS1.wlan[0].mac numCollision 42
-scalar EarthquakeDetector.hostS1.wlan[0].mac numSent 0
-scalar EarthquakeDetector.hostS1.wlan[0].mac numReceived 192
-scalar EarthquakeDetector.hostS1.wlan[0].mac numSentBroadcast 2
-scalar EarthquakeDetector.hostS1.wlan[0].mac numReceivedBroadcast 5
-scalar EarthquakeDetector.hostS1.wlan[0].mac packetDropIncorrectlyReceived:count 42
+scalar EarthquakeDetector.hostS1.wlan[0].mac numCollision 19
+scalar EarthquakeDetector.hostS1.wlan[0].mac numSent 1
+scalar EarthquakeDetector.hostS1.wlan[0].mac numReceived 389
+scalar EarthquakeDetector.hostS1.wlan[0].mac numSentBroadcast 0
+scalar EarthquakeDetector.hostS1.wlan[0].mac numReceivedBroadcast 8
+scalar EarthquakeDetector.hostS1.wlan[0].mac packetDropIncorrectlyReceived:count 19
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packet drop: incorrectly received, count"
-scalar EarthquakeDetector.hostS1.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 27786
+scalar EarthquakeDetector.hostS1.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 20045
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar EarthquakeDetector.hostS1.wlan[0].mac packetDropNotAddressedToUs:count 1287
+scalar EarthquakeDetector.hostS1.wlan[0].mac packetDropNotAddressedToUs:count 2277
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, count"
-scalar EarthquakeDetector.hostS1.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 975773
+scalar EarthquakeDetector.hostS1.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 2401255
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, sum(packetBytes)"
@@ -829,34 +868,33 @@ scalar EarthquakeDetector.hostS1.wlan[0].mac linkBroken:count 0
 attr interpolationmode none
 attr source linkBroken
 attr title "link break, count"
-scalar EarthquakeDetector.hostS1.wlan[0].radio radioMode:count 391
+scalar EarthquakeDetector.hostS1.wlan[0].radio radioMode:count 783
 attr interpolationmode sample-hold
 attr source radioModeChanged
 attr title "Radio mode, count"
-scalar EarthquakeDetector.hostS1.wlan[0].radio receptionState:count 5444
+scalar EarthquakeDetector.hostS1.wlan[0].radio receptionState:count 9303
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, count"
-scalar EarthquakeDetector.hostS1.wlan[0].radio transmissionState:count 776
+scalar EarthquakeDetector.hostS1.wlan[0].radio transmissionState:count 1560
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic EarthquakeDetector.hostS1.wlan[0].radio minSnir:histogram
-field count 2510
-field mean 22.354581061278
-field stddev 8.969683229817
-field min 0.37301520912041
+field count 4254
+field mean 27.877387520239
+field stddev 6.4950067336132
+field min 0.96869866552033
 field max 30.947519702377
-field sum 56109.998463808
-field sqrsum 1456177.6490707
+field sum 118590.4065111
+field sqrsum 3485404.001826
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR, histogram"
 bin	-inf	0
-bin	0	16
-bin	0.5	8
-bin	1	1
-bin	1.5	3
-bin	2	14
+bin	0.5	19
+bin	1	0
+bin	1.5	0
+bin	2	0
 bin	2.5	0
 bin	3	0
 bin	3.5	0
@@ -875,7 +913,7 @@ bin	9.5	0
 bin	10	0
 bin	10.5	0
 bin	11	0
-bin	11.5	824
+bin	11.5	422
 bin	12	0
 bin	12.5	0
 bin	13	0
@@ -891,7 +929,7 @@ bin	17.5	0
 bin	18	0
 bin	18.5	0
 bin	19	0
-bin	19.5	417
+bin	19.5	401
 bin	20	0
 bin	20.5	0
 bin	21	0
@@ -913,7 +951,7 @@ bin	28.5	0
 bin	29	0
 bin	29.5	0
 bin	30	0
-bin	30.5	1227
+bin	30.5	3412
 bin	31	0
 bin	31.5	0
 bin	32	0
@@ -925,24 +963,18 @@ bin	34.5	0
 bin	35	0
 bin	35.5	0
 bin	36	0
-bin	36.5	0
-bin	37	0
-bin	37.5	0
-bin	38	0
-bin	38.5	0
-bin	39	0
 statistic EarthquakeDetector.hostS1.wlan[0].radio packetErrorRate:histogram
-field count 2510
-field mean 0.016722188708712
-field stddev 0.1282119311904
+field count 4254
+field mean 0.004466384631894
+field stddev 0.066689440466872
 field min 0
 field max 1
-field sum 41.972693658868
-field sqrsum 41.9455682466
+field sum 19.000000224077
+field sqrsum 19
 attr source packetErrorRate(packetSentToUpper)
 attr title "Packet error rate, histogram"
 bin	-inf	0
-bin	0	2468
+bin	0	4235
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -991,157 +1023,133 @@ bin	0.9	0
 bin	0.92	0
 bin	0.94	0
 bin	0.96	0
-bin	0.98	17
-bin	1	25
+bin	0.98	0
+bin	1	19
 bin	1.02	0
-bin	1.04	0
-bin	1.06	0
-bin	1.08	0
-bin	1.1	0
-bin	1.12	0
-bin	1.14	0
-bin	1.16	0
-bin	1.18	0
-bin	1.2	0
-bin	1.22	0
-bin	1.24	0
-bin	1.26	0
 statistic EarthquakeDetector.hostS1.wlan[0].radio bitErrorRate:histogram
-field count 2510
-field mean 0.00091006147619316
-field stddev 0.0094173851578512
+field count 4254
+field mean 0.00010946283541411
+field stddev 0.0016344349887058
 field min 4.6822321405732e-29
-field max 0.11094849227552
-field sum 2.2842543052448
-field sqrsum 0.22459485416222
+field max 0.024508152672956
+field sum 0.46565490185164
+field sqrsum 0.011412341401378
 attr source bitErrorRate(packetSentToUpper)
 attr title "Bit error rate, histogram"
 bin	-inf	0
-bin	0	2482
+bin	0	4235
+bin	0.0005	0
+bin	0.001	0
+bin	0.0015	0
 bin	0.002	0
+bin	0.0025	0
+bin	0.003	0
+bin	0.0035	0
 bin	0.004	0
-bin	0.006	4
+bin	0.0045	0
+bin	0.005	0
+bin	0.0055	0
+bin	0.006	0
+bin	0.0065	0
+bin	0.007	0
+bin	0.0075	0
 bin	0.008	0
+bin	0.0085	0
+bin	0.009	0
+bin	0.0095	0
 bin	0.01	0
+bin	0.0105	0
+bin	0.011	0
+bin	0.0115	0
 bin	0.012	0
+bin	0.0125	0
+bin	0.013	0
+bin	0.0135	0
 bin	0.014	0
+bin	0.0145	0
+bin	0.015	0
+bin	0.0155	0
 bin	0.016	0
+bin	0.0165	0
+bin	0.017	0
+bin	0.0175	0
 bin	0.018	0
+bin	0.0185	0
+bin	0.019	0
+bin	0.0195	0
 bin	0.02	0
+bin	0.0205	0
+bin	0.021	0
+bin	0.0215	0
 bin	0.022	0
+bin	0.0225	0
+bin	0.023	0
+bin	0.0235	0
 bin	0.024	0
-bin	0.026	0
-bin	0.028	0
-bin	0.03	0
-bin	0.032	0
-bin	0.034	0
-bin	0.036	0
-bin	0.038	0
-bin	0.04	0
-bin	0.042	0
-bin	0.044	0
-bin	0.046	0
-bin	0.048	0
-bin	0.05	0
-bin	0.052	0
-bin	0.054	0
-bin	0.056	7
-bin	0.058	0
-bin	0.06	0
-bin	0.062	0
-bin	0.064	1
-bin	0.066	0
-bin	0.068	0
-bin	0.07	0
-bin	0.072	0
-bin	0.074	0
-bin	0.076	0
-bin	0.078	0
-bin	0.08	0
-bin	0.082	0
-bin	0.084	0
-bin	0.086	0
-bin	0.088	0
-bin	0.09	0
-bin	0.092	0
-bin	0.094	0
-bin	0.096	0
-bin	0.098	0
-bin	0.1	0
-bin	0.102	0
-bin	0.104	0
-bin	0.106	0
-bin	0.108	0
-bin	0.11	16
-bin	0.112	0
+bin	0.0245	19
+bin	0.025	0
 statistic EarthquakeDetector.hostS1.wlan[0].radio symbolErrorRate:histogram
-field count 2510
-field mean 0.00091006147619316
-field stddev 0.0094173851578512
+field count 4254
+field mean 0.00010946283541411
+field stddev 0.0016344349887058
 field min 4.6822321405732e-29
-field max 0.11094849227552
-field sum 2.2842543052448
-field sqrsum 0.22459485416222
+field max 0.024508152672956
+field sum 0.46565490185164
+field sqrsum 0.011412341401378
 attr source symbolErrorRate(packetSentToUpper)
 attr title "Symbol error rate, histogram"
 bin	-inf	0
-bin	0	2482
+bin	0	4235
+bin	0.0005	0
+bin	0.001	0
+bin	0.0015	0
 bin	0.002	0
+bin	0.0025	0
+bin	0.003	0
+bin	0.0035	0
 bin	0.004	0
-bin	0.006	4
+bin	0.0045	0
+bin	0.005	0
+bin	0.0055	0
+bin	0.006	0
+bin	0.0065	0
+bin	0.007	0
+bin	0.0075	0
 bin	0.008	0
+bin	0.0085	0
+bin	0.009	0
+bin	0.0095	0
 bin	0.01	0
+bin	0.0105	0
+bin	0.011	0
+bin	0.0115	0
 bin	0.012	0
+bin	0.0125	0
+bin	0.013	0
+bin	0.0135	0
 bin	0.014	0
+bin	0.0145	0
+bin	0.015	0
+bin	0.0155	0
 bin	0.016	0
+bin	0.0165	0
+bin	0.017	0
+bin	0.0175	0
 bin	0.018	0
+bin	0.0185	0
+bin	0.019	0
+bin	0.0195	0
 bin	0.02	0
+bin	0.0205	0
+bin	0.021	0
+bin	0.0215	0
 bin	0.022	0
+bin	0.0225	0
+bin	0.023	0
+bin	0.0235	0
 bin	0.024	0
-bin	0.026	0
-bin	0.028	0
-bin	0.03	0
-bin	0.032	0
-bin	0.034	0
-bin	0.036	0
-bin	0.038	0
-bin	0.04	0
-bin	0.042	0
-bin	0.044	0
-bin	0.046	0
-bin	0.048	0
-bin	0.05	0
-bin	0.052	0
-bin	0.054	0
-bin	0.056	7
-bin	0.058	0
-bin	0.06	0
-bin	0.062	0
-bin	0.064	1
-bin	0.066	0
-bin	0.068	0
-bin	0.07	0
-bin	0.072	0
-bin	0.074	0
-bin	0.076	0
-bin	0.078	0
-bin	0.08	0
-bin	0.082	0
-bin	0.084	0
-bin	0.086	0
-bin	0.088	0
-bin	0.09	0
-bin	0.092	0
-bin	0.094	0
-bin	0.096	0
-bin	0.098	0
-bin	0.1	0
-bin	0.102	0
-bin	0.104	0
-bin	0.106	0
-bin	0.108	0
-bin	0.11	16
-bin	0.112	0
+bin	0.0245	19
+bin	0.025	0
 scalar EarthquakeDetector.hostS1.ipv4.ip packetDropAddressResolutionFailed:count 0
 attr interpolationmode none
 attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
@@ -1190,23 +1198,23 @@ scalar EarthquakeDetector.hostS1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetDropReasonIsUndefined(packetDropped)
 attr title "packet drop: undefined, sum(packetBytes)"
-scalar EarthquakeDetector.hostS1.udp packetReceived:count 197
+scalar EarthquakeDetector.hostS1.udp packetReceived:count 397
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, count"
-scalar EarthquakeDetector.hostS1.udp packetReceived:sum(packetBytes) 193696
+scalar EarthquakeDetector.hostS1.udp packetReceived:sum(packetBytes) 392368
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
-scalar EarthquakeDetector.hostS1.udp packetSent:count 2
+scalar EarthquakeDetector.hostS1.udp packetSent:count 1
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, count"
-scalar EarthquakeDetector.hostS1.udp packetSent:sum(packetBytes) 64
+scalar EarthquakeDetector.hostS1.udp packetSent:sum(packetBytes) 28
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, sum(packetBytes)"
-scalar EarthquakeDetector.hostS1.udp passedUpPk:count 197
+scalar EarthquakeDetector.hostS1.udp passedUpPk:count 397
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, count"
@@ -1218,76 +1226,75 @@ scalar EarthquakeDetector.hostS1.udp droppedPkBadChecksum:count 0
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-scalar EarthquakeDetector.hostS1.app[0] packetReceived:count 192
+scalar EarthquakeDetector.hostS1.app[0] packetReceived:count 389
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, count"
-scalar EarthquakeDetector.hostS1.app[0] packetReceived:sum(packetBytes) 192000
+scalar EarthquakeDetector.hostS1.app[0] packetReceived:sum(packetBytes) 389000
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
 statistic EarthquakeDetector.hostS1.app[0] endToEndDelay:histogram
-field count 192
-field mean 0.10013354443516
-field stddev 0.046605517860937
-field min 0.008684533963
-field max 0.186517282355
-field sum 19.22564053155
-field sqrsum 2.3399977208218
+field count 389
+field mean 0.077995574729594
+field stddev 0.04267405901032
+field min 0.008604533963
+field max 0.229570833161
+field sum 30.340278569812
+field sqrsum 3.072984685726
 attr interpolationmode none
 attr source dataAge(packetReceived)
 attr title "end-to-end delay, histogram"
 attr unit s
 bin	-inf	0
 bin	0	0
-bin	0.005	8
-bin	0.01	5
-bin	0.015	5
-bin	0.02	1
-bin	0.025	2
-bin	0.03	7
-bin	0.035	4
-bin	0.04	4
-bin	0.045	2
-bin	0.05	1
-bin	0.055	2
-bin	0.06	2
-bin	0.065	5
-bin	0.07	2
-bin	0.075	2
-bin	0.08	2
-bin	0.085	10
-bin	0.09	6
-bin	0.095	11
-bin	0.1	8
-bin	0.105	9
+bin	0.005	12
+bin	0.01	10
+bin	0.015	18
+bin	0.02	12
+bin	0.025	14
+bin	0.03	8
+bin	0.035	9
+bin	0.04	14
+bin	0.045	14
+bin	0.05	12
+bin	0.055	11
+bin	0.06	16
+bin	0.065	17
+bin	0.07	26
+bin	0.075	15
+bin	0.08	17
+bin	0.085	18
+bin	0.09	17
+bin	0.095	15
+bin	0.1	14
+bin	0.105	15
 bin	0.11	14
 bin	0.115	6
-bin	0.12	18
-bin	0.125	10
-bin	0.13	5
-bin	0.135	7
-bin	0.14	4
-bin	0.145	7
-bin	0.15	3
-bin	0.155	3
-bin	0.16	1
-bin	0.165	3
-bin	0.17	6
-bin	0.175	2
-bin	0.18	4
-bin	0.185	1
-bin	0.19	0
-bin	0.195	0
+bin	0.12	10
+bin	0.125	6
+bin	0.13	10
+bin	0.135	8
+bin	0.14	5
+bin	0.145	4
+bin	0.15	5
+bin	0.155	5
+bin	0.16	3
+bin	0.165	1
+bin	0.17	2
+bin	0.175	1
+bin	0.18	1
+bin	0.185	0
+bin	0.19	1
+bin	0.195	1
 bin	0.2	0
 bin	0.205	0
 bin	0.21	0
-bin	0.215	0
+bin	0.215	1
 bin	0.22	0
-bin	0.225	0
+bin	0.225	1
 bin	0.23	0
-bin	0.235	0
-scalar EarthquakeDetector.hostS2.energyStorage residualEnergyCapacity:last -0.12073266305221
+scalar EarthquakeDetector.hostS2.energyStorage residualEnergyCapacity:last -0.24421546758441
 attr interpolationmode linear
 attr source residualEnergyCapacityChanged
 attr title "Residual energy capacity, last"
@@ -1307,112 +1314,120 @@ scalar EarthquakeDetector.hostS2.lo[0].lo passedUpPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
-scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetPopped:count 210
+scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetPopped:count 2
 attr interpolationmode none
 attr title "packet popped, count"
-scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetPopped:sum(packetBytes) 17418
+scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetPopped:sum(packetBytes) 158
 attr interpolationmode none
 attr title "packet popped, sum(packetBytes)"
 statistic EarthquakeDetector.hostS2.wlan[0].mac.queue queueingTime:histogram
-field count 210
-field mean 0.0012079125389333
-field stddev 0.0041129674988034
-field min 0
-field max 0.036833105614
-field sum 0.253661633176
-field sqrsum 0.0038419499114182
+field count 2
+field mean 0.0067143953865
+field stddev 0.0019153358693964
+field min 0.005360048405
+field max 0.008068742368
+field sum 0.013428790773
+field sqrsum 9.3834722305101e-05
 attr interpolationmode none
 attr source queueingTime(packetPopped)
 attr title "queueing times, histogram"
 attr unit s
 bin	-inf	0
-bin	0	164
-bin	0.0005	0
-bin	0.001	20
-bin	0.0015	8
-bin	0.002	3
-bin	0.0025	0
-bin	0.003	1
-bin	0.0035	0
-bin	0.004	0
-bin	0.0045	0
+bin	0.00465	0
+bin	0.0047	0
+bin	0.00475	0
+bin	0.0048	0
+bin	0.00485	0
+bin	0.0049	0
+bin	0.00495	0
 bin	0.005	0
+bin	0.00505	0
+bin	0.0051	0
+bin	0.00515	0
+bin	0.0052	0
+bin	0.00525	0
+bin	0.0053	0
+bin	0.00535	1
+bin	0.0054	0
+bin	0.00545	0
 bin	0.0055	0
+bin	0.00555	0
+bin	0.0056	0
+bin	0.00565	0
+bin	0.0057	0
+bin	0.00575	0
+bin	0.0058	0
+bin	0.00585	0
+bin	0.0059	0
+bin	0.00595	0
 bin	0.006	0
+bin	0.00605	0
+bin	0.0061	0
+bin	0.00615	0
+bin	0.0062	0
+bin	0.00625	0
+bin	0.0063	0
+bin	0.00635	0
+bin	0.0064	0
+bin	0.00645	0
 bin	0.0065	0
+bin	0.00655	0
+bin	0.0066	0
+bin	0.00665	0
+bin	0.0067	0
+bin	0.00675	0
+bin	0.0068	0
+bin	0.00685	0
+bin	0.0069	0
+bin	0.00695	0
 bin	0.007	0
+bin	0.00705	0
+bin	0.0071	0
+bin	0.00715	0
+bin	0.0072	0
+bin	0.00725	0
+bin	0.0073	0
+bin	0.00735	0
+bin	0.0074	0
+bin	0.00745	0
 bin	0.0075	0
+bin	0.00755	0
+bin	0.0076	0
+bin	0.00765	0
+bin	0.0077	0
+bin	0.00775	0
+bin	0.0078	0
+bin	0.00785	0
+bin	0.0079	0
+bin	0.00795	0
 bin	0.008	0
+bin	0.00805	1
+bin	0.0081	0
+bin	0.00815	0
+bin	0.0082	0
+bin	0.00825	0
+bin	0.0083	0
+bin	0.00835	0
+bin	0.0084	0
+bin	0.00845	0
 bin	0.0085	0
-bin	0.009	0
-bin	0.0095	1
-bin	0.01	6
-bin	0.0105	1
-bin	0.011	0
-bin	0.0115	2
-bin	0.012	0
-bin	0.0125	1
-bin	0.013	0
-bin	0.0135	0
-bin	0.014	0
-bin	0.0145	0
-bin	0.015	0
-bin	0.0155	0
-bin	0.016	0
-bin	0.0165	0
-bin	0.017	0
-bin	0.0175	0
-bin	0.018	0
-bin	0.0185	1
-bin	0.019	0
-bin	0.0195	0
-bin	0.02	0
-bin	0.0205	0
-bin	0.021	0
-bin	0.0215	0
-bin	0.022	0
-bin	0.0225	0
-bin	0.023	0
-bin	0.0235	0
-bin	0.024	0
-bin	0.0245	0
-bin	0.025	0
-bin	0.0255	0
-bin	0.026	0
-bin	0.0265	0
-bin	0.027	0
-bin	0.0275	1
-bin	0.028	0
-bin	0.0285	0
-bin	0.029	0
-bin	0.0295	0
-bin	0.03	0
-bin	0.0305	0
-bin	0.031	0
-bin	0.0315	0
-bin	0.032	0
-bin	0.0325	0
-bin	0.033	0
-bin	0.0335	0
-bin	0.034	0
-bin	0.0345	0
-bin	0.035	0
-bin	0.0355	0
-bin	0.036	0
-bin	0.0365	1
-bin	0.037	0
-scalar EarthquakeDetector.hostS2.wlan[0].mac.queue queueLength:max 2
+bin	0.00855	0
+bin	0.0086	0
+bin	0.00865	0
+bin	0.0087	0
+bin	0.00875	0
+scalar EarthquakeDetector.hostS2.wlan[0].mac.queue queueLength:max 1
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, max"
-scalar EarthquakeDetector.hostS2.wlan[0].mac.queue queueLength:timeavg 0.023648531462639
+scalar EarthquakeDetector.hostS2.wlan[0].mac.queue queueLength:timeavg 0.00053758383348677
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, timeavg"
-scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetPushed:count 210
+scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetPushed:count 2
 attr interpolationmode none
 attr title "packet pushed, count"
-scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetPushed:sum(packetBytes) 17418
+scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetPushed:sum(packetBytes) 158
 attr interpolationmode none
 attr title "packet pushed, sum(packetBytes)"
 scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetDropQueueOverflow:count 0
@@ -1429,27 +1444,27 @@ attr title "packets removed, count"
 scalar EarthquakeDetector.hostS2.wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
 attr interpolationmode none
 attr title "packets removed, sum(packetBytes)"
-scalar EarthquakeDetector.hostS2.wlan[0].mac numRetry 12
-scalar EarthquakeDetector.hostS2.wlan[0].mac numSentWithoutRetry 196
+scalar EarthquakeDetector.hostS2.wlan[0].mac numRetry 0
+scalar EarthquakeDetector.hostS2.wlan[0].mac numSentWithoutRetry 0
 scalar EarthquakeDetector.hostS2.wlan[0].mac numGivenUp 0
-scalar EarthquakeDetector.hostS2.wlan[0].mac numCollision 50
-scalar EarthquakeDetector.hostS2.wlan[0].mac numSent 208
-scalar EarthquakeDetector.hostS2.wlan[0].mac numReceived 208
-scalar EarthquakeDetector.hostS2.wlan[0].mac numSentBroadcast 1
+scalar EarthquakeDetector.hostS2.wlan[0].mac numCollision 124
+scalar EarthquakeDetector.hostS2.wlan[0].mac numSent 0
+scalar EarthquakeDetector.hostS2.wlan[0].mac numReceived 399
+scalar EarthquakeDetector.hostS2.wlan[0].mac numSentBroadcast 2
 scalar EarthquakeDetector.hostS2.wlan[0].mac numReceivedBroadcast 6
-scalar EarthquakeDetector.hostS2.wlan[0].mac packetDropIncorrectlyReceived:count 50
+scalar EarthquakeDetector.hostS2.wlan[0].mac packetDropIncorrectlyReceived:count 124
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packet drop: incorrectly received, count"
-scalar EarthquakeDetector.hostS2.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 42965
+scalar EarthquakeDetector.hostS2.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 121487
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar EarthquakeDetector.hostS2.wlan[0].mac packetDropNotAddressedToUs:count 1044
+scalar EarthquakeDetector.hostS2.wlan[0].mac packetDropNotAddressedToUs:count 2172
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, count"
-scalar EarthquakeDetector.hostS2.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 923536
+scalar EarthquakeDetector.hostS2.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 2289500
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, sum(packetBytes)"
@@ -1473,30 +1488,30 @@ scalar EarthquakeDetector.hostS2.wlan[0].mac linkBroken:count 0
 attr interpolationmode none
 attr source linkBroken
 attr title "link break, count"
-scalar EarthquakeDetector.hostS2.wlan[0].radio radioMode:count 861
+scalar EarthquakeDetector.hostS2.wlan[0].radio radioMode:count 805
 attr interpolationmode sample-hold
 attr source radioModeChanged
 attr title "Radio mode, count"
-scalar EarthquakeDetector.hostS2.wlan[0].radio receptionState:count 5437
+scalar EarthquakeDetector.hostS2.wlan[0].radio receptionState:count 9309
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, count"
-scalar EarthquakeDetector.hostS2.wlan[0].radio transmissionState:count 1716
+scalar EarthquakeDetector.hostS2.wlan[0].radio transmissionState:count 1604
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic EarthquakeDetector.hostS2.wlan[0].radio minSnir:histogram
-field count 2275
-field mean 20.022738353762
-field stddev 12.511606154772
-field min 0.13868798673424
+field count 4243
+field mean 18.680376482033
+field stddev 12.702892526437
+field min 0.13060299328469
 field max 30.947519702377
-field sum 45551.729754808
-field sqrsum 1268042.9826548
+field sum 79260.837413265
+field sqrsum 2165126.15912
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR, histogram"
 bin	-inf	0
-bin	0	16
+bin	0	6
 bin	0.5	0
 bin	1	0
 bin	1.5	0
@@ -1504,10 +1519,10 @@ bin	2	0
 bin	2.5	0
 bin	3	0
 bin	3.5	0
-bin	4	824
+bin	4	1767
 bin	4.5	0
 bin	5	0
-bin	5.5	14
+bin	5.5	13
 bin	6	0
 bin	6.5	0
 bin	7	0
@@ -1535,7 +1550,7 @@ bin	17.5	0
 bin	18	0
 bin	18.5	0
 bin	19	0
-bin	19.5	194
+bin	19.5	390
 bin	20	0
 bin	20.5	0
 bin	21	0
@@ -1557,7 +1572,7 @@ bin	28.5	0
 bin	29	0
 bin	29.5	0
 bin	30	0
-bin	30.5	1227
+bin	30.5	2067
 bin	31	0
 bin	31.5	0
 bin	32	0
@@ -1574,85 +1589,80 @@ bin	37	0
 bin	37.5	0
 bin	38	0
 statistic EarthquakeDetector.hostS2.wlan[0].radio packetErrorRate:histogram
-field count 2275
-field mean 0.019781875314436
-field stddev 0.088527540999218
+field count 4243
+field mean 0.026719263233893
+field stddev 0.069568585214281
 field min 0
 field max 1
-field sum 45.003766340342
-field sqrsum 18.711882316372
+field sum 113.36983390141
+field sqrsum 23.559539337451
 attr source packetErrorRate(packetSentToUpper)
 attr title "Packet error rate, histogram"
 bin	-inf	0
-bin	0	2005
-bin	0.018	0
-bin	0.036	0
-bin	0.054	0
-bin	0.072	0
-bin	0.09	254
-bin	0.108	0
-bin	0.126	0
-bin	0.144	0
-bin	0.162	0
+bin	0	3635
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	602
 bin	0.18	0
-bin	0.198	0
-bin	0.216	0
-bin	0.234	0
-bin	0.252	0
-bin	0.27	0
-bin	0.288	0
-bin	0.306	0
-bin	0.324	0
-bin	0.342	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
 bin	0.36	0
-bin	0.378	0
-bin	0.396	0
-bin	0.414	0
-bin	0.432	0
-bin	0.45	0
-bin	0.468	0
-bin	0.486	0
-bin	0.504	0
-bin	0.522	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+bin	0.52	0
 bin	0.54	0
-bin	0.558	0
-bin	0.576	0
-bin	0.594	0
-bin	0.612	0
-bin	0.63	0
-bin	0.648	0
-bin	0.666	0
-bin	0.684	0
-bin	0.702	0
+bin	0.56	0
+bin	0.58	0
+bin	0.6	0
+bin	0.62	0
+bin	0.64	0
+bin	0.66	0
+bin	0.68	0
+bin	0.7	0
 bin	0.72	0
-bin	0.738	0
-bin	0.756	0
-bin	0.774	0
-bin	0.792	0
-bin	0.81	0
-bin	0.828	0
-bin	0.846	0
-bin	0.864	0
-bin	0.882	0
+bin	0.74	0
+bin	0.76	0
+bin	0.78	0
+bin	0.8	0
+bin	0.82	0
+bin	0.84	0
+bin	0.86	0
+bin	0.88	0
 bin	0.9	0
-bin	0.918	0
-bin	0.936	0
-bin	0.954	0
-bin	0.972	0
-bin	0.99	16
-bin	1.008	0
+bin	0.92	0
+bin	0.94	0
+bin	0.96	0
+bin	0.98	0
+bin	1	6
+bin	1.02	0
 statistic EarthquakeDetector.hostS2.wlan[0].radio bitErrorRate:histogram
-field count 2275
-field mean 0.0016094947104474
-field stddev 0.019073145855198
+field count 4243
+field mean 0.00034042985519611
+field stddev 0.0088280451351274
 field min 4.6822321405732e-29
-field max 0.22819126274975
-field sum 3.6616004662678
-field sqrsum 0.83314017284052
+field max 0.23490730627072
+field sum 1.4444438755971
+field sqrsum 0.33108937563049
 attr source bitErrorRate(packetSentToUpper)
 attr title "Bit error rate, histogram"
 bin	-inf	0
-bin	0	2259
+bin	0	4237
 bin	0.005	0
 bin	0.01	0
 bin	0.015	0
@@ -1697,20 +1707,21 @@ bin	0.205	0
 bin	0.21	0
 bin	0.215	0
 bin	0.22	0
-bin	0.225	16
-bin	0.23	0
+bin	0.225	0
+bin	0.23	6
+bin	0.235	0
 statistic EarthquakeDetector.hostS2.wlan[0].radio symbolErrorRate:histogram
-field count 2275
-field mean 0.0016094947104474
-field stddev 0.019073145855198
+field count 4243
+field mean 0.00034042985519611
+field stddev 0.0088280451351274
 field min 4.6822321405732e-29
-field max 0.22819126274975
-field sum 3.6616004662678
-field sqrsum 0.83314017284052
+field max 0.23490730627072
+field sum 1.4444438755971
+field sqrsum 0.33108937563049
 attr source symbolErrorRate(packetSentToUpper)
 attr title "Symbol error rate, histogram"
 bin	-inf	0
-bin	0	2259
+bin	0	4237
 bin	0.005	0
 bin	0.01	0
 bin	0.015	0
@@ -1755,8 +1766,9 @@ bin	0.205	0
 bin	0.21	0
 bin	0.215	0
 bin	0.22	0
-bin	0.225	16
-bin	0.23	0
+bin	0.225	0
+bin	0.23	6
+bin	0.235	0
 scalar EarthquakeDetector.hostS2.ipv4.ip packetDropAddressResolutionFailed:count 0
 attr interpolationmode none
 attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
@@ -1805,11 +1817,11 @@ scalar EarthquakeDetector.hostS2.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetDropReasonIsUndefined(packetDropped)
 attr title "packet drop: undefined, sum(packetBytes)"
-scalar EarthquakeDetector.hostS2.udp packetReceived:count 214
+scalar EarthquakeDetector.hostS2.udp packetReceived:count 405
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, count"
-scalar EarthquakeDetector.hostS2.udp packetReceived:sum(packetBytes) 209856
+scalar EarthquakeDetector.hostS2.udp packetReceived:sum(packetBytes) 402384
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
@@ -1817,15 +1829,15 @@ scalar EarthquakeDetector.hostS2.udp packetSent:count 2
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, count"
-scalar EarthquakeDetector.hostS2.udp packetSent:sum(packetBytes) 60
+scalar EarthquakeDetector.hostS2.udp packetSent:sum(packetBytes) 64
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, sum(packetBytes)"
-scalar EarthquakeDetector.hostS2.udp passedUpPk:count 6
+scalar EarthquakeDetector.hostS2.udp passedUpPk:count 405
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, count"
-scalar EarthquakeDetector.hostS2.udp droppedPkWrongPort:count 208
+scalar EarthquakeDetector.hostS2.udp droppedPkWrongPort:count 0
 attr interpolationmode none
 attr source packetDropReasonIsNoPortFound(packetDropped)
 attr title "packets dropped (wrong port), count"
@@ -1833,7 +1845,76 @@ scalar EarthquakeDetector.hostS2.udp droppedPkBadChecksum:count 0
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-scalar EarthquakeDetector.hostS3.energyStorage residualEnergyCapacity:last -0.050955940375374
+scalar EarthquakeDetector.hostS2.app[0] packetReceived:count 399
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar EarthquakeDetector.hostS2.app[0] packetReceived:sum(packetBytes) 399000
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic EarthquakeDetector.hostS2.app[0] endToEndDelay:histogram
+field count 399
+field mean 0.074746973648506
+field stddev 0.044833374738689
+field min 0.008564533963
+field max 0.233368137318
+field sum 29.824042485754
+field sqrsum 3.0292494509776
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	0.005	14
+bin	0.01	10
+bin	0.015	18
+bin	0.02	15
+bin	0.025	15
+bin	0.03	9
+bin	0.035	16
+bin	0.04	22
+bin	0.045	11
+bin	0.05	13
+bin	0.055	13
+bin	0.06	20
+bin	0.065	18
+bin	0.07	21
+bin	0.075	15
+bin	0.08	23
+bin	0.085	24
+bin	0.09	12
+bin	0.095	15
+bin	0.1	12
+bin	0.105	9
+bin	0.11	8
+bin	0.115	8
+bin	0.12	7
+bin	0.125	5
+bin	0.13	4
+bin	0.135	4
+bin	0.14	6
+bin	0.145	3
+bin	0.15	8
+bin	0.155	4
+bin	0.16	2
+bin	0.165	1
+bin	0.17	3
+bin	0.175	2
+bin	0.18	0
+bin	0.185	0
+bin	0.19	1
+bin	0.195	2
+bin	0.2	2
+bin	0.205	0
+bin	0.21	1
+bin	0.215	0
+bin	0.22	0
+bin	0.225	1
+bin	0.23	2
+bin	0.235	0
+scalar EarthquakeDetector.hostS3.energyStorage residualEnergyCapacity:last -0.10587034396534
 attr interpolationmode linear
 attr source residualEnergyCapacityChanged
 attr title "Residual energy capacity, last"
@@ -1853,284 +1934,24 @@ scalar EarthquakeDetector.hostS3.lo[0].lo passedUpPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetPopped:count 13
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetPopped:count 1
 attr interpolationmode none
 attr title "packet popped, count"
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetPopped:sum(packetBytes) 1043
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetPopped:sum(packetBytes) 75
 attr interpolationmode none
 attr title "packet popped, sum(packetBytes)"
 statistic EarthquakeDetector.hostS3.wlan[0].mac.queue queueingTime:histogram
-field count 13
-field mean 0.048172368222615
-field stddev 0.064745606111629
-field min 0
-field max 0.160153565131
-field sum 0.626240786894
-field sqrsum 0.080471423911425
-attr interpolationmode none
-attr source queueingTime(packetPopped)
-attr title "queueing times, histogram"
-attr unit s
-bin	-inf	0
-bin	0	5
-bin	0.002	2
-bin	0.004	1
-bin	0.006	0
-bin	0.008	0
-bin	0.01	0
-bin	0.012	0
-bin	0.014	0
-bin	0.016	0
-bin	0.018	0
-bin	0.02	0
-bin	0.022	0
-bin	0.024	0
-bin	0.026	0
-bin	0.028	0
-bin	0.03	0
-bin	0.032	0
-bin	0.034	0
-bin	0.036	0
-bin	0.038	0
-bin	0.04	0
-bin	0.042	0
-bin	0.044	0
-bin	0.046	0
-bin	0.048	0
-bin	0.05	0
-bin	0.052	0
-bin	0.054	0
-bin	0.056	0
-bin	0.058	0
-bin	0.06	0
-bin	0.062	0
-bin	0.064	0
-bin	0.066	0
-bin	0.068	0
-bin	0.07	1
-bin	0.072	0
-bin	0.074	0
-bin	0.076	0
-bin	0.078	0
-bin	0.08	0
-bin	0.082	0
-bin	0.084	0
-bin	0.086	0
-bin	0.088	0
-bin	0.09	0
-bin	0.092	0
-bin	0.094	0
-bin	0.096	0
-bin	0.098	0
-bin	0.1	0
-bin	0.102	0
-bin	0.104	0
-bin	0.106	0
-bin	0.108	0
-bin	0.11	1
-bin	0.112	0
-bin	0.114	0
-bin	0.116	0
-bin	0.118	0
-bin	0.12	1
-bin	0.122	0
-bin	0.124	0
-bin	0.126	0
-bin	0.128	0
-bin	0.13	0
-bin	0.132	0
-bin	0.134	0
-bin	0.136	0
-bin	0.138	0
-bin	0.14	0
-bin	0.142	0
-bin	0.144	0
-bin	0.146	0
-bin	0.148	0
-bin	0.15	1
-bin	0.152	0
-bin	0.154	0
-bin	0.156	0
-bin	0.158	0
-bin	0.16	1
-bin	0.162	0
-bin	0.164	0
-bin	0.166	0
-bin	0.168	0
-bin	0.17	0
-bin	0.172	0
-bin	0.174	0
-bin	0.176	0
-bin	0.178	0
-bin	0.18	0
-bin	0.182	0
-bin	0.184	0
-bin	0.186	0
-bin	0.188	0
-bin	0.19	0
-bin	0.192	0
-bin	0.194	0
-bin	0.196	0
-bin	0.198	0
-bin	0.2	0
-bin	0.202	0
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue queueLength:max 4
-attr interpolationmode sample-hold
-attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
-attr title "queue length, max"
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue queueLength:timeavg 0.058370624444698
-attr interpolationmode sample-hold
-attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
-attr title "queue length, timeavg"
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetPushed:count 13
-attr interpolationmode none
-attr title "packet pushed, count"
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetPushed:sum(packetBytes) 1043
-attr interpolationmode none
-attr title "packet pushed, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetDropQueueOverflow:count 0
-attr interpolationmode none
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "packet drops: queue overflow, count"
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetDropQueueOverflow:sum(packetBytes) 0
-attr interpolationmode none
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "packet drops: queue overflow, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetRemoved:count 0
-attr interpolationmode none
-attr title "packets removed, count"
-scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
-attr interpolationmode none
-attr title "packets removed, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.wlan[0].mac numRetry 28
-scalar EarthquakeDetector.hostS3.wlan[0].mac numSentWithoutRetry 1
-scalar EarthquakeDetector.hostS3.wlan[0].mac numGivenUp 4
-scalar EarthquakeDetector.hostS3.wlan[0].mac numCollision 0
-scalar EarthquakeDetector.hostS3.wlan[0].mac numSent 1
-scalar EarthquakeDetector.hostS3.wlan[0].mac numReceived 275
-scalar EarthquakeDetector.hostS3.wlan[0].mac numSentBroadcast 8
-scalar EarthquakeDetector.hostS3.wlan[0].mac numReceivedBroadcast 2
-scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropNotAddressedToUs:count 198
-attr interpolationmode none
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 16426
-attr interpolationmode none
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropQueueOverflow:count 0
-attr interpolationmode none
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "packet drop: queue overflow, count"
-scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
-attr interpolationmode none
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "packet drop: queue overflow, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropRetryLimitReached:count 4
-attr interpolationmode none
-attr source packetDropReasonIsRetryLimitReached(packetDropped)
-attr title "packet drop: retry limit reached, count"
-scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 332
-attr interpolationmode none
-attr source packetDropReasonIsRetryLimitReached(packetDropped)
-attr title "packet drop: retry limit reached, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.wlan[0].mac linkBroken:count 4
-attr interpolationmode none
-attr source linkBroken
-attr title "link break, count"
-scalar EarthquakeDetector.hostS3.wlan[0].radio radioMode:count 635
-attr interpolationmode sample-hold
-attr source radioModeChanged
-attr title "Radio mode, count"
-scalar EarthquakeDetector.hostS3.wlan[0].radio receptionState:count 2351
-attr interpolationmode sample-hold
-attr source receptionStateChanged
-attr title "Radio reception state, count"
-scalar EarthquakeDetector.hostS3.wlan[0].radio transmissionState:count 1264
-attr interpolationmode sample-hold
-attr source transmissionStateChanged
-attr title "Radio transmission state, count"
-statistic EarthquakeDetector.hostS3.wlan[0].radio minSnir:histogram
-field count 859
-field mean 19.825754809335
-field stddev 1.747240495355e-06
-field min 19.825754809335
-field max 19.825754809335
-field sum 17030.323381219
-field sqrsum 337639.01567974
-attr source minimumSnir(packetSentToUpper)
-attr title "Min SNIR, histogram"
-bin	-inf	0
-bin	19.32	0
-bin	19.34	0
-bin	19.36	0
-bin	19.38	0
-bin	19.4	0
-bin	19.42	0
-bin	19.44	0
-bin	19.46	0
-bin	19.48	0
-bin	19.5	0
-bin	19.52	0
-bin	19.54	0
-bin	19.56	0
-bin	19.58	0
-bin	19.6	0
-bin	19.62	0
-bin	19.64	0
-bin	19.66	0
-bin	19.68	0
-bin	19.7	0
-bin	19.72	0
-bin	19.74	0
-bin	19.76	0
-bin	19.78	0
-bin	19.8	0
-bin	19.82	859
-bin	19.84	0
-bin	19.86	0
-bin	19.88	0
-bin	19.9	0
-bin	19.92	0
-bin	19.94	0
-bin	19.96	0
-bin	19.98	0
-bin	20	0
-bin	20.02	0
-bin	20.04	0
-bin	20.06	0
-bin	20.08	0
-bin	20.1	0
-bin	20.12	0
-bin	20.14	0
-bin	20.16	0
-bin	20.18	0
-bin	20.2	0
-bin	20.22	0
-bin	20.24	0
-bin	20.26	0
-bin	20.28	0
-bin	20.3	0
-bin	20.32	0
-bin	20.34	0
-statistic EarthquakeDetector.hostS3.wlan[0].radio packetErrorRate:histogram
-field count 859
+field count 1
 field mean 0
-field stddev 0
+field stddev -nan
 field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr source packetErrorRate(packetSentToUpper)
-attr title "Packet error rate, histogram"
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, histogram"
+attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -2157,7 +1978,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	859
+bin	0	1
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -2183,130 +2004,341 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue queueLength:max 1
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, max"
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue queueLength:timeavg 0
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, timeavg"
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetPushed:count 1
+attr interpolationmode none
+attr title "packet pushed, count"
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetPushed:sum(packetBytes) 75
+attr interpolationmode none
+attr title "packet pushed, sum(packetBytes)"
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetRemoved:count 0
+attr interpolationmode none
+attr title "packets removed, count"
+scalar EarthquakeDetector.hostS3.wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
+attr interpolationmode none
+attr title "packets removed, sum(packetBytes)"
+scalar EarthquakeDetector.hostS3.wlan[0].mac numRetry 4
+scalar EarthquakeDetector.hostS3.wlan[0].mac numSentWithoutRetry 0
+scalar EarthquakeDetector.hostS3.wlan[0].mac numGivenUp 0
+scalar EarthquakeDetector.hostS3.wlan[0].mac numCollision 97
+scalar EarthquakeDetector.hostS3.wlan[0].mac numSent 1
+scalar EarthquakeDetector.hostS3.wlan[0].mac numReceived 526
+scalar EarthquakeDetector.hostS3.wlan[0].mac numSentBroadcast 0
+scalar EarthquakeDetector.hostS3.wlan[0].mac numReceivedBroadcast 4
+scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropIncorrectlyReceived:count 97
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 100261
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropNotAddressedToUs:count 1
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 75
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, count"
+scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, sum(packetBytes)"
+scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drop: retry limit reached, count"
+scalar EarthquakeDetector.hostS3.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drop: retry limit reached, sum(packetBytes)"
+scalar EarthquakeDetector.hostS3.wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr source linkBroken
+attr title "link break, count"
+scalar EarthquakeDetector.hostS3.wlan[0].radio radioMode:count 1065
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar EarthquakeDetector.hostS3.wlan[0].radio receptionState:count 4635
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar EarthquakeDetector.hostS3.wlan[0].radio transmissionState:count 2124
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic EarthquakeDetector.hostS3.wlan[0].radio minSnir:histogram
+field count 1786
+field mean 7.8710408790094
+field stddev 6.6513506757475
+field min 4.1724417011521
+field max 19.825754809335
+field sum 14057.679009911
+field sqrsum 189617.797625
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR, histogram"
+bin	-inf	0
+bin	0	0
+bin	0.5	0
+bin	1	0
+bin	1.5	0
+bin	2	0
+bin	2.5	0
+bin	3	0
+bin	3.5	0
+bin	4	1364
+bin	4.5	0
+bin	5	0
+bin	5.5	0
+bin	6	0
+bin	6.5	0
+bin	7	0
+bin	7.5	0
+bin	8	0
+bin	8.5	0
+bin	9	0
+bin	9.5	0
+bin	10	0
+bin	10.5	0
+bin	11	0
+bin	11.5	0
+bin	12	0
+bin	12.5	0
+bin	13	0
+bin	13.5	0
+bin	14	0
+bin	14.5	0
+bin	15	0
+bin	15.5	0
+bin	16	0
+bin	16.5	0
+bin	17	0
+bin	17.5	0
+bin	18	0
+bin	18.5	0
+bin	19	0
+bin	19.5	422
+bin	20	0
+bin	20.5	0
+bin	21	0
+bin	21.5	0
+bin	22	0
+bin	22.5	0
+bin	23	0
+bin	23.5	0
+bin	24	0
+statistic EarthquakeDetector.hostS3.wlan[0].radio packetErrorRate:histogram
+field count 1786
+field mean 0.061268543478133
+field stddev 0.079934965567311
+field min 0
+field max 0.17069372438854
+field sum 109.42561865194
+field sqrsum 18.10978198964
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate, histogram"
+bin	-inf	0
+bin	0	1162
+bin	0.005	0
+bin	0.01	1
+bin	0.015	2
+bin	0.02	0
+bin	0.025	0
+bin	0.03	0
+bin	0.035	0
+bin	0.04	0
+bin	0.045	0
+bin	0.05	0
+bin	0.055	0
+bin	0.06	0
+bin	0.065	0
+bin	0.07	0
+bin	0.075	0
+bin	0.08	0
+bin	0.085	0
+bin	0.09	0
+bin	0.095	0
+bin	0.1	0
+bin	0.105	0
+bin	0.11	0
+bin	0.115	0
+bin	0.12	0
+bin	0.125	0
+bin	0.13	0
+bin	0.135	0
+bin	0.14	0
+bin	0.145	0
+bin	0.15	0
+bin	0.155	0
+bin	0.16	0
+bin	0.165	0
+bin	0.17	621
+bin	0.175	0
+bin	0.18	0
+bin	0.185	0
+bin	0.19	0
+bin	0.195	0
+bin	0.2	0
+bin	0.205	0
+bin	0.21	0
+bin	0.215	0
 statistic EarthquakeDetector.hostS3.wlan[0].radio bitErrorRate:histogram
-field count 859
-field mean 2.6639112802047e-19
-field stddev 5.4571471739317e-26
+field count 1786
+field mean 1.6808588346512e-05
+field stddev 9.3519440204522e-06
 field min 2.6639112802048e-19
-field max 2.6639112802048e-19
-field sum 2.2882997896959e-16
-field sqrsum 6.0958276222611e-35
+field max 2.2008899403864e-05
+field sum 0.030020138786871
+field sqrsum 6.6071021465026e-07
 attr source bitErrorRate(packetSentToUpper)
 attr title "Bit error rate, histogram"
 bin	-inf	0
-bin	0	859
-bin	0.01	0
-bin	0.02	0
-bin	0.03	0
-bin	0.04	0
-bin	0.05	0
-bin	0.06	0
-bin	0.07	0
-bin	0.08	0
-bin	0.09	0
-bin	0.1	0
-bin	0.11	0
-bin	0.12	0
-bin	0.13	0
-bin	0.14	0
-bin	0.15	0
-bin	0.16	0
-bin	0.17	0
-bin	0.18	0
-bin	0.19	0
-bin	0.2	0
-bin	0.21	0
-bin	0.22	0
-bin	0.23	0
-bin	0.24	0
-bin	0.25	0
-bin	0.26	0
-bin	0.27	0
-bin	0.28	0
-bin	0.29	0
-bin	0.3	0
-bin	0.31	0
-bin	0.32	0
-bin	0.33	0
-bin	0.34	0
-bin	0.35	0
-bin	0.36	0
-bin	0.37	0
-bin	0.38	0
-bin	0.39	0
-bin	0.4	0
-bin	0.41	0
-bin	0.42	0
-bin	0.43	0
-bin	0.44	0
-bin	0.45	0
-bin	0.46	0
-bin	0.47	0
-bin	0.48	0
-bin	0.49	0
-bin	0.5	0
+bin	0	422
+bin	5e-07	0
+bin	1e-06	0
+bin	1.5e-06	0
+bin	2e-06	0
+bin	2.5e-06	0
+bin	3e-06	0
+bin	3.5e-06	0
+bin	4e-06	0
+bin	4.5e-06	0
+bin	5e-06	0
+bin	5.5e-06	0
+bin	6e-06	0
+bin	6.5e-06	0
+bin	7e-06	0
+bin	7.5e-06	0
+bin	8e-06	0
+bin	8.5e-06	0
+bin	9e-06	0
+bin	9.5e-06	0
+bin	1e-05	0
+bin	1.05e-05	0
+bin	1.1e-05	0
+bin	1.15e-05	0
+bin	1.2e-05	0
+bin	1.25e-05	0
+bin	1.3e-05	0
+bin	1.35e-05	0
+bin	1.4e-05	0
+bin	1.45e-05	0
+bin	1.5e-05	0
+bin	1.55e-05	0
+bin	1.6e-05	0
+bin	1.65e-05	0
+bin	1.7e-05	0
+bin	1.75e-05	0
+bin	1.8e-05	0
+bin	1.85e-05	0
+bin	1.9e-05	0
+bin	1.95e-05	0
+bin	2e-05	0
+bin	2.05e-05	0
+bin	2.1e-05	0
+bin	2.15e-05	0
+bin	2.2e-05	1364
+bin	2.25e-05	0
+bin	2.3e-05	0
+bin	2.35e-05	0
+bin	2.4e-05	0
+bin	2.45e-05	0
+bin	2.5e-05	0
+bin	2.55e-05	0
+bin	2.6e-05	0
+bin	2.65e-05	0
+bin	2.7e-05	0
+bin	2.75e-05	0
+bin	2.8e-05	0
 statistic EarthquakeDetector.hostS3.wlan[0].radio symbolErrorRate:histogram
-field count 859
-field mean 2.6639112802047e-19
-field stddev 5.4571471739317e-26
+field count 1786
+field mean 1.6808588346512e-05
+field stddev 9.3519440204522e-06
 field min 2.6639112802048e-19
-field max 2.6639112802048e-19
-field sum 2.2882997896959e-16
-field sqrsum 6.0958276222611e-35
+field max 2.2008899403864e-05
+field sum 0.030020138786871
+field sqrsum 6.6071021465026e-07
 attr source symbolErrorRate(packetSentToUpper)
 attr title "Symbol error rate, histogram"
 bin	-inf	0
-bin	0	859
-bin	0.01	0
-bin	0.02	0
-bin	0.03	0
-bin	0.04	0
-bin	0.05	0
-bin	0.06	0
-bin	0.07	0
-bin	0.08	0
-bin	0.09	0
-bin	0.1	0
-bin	0.11	0
-bin	0.12	0
-bin	0.13	0
-bin	0.14	0
-bin	0.15	0
-bin	0.16	0
-bin	0.17	0
-bin	0.18	0
-bin	0.19	0
-bin	0.2	0
-bin	0.21	0
-bin	0.22	0
-bin	0.23	0
-bin	0.24	0
-bin	0.25	0
-bin	0.26	0
-bin	0.27	0
-bin	0.28	0
-bin	0.29	0
-bin	0.3	0
-bin	0.31	0
-bin	0.32	0
-bin	0.33	0
-bin	0.34	0
-bin	0.35	0
-bin	0.36	0
-bin	0.37	0
-bin	0.38	0
-bin	0.39	0
-bin	0.4	0
-bin	0.41	0
-bin	0.42	0
-bin	0.43	0
-bin	0.44	0
-bin	0.45	0
-bin	0.46	0
-bin	0.47	0
-bin	0.48	0
-bin	0.49	0
-bin	0.5	0
+bin	0	422
+bin	5e-07	0
+bin	1e-06	0
+bin	1.5e-06	0
+bin	2e-06	0
+bin	2.5e-06	0
+bin	3e-06	0
+bin	3.5e-06	0
+bin	4e-06	0
+bin	4.5e-06	0
+bin	5e-06	0
+bin	5.5e-06	0
+bin	6e-06	0
+bin	6.5e-06	0
+bin	7e-06	0
+bin	7.5e-06	0
+bin	8e-06	0
+bin	8.5e-06	0
+bin	9e-06	0
+bin	9.5e-06	0
+bin	1e-05	0
+bin	1.05e-05	0
+bin	1.1e-05	0
+bin	1.15e-05	0
+bin	1.2e-05	0
+bin	1.25e-05	0
+bin	1.3e-05	0
+bin	1.35e-05	0
+bin	1.4e-05	0
+bin	1.45e-05	0
+bin	1.5e-05	0
+bin	1.55e-05	0
+bin	1.6e-05	0
+bin	1.65e-05	0
+bin	1.7e-05	0
+bin	1.75e-05	0
+bin	1.8e-05	0
+bin	1.85e-05	0
+bin	1.9e-05	0
+bin	1.95e-05	0
+bin	2e-05	0
+bin	2.05e-05	0
+bin	2.1e-05	0
+bin	2.15e-05	0
+bin	2.2e-05	1364
+bin	2.25e-05	0
+bin	2.3e-05	0
+bin	2.35e-05	0
+bin	2.4e-05	0
+bin	2.45e-05	0
+bin	2.5e-05	0
+bin	2.55e-05	0
+bin	2.6e-05	0
+bin	2.65e-05	0
+bin	2.7e-05	0
+bin	2.75e-05	0
+bin	2.8e-05	0
 scalar EarthquakeDetector.hostS3.ipv4.ip packetDropAddressResolutionFailed:count 0
 attr interpolationmode none
 attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
@@ -2355,27 +2387,27 @@ scalar EarthquakeDetector.hostS3.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetDropReasonIsUndefined(packetDropped)
 attr title "packet drop: undefined, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.udp packetReceived:count 277
+scalar EarthquakeDetector.hostS3.udp packetReceived:count 530
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, count"
-scalar EarthquakeDetector.hostS3.udp packetReceived:sum(packetBytes) 277264
+scalar EarthquakeDetector.hostS3.udp packetReceived:sum(packetBytes) 530336
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.udp packetSent:count 9
+scalar EarthquakeDetector.hostS3.udp packetSent:count 1
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, count"
-scalar EarthquakeDetector.hostS3.udp packetSent:sum(packetBytes) 288
+scalar EarthquakeDetector.hostS3.udp packetSent:sum(packetBytes) 28
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, sum(packetBytes)"
-scalar EarthquakeDetector.hostS3.udp passedUpPk:count 2
+scalar EarthquakeDetector.hostS3.udp passedUpPk:count 530
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, count"
-scalar EarthquakeDetector.hostS3.udp droppedPkWrongPort:count 275
+scalar EarthquakeDetector.hostS3.udp droppedPkWrongPort:count 0
 attr interpolationmode none
 attr source packetDropReasonIsNoPortFound(packetDropped)
 attr title "packets dropped (wrong port), count"
@@ -2383,7 +2415,81 @@ scalar EarthquakeDetector.hostS3.udp droppedPkBadChecksum:count 0
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-scalar EarthquakeDetector.hostS4.energyStorage residualEnergyCapacity:last -0.33080884155639
+scalar EarthquakeDetector.hostS3.app[0] packetReceived:count 526
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar EarthquakeDetector.hostS3.app[0] packetReceived:sum(packetBytes) 526000
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic EarthquakeDetector.hostS3.app[0] endToEndDelay:histogram
+field count 526
+field mean 0.29396043392895
+field stddev 0.19437299493137
+field min 0.017537751211
+field max 0.827813366997
+field sum 154.62318824663
+field sqrsum 65.288051620716
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, histogram"
+attr unit s
+bin	-inf	0
+bin	0	8
+bin	0.02	18
+bin	0.04	20
+bin	0.06	25
+bin	0.08	31
+bin	0.1	22
+bin	0.12	20
+bin	0.14	14
+bin	0.16	18
+bin	0.18	19
+bin	0.2	26
+bin	0.22	25
+bin	0.24	21
+bin	0.26	17
+bin	0.28	25
+bin	0.3	14
+bin	0.32	12
+bin	0.34	11
+bin	0.36	18
+bin	0.38	9
+bin	0.4	9
+bin	0.42	6
+bin	0.44	18
+bin	0.46	9
+bin	0.48	13
+bin	0.5	12
+bin	0.52	14
+bin	0.54	13
+bin	0.56	9
+bin	0.58	9
+bin	0.6	5
+bin	0.62	6
+bin	0.64	6
+bin	0.66	4
+bin	0.68	5
+bin	0.7	4
+bin	0.72	2
+bin	0.74	4
+bin	0.76	2
+bin	0.78	0
+bin	0.8	1
+bin	0.82	2
+bin	0.84	0
+bin	0.86	0
+bin	0.88	0
+bin	0.9	0
+bin	0.92	0
+bin	0.94	0
+bin	0.96	0
+bin	0.98	0
+bin	1	0
+bin	1.02	0
+bin	1.04	0
+scalar EarthquakeDetector.hostS4.energyStorage residualEnergyCapacity:last -0.23744907510811
 attr interpolationmode linear
 attr source residualEnergyCapacityChanged
 attr title "Residual energy capacity, last"
@@ -2403,114 +2509,127 @@ scalar EarthquakeDetector.hostS4.lo[0].lo passedUpPk:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, sum(packetBytes)"
-scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetPopped:count 369
+scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetPopped:count 2
 attr interpolationmode none
 attr title "packet popped, count"
-scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetPopped:sum(packetBytes) 207515
+scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetPopped:sum(packetBytes) 158
 attr interpolationmode none
 attr title "packet popped, sum(packetBytes)"
 statistic EarthquakeDetector.hostS4.wlan[0].mac.queue queueingTime:histogram
-field count 369
-field mean 0.046974649439198
-field stddev 0.07676888027474
-field min 0
-field max 0.342295911454
-field sum 17.333645643064
-field sqrsum 2.9830355677247
+field count 2
+field mean 0.007039029483
+field stddev 0.00076450507671964
+field min 0.006498442759
+field max 0.007579616207
+field sum 0.014078058966
+field sqrsum 9.9680340137417e-05
 attr interpolationmode none
 attr source queueingTime(packetPopped)
 attr title "queueing times, histogram"
 attr unit s
 bin	-inf	0
-bin	0	164
-bin	0.005	16
-bin	0.01	16
-bin	0.015	11
-bin	0.02	5
-bin	0.025	14
-bin	0.03	4
-bin	0.035	17
-bin	0.04	8
-bin	0.045	16
-bin	0.05	5
-bin	0.055	12
-bin	0.06	3
-bin	0.065	3
-bin	0.07	1
-bin	0.075	2
-bin	0.08	6
-bin	0.085	2
-bin	0.09	2
-bin	0.095	0
-bin	0.1	5
-bin	0.105	2
-bin	0.11	6
-bin	0.115	1
-bin	0.12	5
-bin	0.125	1
-bin	0.13	1
-bin	0.135	1
-bin	0.14	2
-bin	0.145	2
-bin	0.15	1
-bin	0.155	1
-bin	0.16	1
-bin	0.165	0
-bin	0.17	1
-bin	0.175	2
-bin	0.18	0
-bin	0.185	2
-bin	0.19	2
-bin	0.195	4
-bin	0.2	1
-bin	0.205	2
-bin	0.21	1
-bin	0.215	1
-bin	0.22	0
-bin	0.225	0
-bin	0.23	0
-bin	0.235	0
-bin	0.24	0
-bin	0.245	0
-bin	0.25	1
-bin	0.255	0
-bin	0.26	0
-bin	0.265	0
-bin	0.27	0
-bin	0.275	1
-bin	0.28	0
-bin	0.285	1
-bin	0.29	0
-bin	0.295	3
-bin	0.3	0
-bin	0.305	1
-bin	0.31	2
-bin	0.315	1
-bin	0.32	1
-bin	0.325	3
-bin	0.33	1
-bin	0.335	1
-bin	0.34	1
-bin	0.345	0
-scalar EarthquakeDetector.hostS4.wlan[0].mac.queue queueLength:max 11
+bin	0.00622	0
+bin	0.00624	0
+bin	0.00626	0
+bin	0.00628	0
+bin	0.0063	0
+bin	0.00632	0
+bin	0.00634	0
+bin	0.00636	0
+bin	0.00638	0
+bin	0.0064	0
+bin	0.00642	0
+bin	0.00644	0
+bin	0.00646	0
+bin	0.00648	1
+bin	0.0065	0
+bin	0.00652	0
+bin	0.00654	0
+bin	0.00656	0
+bin	0.00658	0
+bin	0.0066	0
+bin	0.00662	0
+bin	0.00664	0
+bin	0.00666	0
+bin	0.00668	0
+bin	0.0067	0
+bin	0.00672	0
+bin	0.00674	0
+bin	0.00676	0
+bin	0.00678	0
+bin	0.0068	0
+bin	0.00682	0
+bin	0.00684	0
+bin	0.00686	0
+bin	0.00688	0
+bin	0.0069	0
+bin	0.00692	0
+bin	0.00694	0
+bin	0.00696	0
+bin	0.00698	0
+bin	0.007	0
+bin	0.00702	0
+bin	0.00704	0
+bin	0.00706	0
+bin	0.00708	0
+bin	0.0071	0
+bin	0.00712	0
+bin	0.00714	0
+bin	0.00716	0
+bin	0.00718	0
+bin	0.0072	0
+bin	0.00722	0
+bin	0.00724	0
+bin	0.00726	0
+bin	0.00728	0
+bin	0.0073	0
+bin	0.00732	0
+bin	0.00734	0
+bin	0.00736	0
+bin	0.00738	0
+bin	0.0074	0
+bin	0.00742	0
+bin	0.00744	0
+bin	0.00746	0
+bin	0.00748	0
+bin	0.0075	0
+bin	0.00752	0
+bin	0.00754	0
+bin	0.00756	1
+bin	0.00758	0
+bin	0.0076	0
+bin	0.00762	0
+bin	0.00764	0
+bin	0.00766	0
+bin	0.00768	0
+bin	0.0077	0
+bin	0.00772	0
+bin	0.00774	0
+bin	0.00776	0
+bin	0.00778	0
+bin	0.0078	0
+bin	0.00782	0
+bin	0.00784	0
+bin	0.00786	0
+scalar EarthquakeDetector.hostS4.wlan[0].mac.queue queueLength:max 1
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, max"
-scalar EarthquakeDetector.hostS4.wlan[0].mac.queue queueLength:timeavg 1.6843219032607
+scalar EarthquakeDetector.hostS4.wlan[0].mac.queue queueLength:timeavg 0.00056361088775842
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, timeavg"
-scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetPushed:count 385
+scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetPushed:count 2
 attr interpolationmode none
 attr title "packet pushed, count"
-scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetPushed:sum(packetBytes) 218563
+scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetPushed:sum(packetBytes) 158
 attr interpolationmode none
 attr title "packet pushed, sum(packetBytes)"
-scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetDropQueueOverflow:count 9
+scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetDropQueueOverflow:count 0
 attr interpolationmode none
 attr source packetDropReasonIsQueueOverflow(packetDropped)
 attr title "packet drops: queue overflow, count"
-scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetDropQueueOverflow:sum(packetBytes) 6579
+scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetDropQueueOverflow:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetDropReasonIsQueueOverflow(packetDropped)
 attr title "packet drops: queue overflow, sum(packetBytes)"
@@ -2520,35 +2639,35 @@ attr title "packets removed, count"
 scalar EarthquakeDetector.hostS4.wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
 attr interpolationmode none
 attr title "packets removed, sum(packetBytes)"
-scalar EarthquakeDetector.hostS4.wlan[0].mac numRetry 107
-scalar EarthquakeDetector.hostS4.wlan[0].mac numSentWithoutRetry 292
+scalar EarthquakeDetector.hostS4.wlan[0].mac numRetry 0
+scalar EarthquakeDetector.hostS4.wlan[0].mac numSentWithoutRetry 0
 scalar EarthquakeDetector.hostS4.wlan[0].mac numGivenUp 0
-scalar EarthquakeDetector.hostS4.wlan[0].mac numCollision 47
-scalar EarthquakeDetector.hostS4.wlan[0].mac numSent 366
-scalar EarthquakeDetector.hostS4.wlan[0].mac numReceived 383
+scalar EarthquakeDetector.hostS4.wlan[0].mac numCollision 213
+scalar EarthquakeDetector.hostS4.wlan[0].mac numSent 0
+scalar EarthquakeDetector.hostS4.wlan[0].mac numReceived 420
 scalar EarthquakeDetector.hostS4.wlan[0].mac numSentBroadcast 2
-scalar EarthquakeDetector.hostS4.wlan[0].mac numReceivedBroadcast 5
-scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropIncorrectlyReceived:count 47
+scalar EarthquakeDetector.hostS4.wlan[0].mac numReceivedBroadcast 6
+scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropIncorrectlyReceived:count 213
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packet drop: incorrectly received, count"
-scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 15362
+scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 25611
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropNotAddressedToUs:count 532
+scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropNotAddressedToUs:count 2057
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, count"
-scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 380460
+scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 2167195
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropQueueOverflow:count 9
+scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropQueueOverflow:count 0
 attr interpolationmode none
 attr source packetDropReasonIsQueueOverflow(packetDropped)
 attr title "packet drop: queue overflow, count"
-scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 6579
+scalar EarthquakeDetector.hostS4.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetDropReasonIsQueueOverflow(packetDropped)
 attr title "packet drop: queue overflow, sum(packetBytes)"
@@ -2564,41 +2683,41 @@ scalar EarthquakeDetector.hostS4.wlan[0].mac linkBroken:count 0
 attr interpolationmode none
 attr source linkBroken
 attr title "link break, count"
-scalar EarthquakeDetector.hostS4.wlan[0].radio radioMode:count 1721
+scalar EarthquakeDetector.hostS4.wlan[0].radio radioMode:count 847
 attr interpolationmode sample-hold
 attr source radioModeChanged
 attr title "Radio mode, count"
-scalar EarthquakeDetector.hostS4.wlan[0].radio receptionState:count 5922
+scalar EarthquakeDetector.hostS4.wlan[0].radio receptionState:count 10165
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, count"
-scalar EarthquakeDetector.hostS4.wlan[0].radio transmissionState:count 3436
+scalar EarthquakeDetector.hostS4.wlan[0].radio transmissionState:count 1688
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic EarthquakeDetector.hostS4.wlan[0].radio minSnir:histogram
-field count 2030
-field mean 20.768909990079
-field stddev 12.105974917731
-field min 0.13868798673424
+field count 4557
+field mean 24.76934852037
+field stddev 10.307654373149
+field min 0.21275277795401
 field max 30.947519702377
-field sum 42160.887279861
-field sqrsum 1172995.0146673
+field sum 112873.92120733
+field sqrsum 3279878.1906543
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR, histogram"
 bin	-inf	0
-bin	0	13
-bin	0.5	110
-bin	1	15
+bin	0	3
+bin	0.5	208
+bin	1	2
 bin	1.5	0
 bin	2	0
 bin	2.5	0
 bin	3	0
-bin	3.5	15
-bin	4	396
+bin	3.5	0
+bin	4	398
 bin	4.5	0
 bin	5	0
-bin	5.5	1
+bin	5.5	0
 bin	6	0
 bin	6.5	0
 bin	7	0
@@ -2610,7 +2729,7 @@ bin	9.5	0
 bin	10	0
 bin	10.5	0
 bin	11	0
-bin	11.5	194
+bin	11.5	390
 bin	12	0
 bin	12.5	0
 bin	13	0
@@ -2626,7 +2745,7 @@ bin	17.5	0
 bin	18	0
 bin	18.5	0
 bin	19	0
-bin	19.5	167
+bin	19.5	335
 bin	20	0
 bin	20.5	0
 bin	21	0
@@ -2648,7 +2767,7 @@ bin	28.5	0
 bin	29	0
 bin	29.5	0
 bin	30	0
-bin	30.5	1119
+bin	30.5	3221
 bin	31	0
 bin	31.5	0
 bin	32	0
@@ -2667,17 +2786,17 @@ bin	38	0
 bin	38.5	0
 bin	39	0
 statistic EarthquakeDetector.hostS4.wlan[0].radio packetErrorRate:histogram
-field count 2030
-field mean 0.068904031964294
-field stddev 0.25041597895782
+field count 4557
+field mean 0.046975606364555
+field stddev 0.21105597721702
 field min 0
 field max 1
-field sum 139.87518488752
-field sqrsum 136.87282595831
+field sum 214.06783820328
+field sqrsum 213.00128036745
 attr source packetErrorRate(packetSentToUpper)
 attr title "Packet error rate, histogram"
 bin	-inf	0
-bin	0	1892
+bin	0	4344
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -2716,7 +2835,7 @@ bin	0.7	0
 bin	0.72	0
 bin	0.74	0
 bin	0.76	0
-bin	0.78	3
+bin	0.78	0
 bin	0.8	0
 bin	0.82	0
 bin	0.84	0
@@ -2726,8 +2845,8 @@ bin	0.9	0
 bin	0.92	0
 bin	0.94	0
 bin	0.96	0
-bin	0.98	92
-bin	1	43
+bin	0.98	189
+bin	1	24
 bin	1.02	0
 bin	1.04	0
 bin	1.06	0
@@ -2742,121 +2861,149 @@ bin	1.22	0
 bin	1.24	0
 bin	1.26	0
 statistic EarthquakeDetector.hostS4.wlan[0].radio bitErrorRate:histogram
-field count 2030
-field mean 0.0044903158911752
-field stddev 0.020817604798106
+field count 4557
+field mean 0.0026113923918468
+field stddev 0.012412852731218
 field min 4.6822321405732e-29
-field max 0.22819126274975
-field sum 9.1153412590857
-field sqrsum 0.9202439081858
+field max 0.17813322822524
+field sum 11.900115129646
+field sqrsum 0.73305939740664
 attr source bitErrorRate(packetSentToUpper)
 attr title "Bit error rate, histogram"
 bin	-inf	0
-bin	0	1892
-bin	0.005	15
-bin	0.01	0
+bin	0	4344
+bin	0.003	0
+bin	0.006	2
+bin	0.009	0
+bin	0.012	0
 bin	0.015	0
-bin	0.02	0
-bin	0.025	0
+bin	0.018	0
+bin	0.021	0
+bin	0.024	19
+bin	0.027	0
 bin	0.03	0
-bin	0.035	0
-bin	0.04	0
+bin	0.033	0
+bin	0.036	0
+bin	0.039	0
+bin	0.042	0
 bin	0.045	0
-bin	0.05	0
-bin	0.055	110
+bin	0.048	0
+bin	0.051	0
+bin	0.054	0
+bin	0.057	189
 bin	0.06	0
-bin	0.065	0
-bin	0.07	0
+bin	0.063	0
+bin	0.066	0
+bin	0.069	0
+bin	0.072	0
 bin	0.075	0
-bin	0.08	0
-bin	0.085	0
+bin	0.078	0
+bin	0.081	0
+bin	0.084	0
+bin	0.087	0
 bin	0.09	0
-bin	0.095	0
-bin	0.1	0
+bin	0.093	0
+bin	0.096	0
+bin	0.099	0
+bin	0.102	0
 bin	0.105	0
-bin	0.11	0
-bin	0.115	0
+bin	0.108	0
+bin	0.111	0
+bin	0.114	0
+bin	0.117	0
 bin	0.12	0
-bin	0.125	0
-bin	0.13	0
+bin	0.123	0
+bin	0.126	0
+bin	0.129	0
+bin	0.132	0
 bin	0.135	0
-bin	0.14	0
-bin	0.145	0
+bin	0.138	0
+bin	0.141	0
+bin	0.144	0
+bin	0.147	0
 bin	0.15	0
-bin	0.155	0
-bin	0.16	0
+bin	0.153	0
+bin	0.156	0
+bin	0.159	0
+bin	0.162	0
 bin	0.165	0
-bin	0.17	0
-bin	0.175	6
+bin	0.168	0
+bin	0.171	0
+bin	0.174	0
+bin	0.177	3
 bin	0.18	0
-bin	0.185	0
-bin	0.19	0
-bin	0.195	0
-bin	0.2	0
-bin	0.205	0
-bin	0.21	0
-bin	0.215	0
-bin	0.22	0
-bin	0.225	7
-bin	0.23	0
 statistic EarthquakeDetector.hostS4.wlan[0].radio symbolErrorRate:histogram
-field count 2030
-field mean 0.0044903158911752
-field stddev 0.020817604798106
+field count 4557
+field mean 0.0026113923918468
+field stddev 0.012412852731218
 field min 4.6822321405732e-29
-field max 0.22819126274975
-field sum 9.1153412590857
-field sqrsum 0.9202439081858
+field max 0.17813322822524
+field sum 11.900115129646
+field sqrsum 0.73305939740664
 attr source symbolErrorRate(packetSentToUpper)
 attr title "Symbol error rate, histogram"
 bin	-inf	0
-bin	0	1892
-bin	0.005	15
-bin	0.01	0
+bin	0	4344
+bin	0.003	0
+bin	0.006	2
+bin	0.009	0
+bin	0.012	0
 bin	0.015	0
-bin	0.02	0
-bin	0.025	0
+bin	0.018	0
+bin	0.021	0
+bin	0.024	19
+bin	0.027	0
 bin	0.03	0
-bin	0.035	0
-bin	0.04	0
+bin	0.033	0
+bin	0.036	0
+bin	0.039	0
+bin	0.042	0
 bin	0.045	0
-bin	0.05	0
-bin	0.055	110
+bin	0.048	0
+bin	0.051	0
+bin	0.054	0
+bin	0.057	189
 bin	0.06	0
-bin	0.065	0
-bin	0.07	0
+bin	0.063	0
+bin	0.066	0
+bin	0.069	0
+bin	0.072	0
 bin	0.075	0
-bin	0.08	0
-bin	0.085	0
+bin	0.078	0
+bin	0.081	0
+bin	0.084	0
+bin	0.087	0
 bin	0.09	0
-bin	0.095	0
-bin	0.1	0
+bin	0.093	0
+bin	0.096	0
+bin	0.099	0
+bin	0.102	0
 bin	0.105	0
-bin	0.11	0
-bin	0.115	0
+bin	0.108	0
+bin	0.111	0
+bin	0.114	0
+bin	0.117	0
 bin	0.12	0
-bin	0.125	0
-bin	0.13	0
+bin	0.123	0
+bin	0.126	0
+bin	0.129	0
+bin	0.132	0
 bin	0.135	0
-bin	0.14	0
-bin	0.145	0
+bin	0.138	0
+bin	0.141	0
+bin	0.144	0
+bin	0.147	0
 bin	0.15	0
-bin	0.155	0
-bin	0.16	0
+bin	0.153	0
+bin	0.156	0
+bin	0.159	0
+bin	0.162	0
 bin	0.165	0
-bin	0.17	0
-bin	0.175	6
+bin	0.168	0
+bin	0.171	0
+bin	0.174	0
+bin	0.177	3
 bin	0.18	0
-bin	0.185	0
-bin	0.19	0
-bin	0.195	0
-bin	0.2	0
-bin	0.205	0
-bin	0.21	0
-bin	0.215	0
-bin	0.22	0
-bin	0.225	7
-bin	0.23	0
 scalar EarthquakeDetector.hostS4.ipv4.ip packetDropAddressResolutionFailed:count 0
 attr interpolationmode none
 attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
@@ -2905,27 +3052,27 @@ scalar EarthquakeDetector.hostS4.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 attr interpolationmode none
 attr source packetDropReasonIsUndefined(packetDropped)
 attr title "packet drop: undefined, sum(packetBytes)"
-scalar EarthquakeDetector.hostS4.udp packetReceived:count 196
+scalar EarthquakeDetector.hostS4.udp packetReceived:count 426
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, count"
-scalar EarthquakeDetector.hostS4.udp packetReceived:sum(packetBytes) 191708
+scalar EarthquakeDetector.hostS4.udp packetReceived:sum(packetBytes) 423552
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
-scalar EarthquakeDetector.hostS4.udp packetSent:count 3
+scalar EarthquakeDetector.hostS4.udp packetSent:count 2
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, count"
-scalar EarthquakeDetector.hostS4.udp packetSent:sum(packetBytes) 92
+scalar EarthquakeDetector.hostS4.udp packetSent:sum(packetBytes) 64
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, sum(packetBytes)"
-scalar EarthquakeDetector.hostS4.udp passedUpPk:count 6
+scalar EarthquakeDetector.hostS4.udp passedUpPk:count 426
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, count"
-scalar EarthquakeDetector.hostS4.udp droppedPkWrongPort:count 190
+scalar EarthquakeDetector.hostS4.udp droppedPkWrongPort:count 0
 attr interpolationmode none
 attr source packetDropReasonIsNoPortFound(packetDropped)
 attr title "packets dropped (wrong port), count"
@@ -2933,4 +3080,670 @@ scalar EarthquakeDetector.hostS4.udp droppedPkBadChecksum:count 0
 attr interpolationmode none
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
+scalar EarthquakeDetector.hostS4.app[0] packetReceived:count 420
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar EarthquakeDetector.hostS4.app[0] packetReceived:sum(packetBytes) 420000
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic EarthquakeDetector.hostS4.app[0] endToEndDelay:histogram
+field count 420
+field mean 0.078507806801781
+field stddev 0.044948900292594
+field min 0.008564533963
+field max 0.226321645216
+field sum 32.973278856748
+field sqrsum 3.435208930225
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	0.005	17
+bin	0.01	13
+bin	0.015	16
+bin	0.02	13
+bin	0.025	12
+bin	0.03	15
+bin	0.035	11
+bin	0.04	15
+bin	0.045	10
+bin	0.05	12
+bin	0.055	14
+bin	0.06	16
+bin	0.065	21
+bin	0.07	25
+bin	0.075	18
+bin	0.08	17
+bin	0.085	14
+bin	0.09	20
+bin	0.095	18
+bin	0.1	19
+bin	0.105	13
+bin	0.11	7
+bin	0.115	6
+bin	0.12	5
+bin	0.125	11
+bin	0.13	7
+bin	0.135	9
+bin	0.14	12
+bin	0.145	4
+bin	0.15	5
+bin	0.155	6
+bin	0.16	4
+bin	0.165	2
+bin	0.17	5
+bin	0.175	3
+bin	0.18	0
+bin	0.185	0
+bin	0.19	1
+bin	0.195	1
+bin	0.2	0
+bin	0.205	0
+bin	0.21	2
+bin	0.215	0
+bin	0.22	0
+bin	0.225	1
+bin	0.23	0
+scalar EarthquakeDetector.hostS5.energyStorage residualEnergyCapacity:last -0.71963545299392
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, last"
+scalar EarthquakeDetector.hostS5.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar EarthquakeDetector.hostS5.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar EarthquakeDetector.hostS5.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue packetPopped:count 333
+attr interpolationmode none
+attr title "packet popped, count"
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue packetPopped:sum(packetBytes) 348383
+attr interpolationmode none
+attr title "packet popped, sum(packetBytes)"
+statistic EarthquakeDetector.hostS5.wlan[0].mac.queue queueingTime:histogram
+field count 333
+field mean 0.16105830018615
+field stddev 0.17917345959847
+field min 1e-05
+field max 0.738112561862
+field sum 53.632413961988
+field sqrsum 19.296184130927
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, histogram"
+attr unit s
+bin	-inf	0
+bin	0	129
+bin	0.02	7
+bin	0.04	8
+bin	0.06	5
+bin	0.08	6
+bin	0.1	13
+bin	0.12	15
+bin	0.14	21
+bin	0.16	7
+bin	0.18	6
+bin	0.2	8
+bin	0.22	5
+bin	0.24	7
+bin	0.26	17
+bin	0.28	7
+bin	0.3	9
+bin	0.32	3
+bin	0.34	2
+bin	0.36	6
+bin	0.38	4
+bin	0.4	8
+bin	0.42	12
+bin	0.44	4
+bin	0.46	3
+bin	0.48	8
+bin	0.5	0
+bin	0.52	0
+bin	0.54	4
+bin	0.56	1
+bin	0.58	0
+bin	0.6	0
+bin	0.62	2
+bin	0.64	1
+bin	0.66	1
+bin	0.68	1
+bin	0.7	2
+bin	0.72	1
+bin	0.74	0
+bin	0.76	0
+bin	0.78	0
+bin	0.8	0
+bin	0.82	0
+bin	0.84	0
+bin	0.86	0
+bin	0.88	0
+bin	0.9	0
+bin	0.92	0
+bin	0.94	0
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue queueLength:max 11
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, max"
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue queueLength:timeavg 2.2014457091456
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, timeavg"
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue packetPushed:count 346
+attr interpolationmode none
+attr title "packet pushed, count"
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue packetPushed:sum(packetBytes) 362098
+attr interpolationmode none
+attr title "packet pushed, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue packetDropQueueOverflow:count 6
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue packetDropQueueOverflow:sum(packetBytes) 6330
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue packetRemoved:count 0
+attr interpolationmode none
+attr title "packets removed, count"
+scalar EarthquakeDetector.hostS5.wlan[0].mac.queue packetRemoved:sum(packetBytes) 0
+attr interpolationmode none
+attr title "packets removed, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.wlan[0].mac numRetry 292
+scalar EarthquakeDetector.hostS5.wlan[0].mac numSentWithoutRetry 168
+scalar EarthquakeDetector.hostS5.wlan[0].mac numGivenUp 0
+scalar EarthquakeDetector.hostS5.wlan[0].mac numCollision 5
+scalar EarthquakeDetector.hostS5.wlan[0].mac numSent 330
+scalar EarthquakeDetector.hostS5.wlan[0].mac numReceived 740
+scalar EarthquakeDetector.hostS5.wlan[0].mac numSentBroadcast 2
+scalar EarthquakeDetector.hostS5.wlan[0].mac numReceivedBroadcast 6
+scalar EarthquakeDetector.hostS5.wlan[0].mac packetDropIncorrectlyReceived:count 5
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar EarthquakeDetector.hostS5.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 1127
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.wlan[0].mac packetDropNotAddressedToUs:count 1135
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar EarthquakeDetector.hostS5.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 1196445
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.wlan[0].mac packetDropQueueOverflow:count 6
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, count"
+scalar EarthquakeDetector.hostS5.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 6330
+attr interpolationmode none
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.wlan[0].mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drop: retry limit reached, count"
+scalar EarthquakeDetector.hostS5.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drop: retry limit reached, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr source linkBroken
+attr title "link break, count"
+scalar EarthquakeDetector.hostS5.wlan[0].radio radioMode:count 2731
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar EarthquakeDetector.hostS5.wlan[0].radio receptionState:count 10171
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar EarthquakeDetector.hostS5.wlan[0].radio transmissionState:count 5456
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic EarthquakeDetector.hostS5.wlan[0].radio minSnir:histogram
+field count 3615
+field mean 18.099268014811
+field stddev 9.7514677776972
+field min 0.20035008283502
+field max 30.947519702377
+field sum 65428.853873541
+field sqrsum 1527873.6836427
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR, histogram"
+bin	-inf	0
+bin	0	189
+bin	0.5	3
+bin	1	0
+bin	1.5	0
+bin	2	0
+bin	2.5	0
+bin	3	0
+bin	3.5	2
+bin	4	733
+bin	4.5	0
+bin	5	0
+bin	5.5	0
+bin	6	0
+bin	6.5	0
+bin	7	0
+bin	7.5	0
+bin	8	0
+bin	8.5	0
+bin	9	0
+bin	9.5	0
+bin	10	0
+bin	10.5	0
+bin	11	0
+bin	11.5	0
+bin	12	0
+bin	12.5	0
+bin	13	0
+bin	13.5	0
+bin	14	0
+bin	14.5	0
+bin	15	0
+bin	15.5	0
+bin	16	0
+bin	16.5	0
+bin	17	0
+bin	17.5	0
+bin	18	0
+bin	18.5	0
+bin	19	0
+bin	19.5	1876
+bin	20	0
+bin	20.5	0
+bin	21	0
+bin	21.5	0
+bin	22	0
+bin	22.5	0
+bin	23	0
+bin	23.5	0
+bin	24	0
+bin	24.5	0
+bin	25	0
+bin	25.5	0
+bin	26	0
+bin	26.5	0
+bin	27	0
+bin	27.5	0
+bin	28	0
+bin	28.5	0
+bin	29	0
+bin	29.5	0
+bin	30	0
+bin	30.5	812
+bin	31	0
+bin	31.5	0
+bin	32	0
+bin	32.5	0
+bin	33	0
+bin	33.5	0
+bin	34	0
+bin	34.5	0
+bin	35	0
+bin	35.5	0
+bin	36	0
+bin	36.5	0
+bin	37	0
+bin	37.5	0
+bin	38	0
+bin	38.5	0
+bin	39	0
+statistic EarthquakeDetector.hostS5.wlan[0].radio packetErrorRate:histogram
+field count 3615
+field mean 0.054222617853628
+field stddev 0.22415528935703
+field min 0
+field max 1
+field sum 196.01476354086
+field sqrsum 192.21600941784
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate, histogram"
+bin	-inf	0
+bin	0	3421
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	2
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+bin	0.52	0
+bin	0.54	0
+bin	0.56	0
+bin	0.58	0
+bin	0.6	0
+bin	0.62	0
+bin	0.64	0
+bin	0.66	0
+bin	0.68	0
+bin	0.7	0
+bin	0.72	0
+bin	0.74	0
+bin	0.76	0
+bin	0.78	0
+bin	0.8	0
+bin	0.82	0
+bin	0.84	0
+bin	0.86	0
+bin	0.88	0
+bin	0.9	0
+bin	0.92	0
+bin	0.94	0
+bin	0.96	0
+bin	0.98	3
+bin	1	189
+bin	1.02	0
+bin	1.04	0
+bin	1.06	0
+bin	1.08	0
+bin	1.1	0
+bin	1.12	0
+bin	1.14	0
+bin	1.16	0
+bin	1.18	0
+bin	1.2	0
+bin	1.22	0
+bin	1.24	0
+bin	1.26	0
+statistic EarthquakeDetector.hostS5.wlan[0].radio bitErrorRate:histogram
+field count 3615
+field mean 0.0097243939487463
+field stddev 0.041266063804064
+field min 4.6822321405732e-29
+field max 0.1853375115036
+field sum 35.153684124718
+field sqrsum 6.4960855842567
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate, histogram"
+bin	-inf	0
+bin	0	3423
+bin	0.005	0
+bin	0.01	0
+bin	0.015	0
+bin	0.02	0
+bin	0.025	0
+bin	0.03	0
+bin	0.035	3
+bin	0.04	0
+bin	0.045	0
+bin	0.05	0
+bin	0.055	0
+bin	0.06	0
+bin	0.065	0
+bin	0.07	0
+bin	0.075	0
+bin	0.08	0
+bin	0.085	0
+bin	0.09	0
+bin	0.095	0
+bin	0.1	0
+bin	0.105	0
+bin	0.11	0
+bin	0.115	0
+bin	0.12	0
+bin	0.125	0
+bin	0.13	0
+bin	0.135	0
+bin	0.14	0
+bin	0.145	0
+bin	0.15	0
+bin	0.155	0
+bin	0.16	0
+bin	0.165	0
+bin	0.17	0
+bin	0.175	0
+bin	0.18	0
+bin	0.185	189
+bin	0.19	0
+bin	0.195	0
+bin	0.2	0
+bin	0.205	0
+bin	0.21	0
+bin	0.215	0
+bin	0.22	0
+bin	0.225	0
+bin	0.23	0
+bin	0.235	0
+statistic EarthquakeDetector.hostS5.wlan[0].radio symbolErrorRate:histogram
+field count 3615
+field mean 0.0097243939487463
+field stddev 0.041266063804064
+field min 4.6822321405732e-29
+field max 0.1853375115036
+field sum 35.153684124718
+field sqrsum 6.4960855842567
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate, histogram"
+bin	-inf	0
+bin	0	3423
+bin	0.005	0
+bin	0.01	0
+bin	0.015	0
+bin	0.02	0
+bin	0.025	0
+bin	0.03	0
+bin	0.035	3
+bin	0.04	0
+bin	0.045	0
+bin	0.05	0
+bin	0.055	0
+bin	0.06	0
+bin	0.065	0
+bin	0.07	0
+bin	0.075	0
+bin	0.08	0
+bin	0.085	0
+bin	0.09	0
+bin	0.095	0
+bin	0.1	0
+bin	0.105	0
+bin	0.11	0
+bin	0.115	0
+bin	0.12	0
+bin	0.125	0
+bin	0.13	0
+bin	0.135	0
+bin	0.14	0
+bin	0.145	0
+bin	0.15	0
+bin	0.155	0
+bin	0.16	0
+bin	0.165	0
+bin	0.17	0
+bin	0.175	0
+bin	0.18	0
+bin	0.185	189
+bin	0.19	0
+bin	0.195	0
+bin	0.2	0
+bin	0.205	0
+bin	0.21	0
+bin	0.215	0
+bin	0.22	0
+bin	0.225	0
+bin	0.23	0
+bin	0.235	0
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar EarthquakeDetector.hostS5.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.udp packetReceived:count 403
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar EarthquakeDetector.hostS5.udp packetReceived:sum(packetBytes) 399388
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.udp packetSent:count 3
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, count"
+scalar EarthquakeDetector.hostS5.udp packetSent:sum(packetBytes) 92
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar EarthquakeDetector.hostS5.udp passedUpPk:count 403
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar EarthquakeDetector.hostS5.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar EarthquakeDetector.hostS5.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar EarthquakeDetector.hostS5.app[0] packetReceived:count 396
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, count"
+scalar EarthquakeDetector.hostS5.app[0] packetReceived:sum(packetBytes) 396000
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic EarthquakeDetector.hostS5.app[0] endToEndDelay:histogram
+field count 396
+field mean 0.080876099223144
+field stddev 0.043230203686644
+field min 0.008624667128
+field max 0.227852787783
+field sum 32.026935292365
+field sqrsum 3.3284095482801
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, histogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	0.005	16
+bin	0.01	6
+bin	0.015	10
+bin	0.02	8
+bin	0.025	13
+bin	0.03	11
+bin	0.035	9
+bin	0.04	11
+bin	0.045	18
+bin	0.05	13
+bin	0.055	10
+bin	0.06	20
+bin	0.065	22
+bin	0.07	18
+bin	0.075	23
+bin	0.08	15
+bin	0.085	16
+bin	0.09	19
+bin	0.095	20
+bin	0.1	14
+bin	0.105	15
+bin	0.11	8
+bin	0.115	13
+bin	0.12	8
+bin	0.125	8
+bin	0.13	8
+bin	0.135	7
+bin	0.14	7
+bin	0.145	2
+bin	0.15	7
+bin	0.155	3
+bin	0.16	3
+bin	0.165	1
+bin	0.17	2
+bin	0.175	3
+bin	0.18	2
+bin	0.185	2
+bin	0.19	0
+bin	0.195	0
+bin	0.2	0
+bin	0.205	3
+bin	0.21	0
+bin	0.215	1
+bin	0.22	0
+bin	0.225	1
+bin	0.23	0
 

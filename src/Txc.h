@@ -16,7 +16,6 @@
 #ifndef __EARTHQUAKEDETECTOR_TCX_H
 #define __EARTHQUAKEDETECTOR_TCX_H
 
-#include "Txc.h"
 #include <stdio.h>
 #include <string.h>
 #include <omnetpp.h>
