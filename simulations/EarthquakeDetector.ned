@@ -24,6 +24,7 @@ import inet.environment.common.PhysicalEnvironment;
 //
 // Two instances (tic and toc) of Txc connected.
 //
+
 network EarthquakeDetector
 {
     parameters:
@@ -51,7 +52,7 @@ network EarthquakeDetector
         configurator: Ipv4NetworkConfigurator {
             @display("p=580,200");
         }
-        radioMedium: <default("UnitDiskRadioMedium")> like IRadioMedium {
+        radioMedium: <default("ApskScalarRadioMedium")> like IRadioMedium {
             @display("p=580,275");
         }
         hostM: <default("WirelessHost")> like INetworkNode {
