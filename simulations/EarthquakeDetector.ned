@@ -21,70 +21,76 @@ import inet.node.inet.INetworkNode;
 import inet.physicallayer.contract.packetlevel.IRadioMedium;
 import inet.visualizer.contract.IIntegratedVisualizer;
 import inet.environment.common.PhysicalEnvironment;
-//
-// Two instances (tic and toc) of Txc connected.
-//
+
+
+
+
 
 network EarthquakeDetector
 {
-    parameters:
-        @display("bgb=650,500;bgg=100,1,grey95");
-        @figure[title](type=label; pos=0,-1; anchor=sw; color=darkblue);
+    types:
+        channel Channel extends ned.DelayChannel {
+            delay = 100ms;
+        }
+    
+    submodules:
+    	tic[6]: Txc;
+        
+    connections:
+    	tic[0].gate++ <--> Channel <--> tic[1].gate++;
+        tic[1].gate++ <--> Channel <--> tic[2].gate++;
+        tic[1].gate++ <--> Channel <--> tic[4].gate++;
+        tic[3].gate++ <--> Channel <--> tic[4].gate++;
+        tic[4].gate++ <--> Channel <--> tic[5].gate++;
+    
+    //parameters:
+        //@display("bgb=650,500;bgg=100,1,grey95");
+        //@figure[title](type=label; pos=0,-1; anchor=sw; color=darkblue);
 
-        @figure[rcvdPkText](type=indicatorText; pos=380,20; anchor=w; font=,18; textFormat="S1 packets received: %g"; initialValue=0);
-        @statistic[packetReceived](source=hostS1.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
+        //@figure[rcvdPkText](type=indicatorText; pos=380,20; anchor=w; font=,18; textFormat="S1 packets received: %g"; initialValue=0);
+        //@statistic[packetReceived](source=hostS1.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
         
         
         //int numSlaves;  // number of slaves
         //@display("bgi=background/terrain,s;bgb=600,600");
-    //submodules:
-        //master: Txc;
-        //slave[numSlaves]: Txc {}
-     //types:
-        //channel Channel extends ned.DelayChannel {
-            //delay = 100ms;
-        //}
+//    submodules:
+//        master: Txc;
+//        slave[numSlaves]: Txc {};
+     
 
-     submodules:
-         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
-            @display("p=580,125");
-        }
-        configurator: Ipv4NetworkConfigurator {
-            @display("p=580,200");
-        }
-        radioMedium: <default("ApskScalarRadioMedium")> like IRadioMedium {
-            @display("p=580,275");
-        }
-        hostM: <default("WirelessHost")> like INetworkNode {
-            @display("p=250,250");
-        }
-        hostS1: <default("WirelessHost")> like INetworkNode {
-            @display("p=375,150");
-        }
-        hostS2: <default("WirelessHost")> like INetworkNode {
-            @display("p=375,350");
-        }
-        hostS3: <default("WirelessHost")> like INetworkNode {
-            @display("p=125,350");
-        }
-        hostS4: <default("WirelessHost")> like INetworkNode {
-            @display("p=125,150");
-        }
-        hostS5: <default("WirelessHost")> like INetworkNode {
-            @display("p=250,50");
-        }
+//     submodules:
+//         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
+//            @display("p=580,125");
+//        }
+//        configurator: Ipv4NetworkConfigurator {
+//            @display("p=580,200");
+//        }
+//        radioMedium: <default("ApskScalarRadioMedium")> like IRadioMedium {
+//            @display("p=580,275");
+//        }
+//        hostM: <default("WirelessHost")> like INetworkNode {
+//            @display("p=250,250");
+//        }
+//        hostS1: <default("WirelessHost")> like INetworkNode {
+//            @display("p=375,150");
+//        }
+//        hostS2: <default("WirelessHost")> like INetworkNode {
+//            @display("p=375,350");
+//        }
+//        hostS3: <default("WirelessHost")> like INetworkNode {
+//            @display("p=125,350");
+//        }
+//        hostS4: <default("WirelessHost")> like INetworkNode {
+//            @display("p=125,150");
+//        }
+//        hostS5: <default("WirelessHost")> like INetworkNode {
+//            @display("p=250,50");
+//        }
         
         //obstacles
-        physicalEnvironment: PhysicalEnvironment {
-            @display("p=580,425");
-        }
-	    //tic[6]: Txc;
-        
-     //connections:
-        //tic[0].gate++ <--> Channel <--> tic[1].gate++;
-        //tic[1].gate++ <--> Channel <--> tic[2].gate++;
-        //tic[1].gate++ <--> Channel <--> tic[4].gate++;
-        //tic[3].gate++ <--> Channel <--> tic[4].gate++;
-        //tic[4].gate++ <--> Channel <--> tic[5].gate++;
+//        physicalEnvironment: PhysicalEnvironment {
+//            @display("p=580,425");
+//        }
+	    
     
 }
