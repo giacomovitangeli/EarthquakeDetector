@@ -38,22 +38,22 @@ network EarthquakeDetector
     
     submodules:
     	slave[6]: Slave;
-    	//master[1]: Master;
+    	master: Master;
     	
         
     connections:
-//        slave[0].gate++ <--> Channel <--> master[0].gate++;
-//        slave[1].gate++ <--> Channel <--> master[0].gate++;
-//        slave[2].gate++ <--> Channel <--> master[0].gate++;
-//        slave[3].gate++ <--> Channel <--> master[0].gate++;
-//        slave[4].gate++ <--> Channel <--> master[0].gate++;
-//        slave[5].gate++ <--> Channel <--> master[0].gate++;        
+        slave[0].gate++ <--> Channel <--> master.gate++;
+        slave[1].gate++ <--> Channel <--> master.gate++;
+        slave[2].gate++ <--> Channel <--> master.gate++;
+        slave[3].gate++ <--> Channel <--> master.gate++;
+        slave[4].gate++ <--> Channel <--> master.gate++;
+        slave[5].gate++ <--> Channel <--> master.gate++;        
         
-    	slave[0].gate++ <--> Channel <--> slave[1].gate++;
-        slave[1].gate++ <--> Channel <--> slave[2].gate++;
-        slave[1].gate++ <--> Channel <--> slave[4].gate++;
-        slave[3].gate++ <--> Channel <--> slave[4].gate++;
-        slave[4].gate++ <--> Channel <--> slave[5].gate++;
+//    	slave[0].gate++ <--> Channel <--> slave[1].gate++;
+//        slave[1].gate++ <--> Channel <--> slave[2].gate++;
+//        slave[1].gate++ <--> Channel <--> slave[4].gate++;
+//        slave[3].gate++ <--> Channel <--> slave[4].gate++;
+//        slave[4].gate++ <--> Channel <--> slave[5].gate++;
     
     //parameters:
         //@display("bgb=650,500;bgg=100,1,grey95");

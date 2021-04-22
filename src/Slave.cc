@@ -42,12 +42,12 @@ void Slave::initialize()
         WATCH(numReceived);
 
         // Module 0 sends the first message
-        if (getIndex() == 0) {
+        //if (getIndex() == 0) {
             // Boot the process scheduling the initial message as a self-message.
-            Message *msg = generateMessage();
-            numSent++;
-            scheduleAt(0.0, msg);
-        }
+            //Message *msg = generateMessage();
+          //  numSent++;
+            //scheduleAt(0.0, msg);
+        //}
 }
 
 void Slave::handleMessage(cMessage *msg)
