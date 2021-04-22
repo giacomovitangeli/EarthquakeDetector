@@ -16,6 +16,9 @@
 package earthquakedetector.simulations;
 
 import earthquakedetector.Txc;
+import earthquakedetector.Node;
+import earthquakedetector.Master;
+import earthquakedetector.Slave;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.inet.INetworkNode;
 import inet.physicallayer.contract.packetlevel.IRadioMedium;
@@ -34,14 +37,23 @@ network EarthquakeDetector
         }
     
     submodules:
-    	tic[6]: Txc;
+    	slave[6]: Slave;
+    	//master[1]: Master;
+    	
         
     connections:
-    	tic[0].gate++ <--> Channel <--> tic[1].gate++;
-        tic[1].gate++ <--> Channel <--> tic[2].gate++;
-        tic[1].gate++ <--> Channel <--> tic[4].gate++;
-        tic[3].gate++ <--> Channel <--> tic[4].gate++;
-        tic[4].gate++ <--> Channel <--> tic[5].gate++;
+//        slave[0].gate++ <--> Channel <--> master[0].gate++;
+//        slave[1].gate++ <--> Channel <--> master[0].gate++;
+//        slave[2].gate++ <--> Channel <--> master[0].gate++;
+//        slave[3].gate++ <--> Channel <--> master[0].gate++;
+//        slave[4].gate++ <--> Channel <--> master[0].gate++;
+//        slave[5].gate++ <--> Channel <--> master[0].gate++;        
+        
+    	slave[0].gate++ <--> Channel <--> slave[1].gate++;
+        slave[1].gate++ <--> Channel <--> slave[2].gate++;
+        slave[1].gate++ <--> Channel <--> slave[4].gate++;
+        slave[3].gate++ <--> Channel <--> slave[4].gate++;
+        slave[4].gate++ <--> Channel <--> slave[5].gate++;
     
     //parameters:
         //@display("bgb=650,500;bgg=100,1,grey95");
