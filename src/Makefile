@@ -31,10 +31,12 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
 OBJS = \
+    $O/GPS.o \
     $O/Master.o \
     $O/Message.o \
     $O/Node.o \
     $O/Slave.o \
+    $O/State.o \
     $O/Txc.o \
     $O/tictoc_m.o
 

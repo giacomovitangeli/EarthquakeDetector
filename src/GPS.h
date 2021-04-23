@@ -13,39 +13,22 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#ifndef SLAVE_H_
-#define SLAVE_H_
-
-#include <stdio.h>
-#include <string.h>
-#include <omnetpp.h>
-#include "Message.h"
-#include "State.h"
-
-using namespace omnetpp;
-
+#ifndef GPS_H_
+#define GPS_H_
 
 namespace earthquakedetector {
 
-class Slave : public cSimpleModule{
-    public:
-        Slave();
-        virtual ~Slave();
+class GPS {
+private:
+    double* positionGPS;  //more accurate than basic position
 
-    private:
-        long numSent;
-        long numReceived;
-        std::string id;
-        State state;
-
-    protected:
-        virtual Message *generateMessage();
-        virtual void forwardMessage(Message *msg);
-        virtual void initialize() override;
-        virtual void handleMessage(cMessage *msg) override;
-        virtual void refreshDisplay() const override;
+public:
+    GPS();
+    virtual ~GPS();
+    void setposGPS(double* posGPS);
+    double* getposGPS();
 };
 
 } /* namespace earthquakedetector */
 
-#endif /* SLAVE_H_ */
+#endif /* GPS_H_ */

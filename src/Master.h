@@ -29,9 +29,13 @@ class Master : public cSimpleModule{
     public:
         Master();
         virtual ~Master();
+
     private:
         long numSent;
         long numReceived;
+        std::string id;
+        bool usability;
+
     protected:
         virtual Message *generateMessage();
         virtual void broadcastMessage(Message *msg);
