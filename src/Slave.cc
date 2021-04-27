@@ -36,25 +36,31 @@ Slave::~Slave() {
 void Slave::initialize()
 {
     // Initialize variables
+
         numSent = 0;
         numReceived = 0;
         WATCH(numSent);
         WATCH(numReceived);
+        batteryState = intuniform(0, 50);
 
+
+
+/*
         // Module 0 sends the first message
-        //if (getIndex() == 0) {
+        if (getIndex() == 0) {
             // Boot the process scheduling the initial message as a self-message.
-            //Message *msg = generateMessage();
-          //  numSent++;
-            //scheduleAt(0.0, msg);
-        //}
+            Message *msg = generateMessage();
+            numSent++;
+            scheduleAt(0.0, msg);
+        }*/
 }
 
 void Slave::handleMessage(cMessage *msg)
 {
     Message *ttmsg = check_and_cast<Message *>(msg);
-
-        if (ttmsg->getDestination() == getIndex()) {
+/*
+        if (ttmsg->getDestination() == id) {
+            //TODO
             // Message arrived
             int hopcount = ttmsg->getHopCount();
             EV << "Message " << ttmsg << " arrived after " << hopcount << " hops.\n";
@@ -68,6 +74,15 @@ void Slave::handleMessage(cMessage *msg)
             EV << newmsg << endl;
             forwardMessage(newmsg);
             numSent++;
+        }*/
+        if (ttmsg->getDestination() == 1000000){
+            batteryState += 25;
+            if(batteryState > 100)
+                batteryState = 100;
+
+            delete ttmsg;
+            bubble("Power Arrived! +25%");
+            EV << "Battery state " << batteryState << "%"<<"\n";
         }
         else {
             // We need to forward the message.

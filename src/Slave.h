@@ -35,8 +35,8 @@ class Slave : public cSimpleModule{
     private:
         long numSent;
         long numReceived;
-        std::string id;
-        State state;
+        int id;
+        int batteryState;
 
     protected:
         virtual Message *generateMessage();

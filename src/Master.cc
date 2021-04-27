@@ -36,23 +36,30 @@ Master::~Master() {
 void Master::initialize()
 {
     // Initialize variables
+        id = 0;
         numSent = 0;
         numReceived = 0;
         WATCH(numSent);
         WATCH(numReceived);
 
+        int kind = 1; //power message
+        Message *power = generateMessage(kind);
+        broadcastMessage(power);
+
+
+/*
         // Module 0 sends the first message
         if (getIndex() == 0) {
             // Boot the process scheduling the initial message as a self-message.
             Message *msg = generateMessage();
             numSent++;
             scheduleAt(0.0, msg);
-        }
+        }*/
 }
 
 void Master::handleMessage(cMessage *msg)
 {
-    Message *ttmsg = check_and_cast<Message *>(msg);
+   /* Message *ttmsg = check_and_cast<Message *>(msg);
 
         if (ttmsg->getDestination() == getIndex()) {
             // Message arrived
@@ -64,7 +71,7 @@ void Master::handleMessage(cMessage *msg)
 
             // Generate another one.
             EV << "Generating another message: ";
-            Message *newmsg = generateMessage();
+            //Message *newmsg = generateMessage();
             EV << newmsg << endl;
             forwardMessage(newmsg);
             numSent++;
@@ -72,36 +79,52 @@ void Master::handleMessage(cMessage *msg)
         else {
             // We need to forward the message.
             forwardMessage(ttmsg);
-        }
+        }*/
 }
 
-Message *Master::generateMessage()
+Message *Master::generateMessage(int kind)
 {
-    // Produce source and destination addresses.
-        int src = getIndex();  // our module index
-        int n = getVectorSize();  // module vector size
-        int dest = intuniform(0, n-2);
-        if (dest >= src)
-            dest++;
+    int src = id;
+    int dest;
+    char msgname[20];
 
-        char msgname[20];
-        sprintf(msgname, "tic-%d-to-%d", src, dest);
+    //kind==1 --> POWER
+    //kind==2 --> ...
+    if(kind == 1){
+        dest = 1000000;
+        //1000000 --> Broadcast Message
+        sprintf(msgname, "power-master-to-all");
+    }
 
-        // Create message object and set source and destination field.
-        Message *msg = new Message(msgname);
-        msg->setSource(src);
-        msg->setDestination(dest);
-        return msg;
+// Produce source and destination addresses.
+  /*
+    int src = getIndex();  // our module index
+    int n = getVectorSize();  // module vector size
+    int dest = intuniform(0, n-2);
+    if (dest >= src)
+        dest++;
+*/
+    //char msgname[20];
+    //sprintf(msgname, "msg-%d-to-%d", src, dest);
+
+    // Create message object and set source and destination field.
+    Message *msg = new Message(msgname);
+    msg->setSource(src);
+    msg->setDestination(dest);
+    return msg;
 }
+
+
 
 void Master::broadcastMessage(Message *msg)
 {
     int n = gateSize("gate");
+
     for (int i=0; i<n; i++)
     {
-        EV << "Broadcasting message " << msg << " on gate[" << i << "]\n";
         Message *copy = msg->dup();
-        send(copy, "out", i);
+        EV << "Broadcasting message " << copy << " on gate[" << i << "]\n";
+        send(copy, "gate$o", i);    //FIXME
     }
     delete msg;
 }

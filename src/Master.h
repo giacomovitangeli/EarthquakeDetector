@@ -33,11 +33,11 @@ class Master : public cSimpleModule{
     private:
         long numSent;
         long numReceived;
-        std::string id;
+        int id;
         bool usability;
 
     protected:
-        virtual Message *generateMessage();
+        virtual Message *generateMessage(int kind);
         virtual void broadcastMessage(Message *msg);
         virtual void forwardMessage(Message *msg);
         virtual void initialize() override;

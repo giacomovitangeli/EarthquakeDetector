@@ -18,8 +18,7 @@
 namespace earthquakedetector {
 
 State::State() {
-    // TODO Auto-generated constructor stub
-
+    batteryState = 0;
 }
 
 State::~State() {
