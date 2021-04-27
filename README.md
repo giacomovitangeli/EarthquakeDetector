@@ -1,2 +1,2 @@
 # EarthquakeDetector
-Earthquake detection system based on 6G connection.
+Distributed Applications Design for Intelligent Environments in 6G Technology.
