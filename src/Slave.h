@@ -37,12 +37,13 @@ class Slave : public cSimpleModule{
         long numReceived;
         int id;
         int batteryState;
+        float position[3] = {0, 0, 0};  //[posX, posY, posZ]
 
     protected:
-        virtual Message *generateMessage();
+        virtual Message *generateMessage(int kindMsg);
         virtual void forwardMessage(Message *msg);
         virtual void initialize() override;
-        virtual void handleMessage(cMessage *msg) override;
+        virtual void handleMessage(cMessage *cmsg) override;
         virtual void refreshDisplay() const override;
 };
 

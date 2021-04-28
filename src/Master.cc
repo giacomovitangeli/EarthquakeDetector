@@ -41,10 +41,18 @@ void Master::initialize()
         numReceived = 0;
         WATCH(numSent);
         WATCH(numReceived);
+        int kindPower = 0; //power message
+        int kindNetDet = 1; //request netdet message
 
-        int kind = 1; //power message
-        Message *power = generateMessage(kind);
+        //POWER to the slaves
+
+        Message *power = generateMessage(kindPower);
         broadcastMessage(power);
+
+        //NET DETECTION
+        Message *requestNetDet = generateMessage(kindNetDet);
+        broadcastMessage(requestNetDet);
+
 
 
 /*
@@ -57,53 +65,41 @@ void Master::initialize()
         }*/
 }
 
-void Master::handleMessage(cMessage *msg)
+void Master::handleMessage(cMessage *cmsg)
 {
-   /* Message *ttmsg = check_and_cast<Message *>(msg);
+    Message *msg = check_and_cast<Message *>(cmsg);
 
-        if (ttmsg->getDestination() == getIndex()) {
-            // Message arrived
-            int hopcount = ttmsg->getHopCount();
-            EV << "Message " << ttmsg << " arrived after " << hopcount << " hops.\n";
-            numReceived++;
-            delete ttmsg;
-            bubble("ARRIVED, starting new one!");
-
-            // Generate another one.
-            EV << "Generating another message: ";
-            //Message *newmsg = generateMessage();
-            EV << newmsg << endl;
-            forwardMessage(newmsg);
-            numSent++;
+        if(msg->getDestination() == 0)
+        {
+            if(msg->getKindMsg() == 2)
+            {
+               //todo 3 recezione ack e salvataggio lista di slaves
+            }
         }
-        else {
+        else
+        {
             // We need to forward the message.
-            forwardMessage(ttmsg);
-        }*/
+            forwardMessage(msg);
+        }
 }
 
-Message *Master::generateMessage(int kind)
+Message *Master::generateMessage(int kindMsg)
 {
     int src = id;
     int dest;
-    char msgname[20];
+    char msgname[24];
 
-    //kind==1 --> POWER
-    //kind==2 --> ...
-    if(kind == 1){
-        dest = 1000000;
-        //1000000 --> Broadcast Message
-        sprintf(msgname, "power-master-to-all");
+    //kind==0 --> POWER
+    //kind==1 --> NET DETECTION
+    if((kindMsg == 0) || (kindMsg == 1))
+    {
+        dest = 1000000; //broadcast message
+        if(kindMsg == 0)
+            sprintf(msgname, "power-master-to-all");
+        else if(kindMsg == 1)
+            sprintf(msgname, "NetDet-master-to-all");
     }
 
-// Produce source and destination addresses.
-  /*
-    int src = getIndex();  // our module index
-    int n = getVectorSize();  // module vector size
-    int dest = intuniform(0, n-2);
-    if (dest >= src)
-        dest++;
-*/
     //char msgname[20];
     //sprintf(msgname, "msg-%d-to-%d", src, dest);
 
@@ -111,6 +107,7 @@ Message *Master::generateMessage(int kind)
     Message *msg = new Message(msgname);
     msg->setSource(src);
     msg->setDestination(dest);
+    msg->setKindMsg(kindMsg);
     return msg;
 }
 
@@ -119,12 +116,16 @@ Message *Master::generateMessage(int kind)
 void Master::broadcastMessage(Message *msg)
 {
     int n = gateSize("gate");
-
+    int k = 1;
     for (int i=0; i<n; i++)
     {
         Message *copy = msg->dup();
+        if(copy->getKindMsg() == 1){//net detection kind
+            copy->setNetDetId(k);
+            k+=1;
+        }
         EV << "Broadcasting message " << copy << " on gate[" << i << "]\n";
-        send(copy, "gate$o", i);    //FIXME
+        send(copy, "gate$o", i);
     }
     delete msg;
 }

@@ -37,11 +37,11 @@ class Master : public cSimpleModule{
         bool usability;
 
     protected:
-        virtual Message *generateMessage(int kind);
+        virtual Message *generateMessage(int kindMsg);
         virtual void broadcastMessage(Message *msg);
         virtual void forwardMessage(Message *msg);
         virtual void initialize() override;
-        virtual void handleMessage(cMessage *msg) override;
+        virtual void handleMessage(cMessage *cmsg) override;
         virtual void refreshDisplay() const override;
 };
 
