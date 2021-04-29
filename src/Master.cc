@@ -37,6 +37,7 @@ void Master::initialize()
 {
     // Initialize variables
         id = 0;
+        initNetwork();
         numSent = 0;
         numReceived = 0;
         WATCH(numSent);
@@ -47,11 +48,11 @@ void Master::initialize()
         //POWER to the slaves
 
         Message *power = generateMessage(kindPower);
-        broadcastMessage(power);
+        scheduleAt(0.0, power);
 
         //NET DETECTION
         Message *requestNetDet = generateMessage(kindNetDet);
-        broadcastMessage(requestNetDet);
+        scheduleAt(0.01, requestNetDet);
 
 
 
@@ -69,12 +70,21 @@ void Master::handleMessage(cMessage *cmsg)
 {
     Message *msg = check_and_cast<Message *>(cmsg);
 
-        if(msg->getDestination() == 0)
+        if(msg->getDestination() == this->id)
         {
-            if(msg->getKindMsg() == 2)
+            if(msg->getKindMsg() == 2)//ack netdet
             {
-               //todo 3 recezione ack e salvataggio lista di slaves
+                int row = msg->getSource() - 1;
+                for(int i=0; i<3; i++)
+                    this->network[row][i] = msg->getPos()[i];
+
+                delete msg;
+                bubble("ACK ARRIVED!");
+                printNetwork();
             }
+        }
+        else if(msg->getDestination() == 1000000){
+            broadcastMessage(msg);
         }
         else
         {
@@ -149,5 +159,26 @@ void Master::refreshDisplay() const
     sprintf(buf, "rcvd: %ld sent: %ld", numReceived, numSent);
     getDisplayString().setTagArg("t", 0, buf);
 }
+
+void Master::initNetwork()
+{
+    for(int i=0; i<8; i++){
+        for(int j=0; j<3; j++){
+            network[i][j] = 0;
+        }
+    }
+}
+
+void Master::printNetwork()
+{
+    EV <<"network: \n";
+    for(int i=0; i<8; i++){
+        for(int j=0; j<3; j++){
+            EV <<" ["<<network[i][j]<<"] ";
+        }
+        EV<<"\n";
+    }
+}
+
 
 }; // namespace

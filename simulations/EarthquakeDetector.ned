@@ -37,7 +37,7 @@ network EarthquakeDetector
             
     types:
         channel C extends ned.DelayChannel {
-            delay = 100ms;
+            delay = 1ms;
         }
        
         

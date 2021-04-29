@@ -36,7 +36,7 @@ class Message : public ::omnetpp::cMessage
     int hopCount;
     int kindMsg;
     int netdetId;
-    int pos[3];
+    float pos[3];
 
   private:
     void copy(const Message& other);
@@ -65,8 +65,8 @@ class Message : public ::omnetpp::cMessage
     virtual void setKindMsg(int kindMsg);
     virtual int getNetDetId() const;
     virtual void setNetDetId(int netdetId);
-    virtual int * getPos();//FIXME 1
-    virtual void setPos(int pos[]);//FIXME 1
+    virtual float * getPos();
+    virtual void setPos(float pos[]);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const Message& obj) {obj.parsimPack(b);}

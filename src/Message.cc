@@ -283,12 +283,12 @@ void Message::setNetDetId(int netdetId)
     this->netdetId = netdetId;
 }
 
-int * Message::getPos()
+float * Message::getPos()
 {
     return this->pos;
 }
 
-virtual void setPos(int pos) //fixme
+void Message::setPos(float pos[])
 {
     this->pos[0] = pos[0];
     this->pos[1] = pos[1];

@@ -121,7 +121,7 @@ void Slave::handleMessage(cMessage *cmsg)
             else if(msg->getKindMsg() == 1)
             {
                 //kind == 1 -> net detection
-                id = msg->getNetDetId();
+                this->id = msg->getNetDetId();
                 delete msg;
                 if(id == 1){
                     position[0] = 624.275;
@@ -171,13 +171,19 @@ void Slave::handleMessage(cMessage *cmsg)
                 bubble("Request NetDet Arrived!");
                 EV << "Slave "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
 
-                //todo invia ack al master con posizione
                 int kindAck = 2; //ack con position
                 Message *ack = generateMessage(kindAck);
-                scheduleAt(0.0, msg);
-                //todo 2 inviare ack in tempi random
-                //per evitare deadlock
+                float delay = (float)(intuniform(0, 1000))/(float)1000;
+                EV << "Slave"<<id<<" have delay: "<<delay<<"\n";
+                scheduleAt(delay, ack);
             }
+        }
+        else if(msg->getDestination() == id){
+            //todo implement recezione messaggio diretto
+
+        }
+        else if(msg->getDestination() == 0){
+            send(msg, "gate$o", 0); //gate out verso il master
         }
         else {
             // We need to forward the message.

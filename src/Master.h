@@ -35,6 +35,7 @@ class Master : public cSimpleModule{
         long numReceived;
         int id;
         bool usability;
+        float network[8][3];
 
     protected:
         virtual Message *generateMessage(int kindMsg);
@@ -43,6 +44,8 @@ class Master : public cSimpleModule{
         virtual void initialize() override;
         virtual void handleMessage(cMessage *cmsg) override;
         virtual void refreshDisplay() const override;
+        virtual void initNetwork();
+        virtual void printNetwork();
 };
 
 } /* namespace earthquakedetector */
