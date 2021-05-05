@@ -46,7 +46,6 @@ void Master::initialize()
         int kindNetDet = 1; //request netdet message
 
         //POWER to the slaves
-
         Message *power = generateMessage(kindPower);
         scheduleAt(0.0, power);
 
@@ -54,16 +53,6 @@ void Master::initialize()
         Message *requestNetDet = generateMessage(kindNetDet);
         scheduleAt(0.01, requestNetDet);
 
-
-
-/*
-        // Module 0 sends the first message
-        if (getIndex() == 0) {
-            // Boot the process scheduling the initial message as a self-message.
-            Message *msg = generateMessage();
-            numSent++;
-            scheduleAt(0.0, msg);
-        }*/
 }
 
 void Master::handleMessage(cMessage *cmsg)
@@ -125,14 +114,18 @@ Message *Master::generateMessage(int kindMsg)
 
 void Master::broadcastMessage(Message *msg)
 {
-    int n = gateSize("gate");
+    int n = 8; //number of cluster head
     int k = 1;
+    if(msg->getKindMsg() == 0)// pwr msg
+        n = gateSize("gate");
+
     for (int i=0; i<n; i++)
     {
         Message *copy = msg->dup();
-        if(copy->getKindMsg() == 1){//net detection kind
+        if(copy->getKindMsg() == 1) //net detection kind
+        {
             copy->setNetDetId(k);
-            k+=1;
+            k++;
         }
         EV << "Broadcasting message " << copy << " on gate[" << i << "]\n";
         send(copy, "gate$o", i);

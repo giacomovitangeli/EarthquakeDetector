@@ -36,11 +36,17 @@ class Slave : public cSimpleModule{
         long numSent;
         long numReceived;
         int id;
+        int idClusterHead;
         int batteryState;
         float position[3] = {0, 0, 0};  //[posX, posY, posZ]
+        bool isClusterHead = false;
+        int numCS; //number of Cluster Head
+        int numSN;
+        int numACKsn;
 
     protected:
         virtual Message *generateMessage(int kindMsg);
+        virtual void broadcastInCluster(Message *msg);
         virtual void forwardMessage(Message *msg);
         virtual void initialize() override;
         virtual void handleMessage(cMessage *cmsg) override;
