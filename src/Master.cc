@@ -68,6 +68,7 @@ void Master::handleMessage(cMessage *cmsg)
                     this->network[row][i] = msg->getPos()[i];
 
                 delete msg;
+                numReceived++;
                 bubble("ACK ARRIVED!");
                 printNetwork();
             }
@@ -128,6 +129,7 @@ void Master::broadcastMessage(Message *msg)
             k++;
         }
         EV << "Broadcasting message " << copy << " on gate[" << i << "]\n";
+        numSent++;
         send(copy, "gate$o", i);
     }
     delete msg;

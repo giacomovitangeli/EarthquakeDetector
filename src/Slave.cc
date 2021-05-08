@@ -53,6 +53,8 @@ void Slave::handleMessage(cMessage *cmsg)
 
         if(msg->getDestination() == 1000000) //dest == 1000000 -> broadcast
         {
+            numReceived++;
+
             if(msg->getKindMsg() == 0) //kind == 0 -> power
             {
                 batteryState += 25;
@@ -127,6 +129,7 @@ void Slave::handleMessage(cMessage *cmsg)
 
             }
         }else if(msg->getDestination() == 2000000){ //dest == 2000000 --> broadcast in cluster
+
             if(msg->getKindMsg() == 3)
             {
                 if(isClusterHead)
@@ -138,6 +141,7 @@ void Slave::handleMessage(cMessage *cmsg)
                     this->idClusterHead = (int)((id -numCS)/2);
                     EV << "Handling broadcast in cluster"<<id<<"\n";
                     bubble("Request NetDet Arrived!");
+                    numReceived++;
                     delete msg;
                     //todo set random position
 
@@ -151,19 +155,24 @@ void Slave::handleMessage(cMessage *cmsg)
             }
 
         }else if(msg->getDestination() == 3000000){ //dest == 3000000 --> return ack to cluster head
+
             if(msg->getKindMsg() == 5)
             {
                 if(!isClusterHead)
                 {
+                numSent++;
                 send(msg, "gate$o", 1);
                 }else if(isClusterHead)
                 {
+                    numReceived++;
                     numACKsn++;
                     delete msg;
+                    bubble("ACK sn Arrived!");
 
                     if(numACKsn == numSN){
                         int kindAck = 2; //ack con position
                         Message *ack = generateMessage(kindAck);
+                        bubble("All ACK sn Arrived!");
                         float delay = (float)(intuniform(100, 1000))/(float)100;
                         EV << "Slave"<<id<<" have delay: "<<delay<<"\n";
                         scheduleAt(delay, ack);
@@ -174,18 +183,9 @@ void Slave::handleMessage(cMessage *cmsg)
             //todo implement recezione messaggio diretto
 
         }else if(msg->getDestination() == 0){
-            /*if((msg->getSource() == ((2*id) + numCS - 1)) || (msg->getSource() == ((2*id) + numCS))){
 
-                numACKsn++;
-
-                if(numACKsn == numSN){
-                    int kindAck = 2; //ack con position
-                    Message *ack = generateMessage(kindAck);
-                    float delay = (float)(intuniform(0, 1000))/(float)1000;
-                    EV << "Slave"<<id<<" have delay: "<<delay<<"\n";
-                    scheduleAt(delay, ack);
-                }
-            }else */if(isClusterHead){
+            if(isClusterHead){
+                numSent++;
                 send(msg, "gate$o", 0); //gate out verso il master
             }
         }else {
@@ -239,6 +239,7 @@ void Slave::broadcastInCluster(Message *msg)
             k--;
         }
         EV << "Broadcasting message " << copy <<" in Cluster"<< id << " on gate[" << i+3 << "]\n";
+        numSent++;
         send(copy, "gate$o", i+3);
     }
     delete msg;
