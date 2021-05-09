@@ -42,9 +42,26 @@ void Slave::initialize()
         WATCH(numSent);
         WATCH(numReceived);
         batteryState = intuniform(0, 75);
-        numCS = 8;
+        numCH = 8;
+        numCHnear = 1;
         numSN = 2;
         numACKsn = 0;
+        numACKch = 0;
+
+        EV << "gateCHconfig "<< id <<" have gateCHConfig: [" << gateCHConfig[0] <<", "<< gateCHConfig[1] <<", "<< gateCHConfig[2] <<", "<<gateCHConfig[3]<<"] "<<"\n";
+        EV << "gateSNconfig "<< id <<" have gateSNConfig: [" << gateSNConfig[0] <<", "<< gateSNConfig[1] <<"] "<<"\n";
+
+        //initNetwork();
+        //todo init
+        //rowNet;
+        //colNet;
+       // network = createNetwork(network, rowNet, colNet);
+       // printNetwork();
+
+        //todo inizializzare variabile network come puntatore di puntatore e convertire
+        //le matrici stack in dinamiche
+        //network = createNetwork(h, w);//stampa e riparti da qui
+
 }
 
 void Slave::handleMessage(cMessage *cmsg)
@@ -70,6 +87,8 @@ void Slave::handleMessage(cMessage *cmsg)
             {
                 this->id = msg->getNetDetId();
                 this->isClusterHead = true;
+                this->numCHnear = 2;
+                //this->network[msg->getSource()][id] = 1;
                 delete msg;
 
                 if(id == 1){
@@ -121,8 +140,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 EV << "Slave "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
 
 
-                //todo inoltrare la req netdet ai sottonodi
-
+                //inoltro la req netdet ai sottonodi
                 int kindNetDetsn = 3; //kind net det subnode
                 Message *reqNetDetsn = generateMessage(kindNetDetsn);
                 scheduleAt(0.1, reqNetDetsn);
@@ -138,13 +156,15 @@ void Slave::handleMessage(cMessage *cmsg)
 
                 }else{//is sub-node
                     this->id = msg->getNetDetId();
-                    this->idClusterHead = (int)((id -numCS)/2);
+                    this->idClusterHead = (int)((id-numCH)/2);
                     EV << "Handling broadcast in cluster"<<id<<"\n";
                     bubble("Request NetDet Arrived!");
                     numReceived++;
+                    //this->network[msg->getSource()][id] = 1;
+                    //printNetwork();
                     delete msg;
-                    //todo set random position
 
+                    //todo set random position
                     //EV << "Sub-Node "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
                     int kindAcksn = 5; //ack sub-nodes
                     Message *acksn = generateMessage(kindAcksn);
@@ -166,19 +186,113 @@ void Slave::handleMessage(cMessage *cmsg)
                 {
                     numReceived++;
                     numACKsn++;
+                    //this->network = sumMatrix(network, msg->getNetwork());
+                    //this->network[msg->getSource()][id] = 1;
                     delete msg;
                     bubble("ACK sn Arrived!");
 
                     if(numACKsn == numSN){
-                        int kindAck = 2; //ack con position
-                        Message *ack = generateMessage(kindAck);
-                        bubble("All ACK sn Arrived!");
-                        float delay = (float)(intuniform(100, 1000))/(float)100;
-                        EV << "Slave"<<id<<" have delay: "<<delay<<"\n";
-                        scheduleAt(delay, ack);
+
+                        bubble("ALL ACK sn Arrived!");
+
+                        //todo inviare getID ai CH vicini in broadcast
+                        int kindReqCHnear = 6; //req CH near
+                        Message *reqCHnear = generateMessage(kindReqCHnear);
+                        float delay = (float)(intuniform(50, 1000))/(float)100;
+                        scheduleAt(delay, reqCHnear);//fixme check delay time
                     }
                 }
             }
+        }else if(msg->getDestination() == 4000000){ //dest == 4000000 --> broadcast to CH near
+
+            if(msg->getKindMsg() == 6)
+            {
+                if(id == msg->getSource())
+                {
+                    broadcastToNearCH(msg);
+
+                }else{//todo adattare per CH near
+                    EV << "Handling broadcast To cluster near"<<id<<"\n";
+                    bubble("RequestID to CH near Arrived!");
+                    numReceived++;
+
+                    int gate = 0;
+
+                    if((id!=1) && (msg->getSource()!=1))
+                    {
+                        if(id<msg->getSource())
+                            gate = 2;
+                        if(id>msg->getSource())
+                            gate = 1;
+                    }else if((id==1) || (msg->getSource()==1))
+                    {
+                        if((id==2) || (msg->getSource()==2))
+                            gate = 1;
+                        if((id==numCH) || (msg->getSource()==numCH))
+                            gate = 2;
+                    }
+
+
+                    delete msg;
+
+                    int kindAckCHnear = 7; //ack CHnear
+                    Message *ackCHnear = generateMessage(kindAckCHnear);
+                    numSent++;
+                    send(ackCHnear, "gate$o", gate);
+
+                    //todo schedulare
+                    //float delay = (float)(intuniform(0, 1000))/(float)1000;
+                    //scheduleAt(delay, ackCHnear);
+
+
+                    /*
+                    this->id = msg->getNetDetId();
+                    this->idClusterHead = (int)((id-numCS)/2);
+                    EV << "Handling broadcast in cluster"<<id<<"\n";
+                    bubble("RequestID to CH near Arrived!");
+                    numReceived++;
+                    //this->network[msg->getSource()][id] = 1;
+                    //printNetwork();
+                    delete msg;
+
+                    //todo set random position
+                    //EV << "Sub-Node "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
+                    int kindAcksn = 5; //ack sub-nodes
+                    Message *acksn = generateMessage(kindAcksn);
+                    float delay = (float)(intuniform(0, 1000))/(float)1000;
+                    EV << "Sub-Node "<<id<<" have delay: "<<delay<<"\n";
+                    scheduleAt(delay, acksn);*/
+                }
+            }
+
+        }else if(msg->getDestination() == 5000000){ //dest == 5000000 --> return from CH near
+            if(msg->getKindMsg() == 7)
+            {
+                EV << "Handling broadcast To cluster near"<<id<<"\n";
+                bubble("ACK from CH near Arrived!");
+                numReceived++;
+                gateCHConfig[numACKch] = msg->getSource();
+                numACKch++;
+
+                delete msg;
+
+                if(numCHnear == numACKch)
+                {
+                    bubble("ALL ACK from CH near Arrived!");
+                    //risposta al master da inviare dopo ACK CH vicini
+
+                    int kindAck = 2; //ack con position e gateConfig
+                    Message *ack = generateMessage(kindAck);
+                    float delay = (float)(intuniform(100, 1000))/(float)50;
+                    EV << "Slave"<<id<<" have delay: "<<delay<<"\n";
+                    scheduleAt(delay, ack);
+
+                }
+            }
+
+
+
+
         }else if(msg->getDestination() == id){
             //todo implement recezione messaggio diretto
 
@@ -211,16 +325,26 @@ Message *Slave::generateMessage(int kindMsg)
         sprintf(msgname, "NetDetsn-S%d-to-sn", id);
     }else if(kindMsg == 5) //kind==5 --> ack sub-nodes
     {
-        dest = 3000000; //return to cluster head
+        dest = 3000000; //return from sub-nodes to cluster head
         sprintf(msgname, "acksn-%d-to-ch", src);
+    }else if(kindMsg == 6) //kind==6 --> req CHnear
+    {
+        dest = 4000000; //broadcast to CHnear
+        sprintf(msgname, "reqCHnear-%d-to-ch", src);
+    }else if(kindMsg == 7) //kind==7 --> ack CHnear
+    {
+        dest = 5000000; //return from CHnear
+        sprintf(msgname, "ackCHnear-%d-to-ch", src);
     }
 
     Message *msg = new Message(msgname);
     msg->setSource(src);
     msg->setDestination(dest);
     msg->setKindMsg(kindMsg);
+    //msg->setNet(network);
     if(isClusterHead)
         msg->setPos(position);
+        msg->setGateCHConfig(gateCHConfig);
     return msg;
 }
 
@@ -234,13 +358,33 @@ void Slave::broadcastInCluster(Message *msg)
         Message *copy = msg->dup();
         if(copy->getKindMsg() == 3) //NET DET SUB-NODES kind
         {
-            int idsn = (2*id) + numCS - k;
+            int idsn = (2*id) + numCH - k;
+            gateCHConfig[i+2] = idsn;
+            EV << "gateCHconfig "<< id <<" have gateCHConfig: [" << gateCHConfig[0] <<", "<< gateCHConfig[1] <<", "<< gateCHConfig[2] <<", "<<gateCHConfig[3]<<"] "<<"\n";
             copy->setNetDetId(idsn);
             k--;
         }
         EV << "Broadcasting message " << copy <<" in Cluster"<< id << " on gate[" << i+3 << "]\n";
         numSent++;
         send(copy, "gate$o", i+3);
+    }
+    delete msg;
+}
+
+void Slave::broadcastToNearCH(Message *msg)
+{
+    int n = numCHnear; //2 CH near
+
+    for(int i=0; i<n; i++)
+    {
+        Message *copy = msg->dup();
+        /*if(copy->getKindMsg() == 6)
+        {
+            copy->setNetDetId(i);
+        }*/
+        EV << "Broadcasting message " << copy <<" to near CH from S"<< id << " on gate[" << i+1 << "]\n";
+        numSent++;
+        send(copy, "gate$o", i+1);
     }
     delete msg;
 }
@@ -265,5 +409,72 @@ void Slave::refreshDisplay() const
     sprintf(buf, "rcvd: %ld sent: %ld", numReceived, numSent);
     getDisplayString().setTagArg("t", 0, buf);
 }
+/*
+void Slave::initNetwork()
+{
+    for(int i=0; i<25; i++){
+        for(int j=0; j<25; j++){
+            network[i][j] = 0;
+        }
+    }
+}
+
+void Slave::printNetwork()
+{
+    EV <<"network: \n";
+    for(int i=0; i<25; i++){
+        for(int j=0; j<25; j++){
+            EV <<" ["<<network[i][j]<<"] ";
+        }
+        EV<<"\n";
+    }
+}
+*/
+/*
+int ** Slave::sumMatrix(a[][25], b[][25])
+{
+    int sum[25][25];
+
+    for(int i=0; i<25; i++){
+        for(int j=0; j<25; j++){
+            sum[i][j] = a[i][j] + b[i][j];
+        }
+    }
+
+    return sum;
+}
+*/
+
+int** Slave::createNetwork(int **&net, int row, int col)
+{
+  //int** net = 0;
+  net = new int*[row];
+
+  for (int i = 0; i < row; i++)
+  {
+        net[i] = new int[col];
+
+        for (int j = 0; j < col; j++)
+        {
+              net[i][j] = 0;
+        }
+  }
+
+  return net;
+}
+
+void Slave::printNetwork() const
+{
+    EV <<"Master network: \n";
+    for (int i = 0; i < rowNet; i++)
+    {
+        for (int j = 0; j < colNet; j++)
+        {
+            EV <<" ["<<network[i][j]<<"] ";
+        }
+        EV<<"\n";
+    }
+}
+
 
 }; // namespace

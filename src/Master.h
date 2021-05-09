@@ -35,7 +35,12 @@ class Master : public cSimpleModule{
         long numReceived;
         int id;
         bool usability;
-        float network[8][3];
+        //int network[25][25];
+        float slavePos[8][3];
+        int** network;
+        int rowNet;
+        int colNet;
+
 
     protected:
         virtual Message *generateMessage(int kindMsg);
@@ -44,8 +49,16 @@ class Master : public cSimpleModule{
         virtual void initialize() override;
         virtual void handleMessage(cMessage *cmsg) override;
         virtual void refreshDisplay() const override;
-        virtual void initNetwork();
-        virtual void printNetwork();
+        //virtual void initNetwork();
+        //virtual void printNetwork();
+        virtual void initSlavePos();
+        virtual void printSlavePos() const;
+        //virtual int ** sumMatrix(int a[][25], int b[][25]);
+        virtual int** createNetwork(int **&net, int row, int col);
+        virtual void printNetwork() const;
+
+
+
 };
 
 } /* namespace earthquakedetector */

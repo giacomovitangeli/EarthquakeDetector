@@ -29,7 +29,13 @@ Master::Master() {
 }
 
 Master::~Master() {
-    // TODO Auto-generated destructor stub
+    //delete the network adj matrix
+    for (int i = 0; i < rowNet; i++) // loop variable wasn't declared
+  {
+    delete [] network[i];
+  }
+  delete [] network;
+  network = 0;
 }
 
 
@@ -37,13 +43,19 @@ void Master::initialize()
 {
     // Initialize variables
         id = 0;
-        initNetwork();
+        initSlavePos();
+        //initNetwork();
         numSent = 0;
         numReceived = 0;
         WATCH(numSent);
         WATCH(numReceived);
         int kindPower = 0; //power message
         int kindNetDet = 1; //request netdet message
+
+        rowNet = 25;
+        colNet = 25;
+        network = createNetwork(network, rowNet, colNet);
+        printNetwork();
 
         //POWER to the slaves
         Message *power = generateMessage(kindPower);
@@ -63,13 +75,29 @@ void Master::handleMessage(cMessage *cmsg)
         {
             if(msg->getKindMsg() == 2)//ack netdet
             {
-                int row = msg->getSource() - 1;
+                int row = msg->getSource();
+                this->network[row][id] = 1;
+                //this->network = sumMatrix(network, msg->getNet());
+
+                for(int i=0; i<4; i++)
+                {
+                    network[row][msg->getGateCHConfig()[i]] = 1;
+                    network[msg->getGateCHConfig()[i]][row] = 1;
+                    if(i == 2)
+                    {
+                        network[msg->getGateCHConfig()[i]][msg->getGateCHConfig()[i+1]] = 1;
+                        network[msg->getGateCHConfig()[i+1]][msg->getGateCHConfig()[i]] = 1;
+                    }
+                }
+
+                row--;
                 for(int i=0; i<3; i++)
-                    this->network[row][i] = msg->getPos()[i];
+                    this->slavePos[row][i] = msg->getPos()[i];
 
                 delete msg;
                 numReceived++;
                 bubble("ACK ARRIVED!");
+                printSlavePos();
                 printNetwork();
             }
         }
@@ -126,9 +154,11 @@ void Master::broadcastMessage(Message *msg)
         if(copy->getKindMsg() == 1) //net detection kind
         {
             copy->setNetDetId(k);
-            k++;
+
         }
         EV << "Broadcasting message " << copy << " on gate[" << i << "]\n";
+        network[id][k] = 1;
+        k++;
         numSent++;
         send(copy, "gate$o", i);
     }
@@ -154,11 +184,11 @@ void Master::refreshDisplay() const
     sprintf(buf, "rcvd: %ld sent: %ld", numReceived, numSent);
     getDisplayString().setTagArg("t", 0, buf);
 }
-
+/*
 void Master::initNetwork()
 {
-    for(int i=0; i<8; i++){
-        for(int j=0; j<3; j++){
+    for(int i=0; i<25; i++){
+        for(int j=0; j<25; j++){
             network[i][j] = 0;
         }
     }
@@ -167,8 +197,73 @@ void Master::initNetwork()
 void Master::printNetwork()
 {
     EV <<"network: \n";
+    for(int i=0; i<25; i++){
+        for(int j=0; j<25; j++){
+            EV <<" ["<<network[i][j]<<"] ";
+        }
+        EV<<"\n";
+    }
+}
+*/
+void Master::initSlavePos()
+{
     for(int i=0; i<8; i++){
         for(int j=0; j<3; j++){
+            slavePos[i][j] = 0;
+        }
+    }
+}
+
+void Master::printSlavePos() const
+{
+    EV <<"slavePos: \n";
+    for(int i=0; i<8; i++){
+        for(int j=0; j<3; j++){
+            EV <<" ["<<slavePos[i][j]<<"] ";
+        }
+        EV<<"\n";
+    }
+}
+/*
+int ** Master::sumMatrix(a[][25], b[][25])
+{
+    int sum[25][25];
+
+    for(int i=0; i<25; i++){
+        for(int j=0; j<25; j++){
+            sum[i][j] = a[i][j] + b[i][j];
+        }
+    }
+
+    return sum;
+}
+*/
+
+int** Master::createNetwork(int **&net, int row, int col)
+{
+  //int** net = 0;
+  net = new int*[row];
+
+  for (int i = 0; i < row; i++)
+  {
+        net[i] = new int[col];
+
+        for (int j = 0; j < col; j++)
+        {
+              net[i][j] = 0;
+        }
+  }
+
+  return net;
+}
+
+void Master::printNetwork() const
+{
+    EV <<"Master network: \n";
+    for (int i = 0; i < rowNet; i++)
+    {
+        for (int j = 0; j < colNet; j++)
+        {
             EV <<" ["<<network[i][j]<<"] ";
         }
         EV<<"\n";

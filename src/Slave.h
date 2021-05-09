@@ -38,19 +38,35 @@ class Slave : public cSimpleModule{
         int id;
         int idClusterHead;
         int batteryState;
-        float position[3] = {0, 0, 0};  //[posX, posY, posZ]
+        float position[3]{0};  //[posX, posY, posZ]
         bool isClusterHead = false;
-        int numCS; //number of Cluster Head
+        int numCH; //number of Cluster Head
+        int numCHnear;
         int numSN;
         int numACKsn;
+        int numACKch;
+        int gateCHConfig[4]{0};
+        int gateSNConfig[2]{0};
+        //int network[25][25];
+        int** network;
+        int rowNet;
+        int colNet;
 
     protected:
         virtual Message *generateMessage(int kindMsg);
         virtual void broadcastInCluster(Message *msg);
+        virtual void broadcastToNearCH(Message *msg);
         virtual void forwardMessage(Message *msg);
         virtual void initialize() override;
         virtual void handleMessage(cMessage *cmsg) override;
         virtual void refreshDisplay() const override;
+        virtual int** createNetwork(int **&net, int row, int col);
+        virtual void printNetwork() const;
+
+        //virtual void initNetwork();
+        //virtual void printNetwork();
+
+        //virtual int ** sumMatrix(int a[][25], int b[][25]);
 };
 
 } /* namespace earthquakedetector */

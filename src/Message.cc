@@ -290,11 +290,40 @@ float * Message::getPos()
 
 void Message::setPos(float pos[])
 {
-    this->pos[0] = pos[0];
-    this->pos[1] = pos[1];
-    this->pos[2] = pos[2];
+    for(int i=0; i<3; i++)
+    {
+        this->pos[i] = pos[i];
+    }
 }
 
+int * Message::getGateCHConfig()
+{
+   return this->gateCHConfig;
+}
+
+void Message::setGateCHConfig(int gateCHConfig[])
+{
+    for(int i=0; i<4; i++)
+        {
+            this->gateCHConfig[i] = gateCHConfig[i];
+        }
+}
+
+
+/*
+int ** Message::getNet()
+{
+    return this->net;
+}
+
+void Message::setNet(int net[][25])
+{
+    for(int i=0; i<25; i++)
+        {
+            this->net[i] = net[i];
+        }
+}
+*/
 int Message::getHopCount() const
 {
     return this->hopCount;
