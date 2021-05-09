@@ -61,6 +61,7 @@ class Slave : public cSimpleModule{
         virtual void handleMessage(cMessage *cmsg) override;
         virtual void refreshDisplay() const override;
         virtual int** createNetwork(int **&net, int row, int col);
+        virtual void fillNetwork();
         virtual void printNetwork() const;
 
         //virtual void initNetwork();

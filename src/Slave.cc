@@ -53,10 +53,9 @@ void Slave::initialize()
 
         //initNetwork();
         //todo init
-        //rowNet;
-        //colNet;
-       // network = createNetwork(network, rowNet, colNet);
-       // printNetwork();
+        rowNet=0;
+        colNet=0;
+
 
         //todo inizializzare variabile network come puntatore di puntatore e convertire
         //le matrici stack in dinamiche
@@ -88,6 +87,9 @@ void Slave::handleMessage(cMessage *cmsg)
                 this->id = msg->getNetDetId();
                 this->isClusterHead = true;
                 this->numCHnear = 2;
+                this->rowNet = 6;
+                this->colNet = 6;
+                network = createNetwork(network, rowNet, colNet);
                 //this->network[msg->getSource()][id] = 1;
                 delete msg;
 
@@ -207,11 +209,11 @@ void Slave::handleMessage(cMessage *cmsg)
 
             if(msg->getKindMsg() == 6)
             {
-                if(id == msg->getSource())
+                if(id == msg->getSource())// is CH
                 {
                     broadcastToNearCH(msg);
 
-                }else{//todo adattare per CH near
+                }else{//is CH near
                     EV << "Handling broadcast To cluster near"<<id<<"\n";
                     bubble("RequestID to CH near Arrived!");
                     numReceived++;
@@ -240,28 +242,9 @@ void Slave::handleMessage(cMessage *cmsg)
                     numSent++;
                     send(ackCHnear, "gate$o", gate);
 
-                    //todo schedulare
+                    //todo schedulare in time random
                     //float delay = (float)(intuniform(0, 1000))/(float)1000;
                     //scheduleAt(delay, ackCHnear);
-
-
-                    /*
-                    this->id = msg->getNetDetId();
-                    this->idClusterHead = (int)((id-numCS)/2);
-                    EV << "Handling broadcast in cluster"<<id<<"\n";
-                    bubble("RequestID to CH near Arrived!");
-                    numReceived++;
-                    //this->network[msg->getSource()][id] = 1;
-                    //printNetwork();
-                    delete msg;
-
-                    //todo set random position
-                    //EV << "Sub-Node "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
-                    int kindAcksn = 5; //ack sub-nodes
-                    Message *acksn = generateMessage(kindAcksn);
-                    float delay = (float)(intuniform(0, 1000))/(float)1000;
-                    EV << "Sub-Node "<<id<<" have delay: "<<delay<<"\n";
-                    scheduleAt(delay, acksn);*/
                 }
             }
 
@@ -279,8 +262,12 @@ void Slave::handleMessage(cMessage *cmsg)
                 if(numCHnear == numACKch)
                 {
                     bubble("ALL ACK from CH near Arrived!");
-                    //risposta al master da inviare dopo ACK CH vicini
+                    //riempire matrice di adiacenza di CH
 
+                    fillNetwork();
+                    printNetwork();
+
+                    //risposta al master, inviata dopo ACK CH vicini
                     int kindAck = 2; //ack con position e gateConfig
                     Message *ack = generateMessage(kindAck);
                     float delay = (float)(intuniform(100, 1000))/(float)50;
@@ -463,9 +450,38 @@ int** Slave::createNetwork(int **&net, int row, int col)
   return net;
 }
 
+void Slave::fillNetwork()
+{
+    if(isClusterHead){
+        //0->master
+        //1->thisCH
+        //2->gateCHConfig[0]-> CHnear1
+        //3->gateCHConfig[1]-> CHnear2
+        //4->gateCHConfig[2]-> sub-node1
+        //5->gateCHConfig[3]-> sub-node2
+
+        //master<->thisCH
+        network[0][1] = 1;
+        network[1][0] = 1;
+
+        for(int i=2; i<rowNet; i++)
+        {
+            //thisCH<->CHnear/sub-node
+            network[1][i] = 1;
+            network[i][1] = 1;
+            if(i == (numCHnear+2))
+            {
+                network[i][i+1] = 1;
+                network[i+1][i] = 1;
+            }
+        }
+    }
+}
+
+
 void Slave::printNetwork() const
 {
-    EV <<"Master network: \n";
+    EV <<"Slave "<< id <<" network: \n";
     for (int i = 0; i < rowNet; i++)
     {
         for (int j = 0; j < colNet; j++)
