@@ -29,7 +29,13 @@ Slave::Slave() {
 }
 
 Slave::~Slave() {
-    // TODO Auto-generated destructor stub
+    //delete the network adj matrix
+    for (int i = 0; i < rowNet; i++)
+  {
+    delete [] network[i];
+  }
+  delete [] network;
+  network = 0;
 }
 
 
@@ -87,10 +93,9 @@ void Slave::handleMessage(cMessage *cmsg)
                 this->id = msg->getNetDetId();
                 this->isClusterHead = true;
                 this->numCHnear = 2;
-                this->rowNet = 6;
-                this->colNet = 6;
+                this->rowNet = numCHnear+numSN+2; //+2 sono il master e il CH a cui appartiene la matrice
+                this->colNet = numCHnear+numSN+2;
                 network = createNetwork(network, rowNet, colNet);
-                //this->network[msg->getSource()][id] = 1;
                 delete msg;
 
                 if(id == 1){
@@ -156,14 +161,17 @@ void Slave::handleMessage(cMessage *cmsg)
                 {
                     broadcastInCluster(msg);
 
-                }else{//is sub-node
+                }else if(!isClusterHead){//is sub-node
                     this->id = msg->getNetDetId();
                     this->idClusterHead = (int)((id-numCH)/2);
+                    this->rowNet = numSN+2; //+2 sono il master e il CH a cui appartiene il sub-node
+                    this->colNet = numSN+2;
+                    network = createNetwork(network, rowNet, colNet);
                     EV << "Handling broadcast in cluster"<<id<<"\n";
                     bubble("Request NetDet Arrived!");
                     numReceived++;
-                    //this->network[msg->getSource()][id] = 1;
-                    //printNetwork();
+                    fillNetwork();
+                    printNetwork();
                     delete msg;
 
                     //todo set random position
@@ -452,7 +460,8 @@ int** Slave::createNetwork(int **&net, int row, int col)
 
 void Slave::fillNetwork()
 {
-    if(isClusterHead){
+    if(isClusterHead)
+    {
         //0->master
         //1->thisCH
         //2->gateCHConfig[0]-> CHnear1
@@ -460,7 +469,7 @@ void Slave::fillNetwork()
         //4->gateCHConfig[2]-> sub-node1
         //5->gateCHConfig[3]-> sub-node2
 
-        //master<->thisCH
+        //master<->CH
         network[0][1] = 1;
         network[1][0] = 1;
 
@@ -475,6 +484,22 @@ void Slave::fillNetwork()
                 network[i+1][i] = 1;
             }
         }
+    }else if(!isClusterHead)
+    {
+        //0->master
+        //1->thisSN
+        //2->gateSNConfig[0]-> CH
+        //3->gateSNConfig[1]-> sub-node2
+
+        network[0][2] = 1;//when master give power to slave sub-node
+
+        for(int i=2; i<(numSN+2); i++)
+        {
+            //thisSN<->CH/other sub-node
+            network[1][i] = 1;
+            network[i][1] = 1;
+        }
+
     }
 }
 

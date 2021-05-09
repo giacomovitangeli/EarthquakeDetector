@@ -30,7 +30,7 @@ Master::Master() {
 
 Master::~Master() {
     //delete the network adj matrix
-    for (int i = 0; i < rowNet; i++) // loop variable wasn't declared
+    for (int i = 0; i < rowNet; i++)
   {
     delete [] network[i];
   }
