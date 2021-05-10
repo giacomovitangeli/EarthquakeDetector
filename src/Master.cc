@@ -73,7 +73,7 @@ void Master::handleMessage(cMessage *cmsg)
 
         if(msg->getDestination() == this->id)
         {
-            if(msg->getKindMsg() == 2)//ack netdet
+            if(msg->getKind() == 2)//ack netdet
             {
                 int row = msg->getSource();
                 this->network[row][id] = 1;
@@ -135,7 +135,7 @@ Message *Master::generateMessage(int kindMsg)
     Message *msg = new Message(msgname);
     msg->setSource(src);
     msg->setDestination(dest);
-    msg->setKindMsg(kindMsg);
+    msg->setKind(kindMsg);
     return msg;
 }
 
@@ -145,13 +145,13 @@ void Master::broadcastMessage(Message *msg)
 {
     int n = 8; //number of cluster head
     int k = 1;
-    if(msg->getKindMsg() == 0)// pwr msg
+    if(msg->getKind() == 0)// pwr msg
         n = gateSize("gate");
 
     for (int i=0; i<n; i++)
     {
         Message *copy = msg->dup();
-        if(copy->getKindMsg() == 1) //net detection kind
+        if(copy->getKind() == 1) //net detection kind
         {
             copy->setNetDetId(k);
 

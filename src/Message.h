@@ -34,7 +34,6 @@ class Message : public ::omnetpp::cMessage
     int source;
     int destination;
     int hopCount;
-    int kindMsg;
     int netdetId;
     float pos[3]{0};
     int gateCHConfig[4]{0};
@@ -62,8 +61,6 @@ class Message : public ::omnetpp::cMessage
     virtual void setDestination(int destination);
     virtual int getHopCount() const;
     virtual void setHopCount(int hopCount);
-    virtual int getKindMsg() const;
-    virtual void setKindMsg(int kindMsg);
     virtual int getNetDetId() const;
     virtual void setNetDetId(int netdetId);
     virtual float * getPos();

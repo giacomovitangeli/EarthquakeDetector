@@ -51,7 +51,6 @@ void Slave::initialize()
         WATCH(numReceived);
         state = new State();
         state->printPosition();
-        //batteryState = intuniform(0, 75);
         numCH = 8;
         numCHnear = 1;
         numSN = 2;
@@ -73,7 +72,7 @@ void Slave::handleMessage(cMessage *cmsg)
         {
             numReceived++;
 
-            if(msg->getKindMsg() == 0) //kind == 0 -> power
+            if(msg->getKind() == 0) //kind == 0 -> power
             {
                 int battery = state->getBatteryState();
                 battery += 25;
@@ -86,7 +85,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 EV << "Battery state: " << state->getBatteryState() << "%"<<"\n";
 
             }
-            else if(msg->getKindMsg() == 1) //kind == 1 -> net detection
+            else if(msg->getKind() == 1) //kind == 1 -> net detection
             {
                 this->id = msg->getNetDetId();
                 this->isClusterHead = true;
@@ -95,52 +94,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 this->colNet = numCHnear+numSN+2;
                 network = createNetwork(network, rowNet, colNet);
                 delete msg;
-/*
-                if(id == 1){
-                    position[0] = 624.275;
-                    position[1] = 200;
-                    position[2] = 3;//(float)(intuniform(0, 10));
-                }else if(id == 2){
-                    position[0] = 800;
-                    position[1] = 374.275;
-                    position[2] = 3;//(float)(intuniform(0, 10));
 
-                }else if(id == 3){
-                    position[0] = 800;
-                    position[1] = 624.275;
-                    position[2] = 3;//(float)(intuniform(0, 10));
-
-                }else if(id == 4){
-                    position[0] = 624.275;
-                    position[1] = 800;
-                    position[2] = 3;
-
-                }else if(id == 5){
-                    position[0] = 374.275;
-                    position[1] = 800;
-                    position[2] = 3;//(float)(intuniform(0, 10));
-
-                }else if(id == 6){
-                    position[0] = 200;
-                    position[1] = 624.275;
-                    position[2] = 3;//(float)(intuniform(0, 10));
-
-                }else if(id == 7){
-                    position[0] = 200;
-                    position[1] = 374.275;
-                    position[2] = 3;//(float)(intuniform(0, 10));
-
-                }else if(id == 8){
-                    position[0] = 374.275;
-                    position[1] = 200;
-                    position[2] = 3;//(float)(intuniform(0, 10));
-
-                }else{
-                    position[0] = 0;//(float)(intuniform(0, 1000));
-                    position[1] = 0;//(float)(intuniform(0, 1000));
-                    position[2] = 0;//(float)(intuniform(0, 10));
-                }
-*/
                 bubble("Request NetDet Arrived!");
                 EV << "Slave "<< id <<" is in position: \n";
                 state->printPosition();
@@ -155,7 +109,7 @@ void Slave::handleMessage(cMessage *cmsg)
             }
         }else if(msg->getDestination() == 2000000){ //dest == 2000000 --> broadcast in cluster
 
-            if(msg->getKindMsg() == 3)
+            if(msg->getKind() == 3)
             {
                 if(isClusterHead)
                 {
@@ -163,7 +117,6 @@ void Slave::handleMessage(cMessage *cmsg)
 
                 }else if(!isClusterHead){//is sub-node
                     this->id = msg->getNetDetId();
-                    this->idClusterHead = (int)((id-numCH)/2);
                     this->rowNet = numSN+2; //+2 sono il master e il CH a cui appartiene il sub-node
                     this->colNet = numSN+2;
                     network = createNetwork(network, rowNet, colNet);
@@ -185,7 +138,7 @@ void Slave::handleMessage(cMessage *cmsg)
 
         }else if(msg->getDestination() == 3000000){ //dest == 3000000 --> return ack to cluster head
 
-            if(msg->getKindMsg() == 5)
+            if(msg->getKind() == 5)
             {
                 if(!isClusterHead)
                 {
@@ -214,7 +167,7 @@ void Slave::handleMessage(cMessage *cmsg)
             }
         }else if(msg->getDestination() == 4000000){ //dest == 4000000 --> broadcast to CH near
 
-            if(msg->getKindMsg() == 6)
+            if(msg->getKind() == 6)
             {
                 if(id == msg->getSource())// is CH
                 {
@@ -256,7 +209,7 @@ void Slave::handleMessage(cMessage *cmsg)
             }
 
         }else if(msg->getDestination() == 5000000){ //dest == 5000000 --> return from CH near
-            if(msg->getKindMsg() == 7)
+            if(msg->getKind() == 7)
             {
                 EV << "Handling broadcast To cluster near"<<id<<"\n";
                 bubble("ACK from CH near Arrived!");
@@ -334,7 +287,7 @@ Message *Slave::generateMessage(int kindMsg)
     Message *msg = new Message(msgname);
     msg->setSource(src);
     msg->setDestination(dest);
-    msg->setKindMsg(kindMsg);
+    msg->setKind(kindMsg);
     //msg->setNet(network);
     if(isClusterHead)
         msg->setPos(state->getPosition());
@@ -350,7 +303,7 @@ void Slave::broadcastInCluster(Message *msg)
     for(int i=0; i<n; i++)
     {
         Message *copy = msg->dup();
-        if(copy->getKindMsg() == 3) //NET DET SUB-NODES kind
+        if(copy->getKind() == 3) //NET DET SUB-NODES kind
         {
             int idsn = (2*id) + numCH - k;
             gateCHConfig[i+2] = idsn;
@@ -372,7 +325,7 @@ void Slave::broadcastToNearCH(Message *msg)
     for(int i=0; i<n; i++)
     {
         Message *copy = msg->dup();
-        /*if(copy->getKindMsg() == 6)
+        /*if(copy->getKind() == 6)
         {
             copy->setNetDetId(i);
         }*/

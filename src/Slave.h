@@ -36,7 +36,6 @@ class Slave : public cSimpleModule{
         long numSent;
         long numReceived;
         int id;
-        int idClusterHead;
         State* state;
         bool isClusterHead = false;
         int numCH; //number of Cluster Head

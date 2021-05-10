@@ -193,7 +193,6 @@ Message::Message(const char *name, short kind) : ::omnetpp::cMessage(name,kind)
     this->source = 0;
     this->destination = 0;
     this->hopCount = 0;
-    this->kindMsg = 0;
     this->netdetId = 0;
 }
 
@@ -219,7 +218,6 @@ void Message::copy(const Message& other)
     this->source = other.source;
     this->destination = other.destination;
     this->hopCount = other.hopCount;
-    this->kindMsg = other.kindMsg;
     this->netdetId = other.netdetId;
 }
 
@@ -229,7 +227,6 @@ void Message::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->source);
     doParsimPacking(b,this->destination);
     doParsimPacking(b,this->hopCount);
-    doParsimPacking(b,this->kindMsg);
     doParsimPacking(b,this->netdetId);
 }
 
@@ -239,7 +236,6 @@ void Message::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->source);
     doParsimUnpacking(b,this->destination);
     doParsimUnpacking(b,this->hopCount);
-    doParsimUnpacking(b,this->kindMsg);
     doParsimUnpacking(b,this->netdetId);
 }
 
@@ -261,16 +257,6 @@ int Message::getDestination() const
 void Message::setDestination(int destination)
 {
     this->destination = destination;
-}
-
-int Message::getKindMsg() const
-{
-    return this->kindMsg;
-}
-
-void Message::setKindMsg(int kindMsg)
-{
-    this->kindMsg = kindMsg;
 }
 
 int Message::getNetDetId() const
