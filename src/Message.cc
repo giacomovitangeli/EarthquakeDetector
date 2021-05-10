@@ -309,21 +309,6 @@ void Message::setGateCHConfig(int gateCHConfig[])
         }
 }
 
-
-/*
-int ** Message::getNet()
-{
-    return this->net;
-}
-
-void Message::setNet(int net[][25])
-{
-    for(int i=0; i<25; i++)
-        {
-            this->net[i] = net[i];
-        }
-}
-*/
 int Message::getHopCount() const
 {
     return this->hopCount;

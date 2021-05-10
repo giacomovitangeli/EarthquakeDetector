@@ -37,7 +37,6 @@ class Message : public ::omnetpp::cMessage
     int kindMsg;
     int netdetId;
     float pos[3]{0};
-    //int net[25][25];
     int gateCHConfig[4]{0};
 
   private:
@@ -71,8 +70,6 @@ class Message : public ::omnetpp::cMessage
     virtual void setPos(float pos[]);
     virtual int * getGateCHConfig();
     virtual void setGateCHConfig(int gateCHConfig[]);
-    //virtual int ** getNet() const;
-    //virtual void setNet(int net[][25]);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const Message& obj) {obj.parsimPack(b);}

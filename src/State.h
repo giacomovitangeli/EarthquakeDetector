@@ -16,20 +16,27 @@
 #ifndef STATE_H_
 #define STATE_H_
 
+#include <stdio.h>
+#include <string.h>
+#include <omnetpp.h>
+
+using namespace omnetpp;
+
 namespace earthquakedetector {
 
-class State {
+class State : public cSimpleModule{
 private:
-    float batteryState;
-    float* position;  //[posX, posY, posZ]
+    int batteryState;
+    float position[3]{0};  //[posX, posY, posZ]
 
 public:
     State();
     virtual ~State();
     void setBatteryState(float b);
     float getBatteryState();
-    void setPosition(float* pos);
+    void setPosition(float pos[]);
     float* getPosition();
+    void printPosition();
 
 };
 

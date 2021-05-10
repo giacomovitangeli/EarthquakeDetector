@@ -36,6 +36,8 @@ Slave::~Slave() {
   }
   delete [] network;
   network = 0;
+
+  state = 0;
 }
 
 
@@ -47,7 +49,9 @@ void Slave::initialize()
         numReceived = 0;
         WATCH(numSent);
         WATCH(numReceived);
-        batteryState = intuniform(0, 75);
+        state = new State();
+        state->printPosition();
+        //batteryState = intuniform(0, 75);
         numCH = 8;
         numCHnear = 1;
         numSN = 2;
@@ -57,16 +61,8 @@ void Slave::initialize()
         EV << "gateCHconfig "<< id <<" have gateCHConfig: [" << gateCHConfig[0] <<", "<< gateCHConfig[1] <<", "<< gateCHConfig[2] <<", "<<gateCHConfig[3]<<"] "<<"\n";
         EV << "gateSNconfig "<< id <<" have gateSNConfig: [" << gateSNConfig[0] <<", "<< gateSNConfig[1] <<"] "<<"\n";
 
-        //initNetwork();
-        //todo init
         rowNet=0;
         colNet=0;
-
-
-        //todo inizializzare variabile network come puntatore di puntatore e convertire
-        //le matrici stack in dinamiche
-        //network = createNetwork(h, w);//stampa e riparti da qui
-
 }
 
 void Slave::handleMessage(cMessage *cmsg)
@@ -79,13 +75,15 @@ void Slave::handleMessage(cMessage *cmsg)
 
             if(msg->getKindMsg() == 0) //kind == 0 -> power
             {
-                batteryState += 25;
-                if(batteryState > 100)
-                    batteryState = 100;
+                int battery = state->getBatteryState();
+                battery += 25;
+                if(battery > 100)
+                    battery = 100;
+                state->setBatteryState(battery);
 
                 delete msg;
                 bubble("Power Arrived! +25%");
-                EV << "Battery state: " << batteryState << "%"<<"\n";
+                EV << "Battery state: " << state->getBatteryState() << "%"<<"\n";
 
             }
             else if(msg->getKindMsg() == 1) //kind == 1 -> net detection
@@ -97,7 +95,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 this->colNet = numCHnear+numSN+2;
                 network = createNetwork(network, rowNet, colNet);
                 delete msg;
-
+/*
                 if(id == 1){
                     position[0] = 624.275;
                     position[1] = 200;
@@ -142,9 +140,11 @@ void Slave::handleMessage(cMessage *cmsg)
                     position[1] = 0;//(float)(intuniform(0, 1000));
                     position[2] = 0;//(float)(intuniform(0, 10));
                 }
-
+*/
                 bubble("Request NetDet Arrived!");
-                EV << "Slave "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
+                EV << "Slave "<< id <<" is in position: \n";
+                state->printPosition();
+                //EV << "Slave "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
 
 
                 //inoltro la req netdet ai sottonodi
@@ -174,11 +174,10 @@ void Slave::handleMessage(cMessage *cmsg)
                     printNetwork();
                     delete msg;
 
-                    //todo set random position
                     //EV << "Sub-Node "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
                     int kindAcksn = 5; //ack sub-nodes
                     Message *acksn = generateMessage(kindAcksn);
-                    float delay = (float)(intuniform(0, 1000))/(float)1000;
+                    float delay = (float)(intuniform(100, 1000))/(float)1000;
                     EV << "Sub-Node "<<id<<" have delay: "<<delay<<"\n";
                     scheduleAt(delay, acksn);
                 }
@@ -338,7 +337,7 @@ Message *Slave::generateMessage(int kindMsg)
     msg->setKindMsg(kindMsg);
     //msg->setNet(network);
     if(isClusterHead)
-        msg->setPos(position);
+        msg->setPos(state->getPosition());
         msg->setGateCHConfig(gateCHConfig);
     return msg;
 }

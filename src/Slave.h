@@ -37,8 +37,7 @@ class Slave : public cSimpleModule{
         long numReceived;
         int id;
         int idClusterHead;
-        int batteryState;
-        float position[3]{0};  //[posX, posY, posZ]
+        State* state;
         bool isClusterHead = false;
         int numCH; //number of Cluster Head
         int numCHnear;

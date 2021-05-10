@@ -18,11 +18,13 @@
 namespace earthquakedetector {
 
 State::State() {
-    batteryState = 0;
+    batteryState = intuniform(0, 75);
+    for(int i=0; i<3; i++)
+        position[i] = (float)intuniform(1, 1000)/10;
 }
 
 State::~State() {
-    // TODO Auto-generated destructor stub
+
 }
 
 void State::setBatteryState(float b){
@@ -33,12 +35,22 @@ float State::getBatteryState(){
     return batteryState;
 }
 
-void State::setPosition(float* pos){
-    position = pos;
+void State::setPosition(float pos[]){
+    for(int i=0; i<3; i++)
+        position[i] = pos[i];
 }
 
 float* State::getPosition(){
     return position;
+}
+
+void State::printPosition(){
+    EV<<"Position: \n";
+    for(int i=0; i<3; i++)
+        EV <<" ["<<position[i]<<"] ";
+
+
+
 }
 
 } /* namespace earthquakedetector */
