@@ -47,7 +47,6 @@ class Slave : public cSimpleModule{
         int numACKch;
         int gateCHConfig[4]{0};
         int gateSNConfig[2]{0};
-        //int network[25][25];
         int** network;
         int rowNet;
         int colNet;
@@ -63,11 +62,6 @@ class Slave : public cSimpleModule{
         virtual int** createNetwork(int **&net, int row, int col);
         virtual void fillNetwork();
         virtual void printNetwork() const;
-
-        //virtual void initNetwork();
-        //virtual void printNetwork();
-
-        //virtual int ** sumMatrix(int a[][25], int b[][25]);
 };
 
 } /* namespace earthquakedetector */

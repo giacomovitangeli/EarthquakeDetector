@@ -404,41 +404,6 @@ void Slave::refreshDisplay() const
     sprintf(buf, "rcvd: %ld sent: %ld", numReceived, numSent);
     getDisplayString().setTagArg("t", 0, buf);
 }
-/*
-void Slave::initNetwork()
-{
-    for(int i=0; i<25; i++){
-        for(int j=0; j<25; j++){
-            network[i][j] = 0;
-        }
-    }
-}
-
-void Slave::printNetwork()
-{
-    EV <<"network: \n";
-    for(int i=0; i<25; i++){
-        for(int j=0; j<25; j++){
-            EV <<" ["<<network[i][j]<<"] ";
-        }
-        EV<<"\n";
-    }
-}
-*/
-/*
-int ** Slave::sumMatrix(a[][25], b[][25])
-{
-    int sum[25][25];
-
-    for(int i=0; i<25; i++){
-        for(int j=0; j<25; j++){
-            sum[i][j] = a[i][j] + b[i][j];
-        }
-    }
-
-    return sum;
-}
-*/
 
 int** Slave::createNetwork(int **&net, int row, int col)
 {

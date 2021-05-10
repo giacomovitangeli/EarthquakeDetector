@@ -184,27 +184,7 @@ void Master::refreshDisplay() const
     sprintf(buf, "rcvd: %ld sent: %ld", numReceived, numSent);
     getDisplayString().setTagArg("t", 0, buf);
 }
-/*
-void Master::initNetwork()
-{
-    for(int i=0; i<25; i++){
-        for(int j=0; j<25; j++){
-            network[i][j] = 0;
-        }
-    }
-}
 
-void Master::printNetwork()
-{
-    EV <<"network: \n";
-    for(int i=0; i<25; i++){
-        for(int j=0; j<25; j++){
-            EV <<" ["<<network[i][j]<<"] ";
-        }
-        EV<<"\n";
-    }
-}
-*/
 void Master::initSlavePos()
 {
     for(int i=0; i<8; i++){
@@ -224,20 +204,6 @@ void Master::printSlavePos() const
         EV<<"\n";
     }
 }
-/*
-int ** Master::sumMatrix(a[][25], b[][25])
-{
-    int sum[25][25];
-
-    for(int i=0; i<25; i++){
-        for(int j=0; j<25; j++){
-            sum[i][j] = a[i][j] + b[i][j];
-        }
-    }
-
-    return sum;
-}
-*/
 
 int** Master::createNetwork(int **&net, int row, int col)
 {
