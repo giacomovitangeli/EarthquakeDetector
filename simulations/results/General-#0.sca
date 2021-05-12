@@ -1,0 +1,282 @@
+version 2
+run General-0-20210512-19:19:50-27981
+attr configname General
+attr datetime 20210512-19:19:50
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network EarthquakeDetector
+attr processid 27981
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+
+statistic EarthquakeDetector.S1 hopCount:stats
+field count 8
+field mean 48.875
+field stddev 20.691181696559
+field min 17
+field max 77
+field sum 391
+field sqrsum 22107
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S2 hopCount:stats
+field count 8
+field mean 39.875
+field stddev 20.691181696559
+field min 8
+field max 68
+field sum 319
+field sqrsum 15717
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S3 hopCount:stats
+field count 8
+field mean 45.875
+field stddev 20.691181696559
+field min 14
+field max 74
+field sum 367
+field sqrsum 19833
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S4 hopCount:stats
+field count 8
+field mean 40.875
+field stddev 20.691181696559
+field min 9
+field max 69
+field sum 327
+field sqrsum 16363
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S5 hopCount:stats
+field count 8
+field mean 60.875
+field stddev 20.691181696559
+field min 29
+field max 89
+field sum 487
+field sqrsum 32643
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S6 hopCount:stats
+field count 8
+field mean 42.875
+field stddev 20.691181696559
+field min 11
+field max 71
+field sum 343
+field sqrsum 17703
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S7 hopCount:stats
+field count 8
+field mean 60.875
+field stddev 20.691181696559
+field min 29
+field max 89
+field sum 487
+field sqrsum 32643
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S8 hopCount:stats
+field count 8
+field mean 49.875
+field stddev 20.691181696559
+field min 18
+field max 78
+field sum 399
+field sqrsum 22897
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S9 hopCount:stats
+field count 2
+field mean 76.5
+field stddev 10.606601717798
+field min 69
+field max 84
+field sum 153
+field sqrsum 11817
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S10 hopCount:stats
+field count 2
+field mean 72.5
+field stddev 10.606601717798
+field min 65
+field max 80
+field sum 145
+field sqrsum 10625
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S11 hopCount:stats
+field count 2
+field mean 60.5
+field stddev 10.606601717798
+field min 53
+field max 68
+field sum 121
+field sqrsum 7433
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S12 hopCount:stats
+field count 2
+field mean 76.5
+field stddev 10.606601717798
+field min 69
+field max 84
+field sum 153
+field sqrsum 11817
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S13 hopCount:stats
+field count 2
+field mean 57.5
+field stddev 10.606601717798
+field min 50
+field max 65
+field sum 115
+field sqrsum 6725
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S14 hopCount:stats
+field count 2
+field mean 57.5
+field stddev 10.606601717798
+field min 50
+field max 65
+field sum 115
+field sqrsum 6725
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S15 hopCount:stats
+field count 2
+field mean 80.5
+field stddev 10.606601717798
+field min 73
+field max 88
+field sum 161
+field sqrsum 13073
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S16 hopCount:stats
+field count 2
+field mean 75.5
+field stddev 10.606601717798
+field min 68
+field max 83
+field sum 151
+field sqrsum 11513
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S17 hopCount:stats
+field count 2
+field mean 57.5
+field stddev 10.606601717798
+field min 50
+field max 65
+field sum 115
+field sqrsum 6725
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S18 hopCount:stats
+field count 2
+field mean 62.5
+field stddev 10.606601717798
+field min 55
+field max 70
+field sum 125
+field sqrsum 7925
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S19 hopCount:stats
+field count 2
+field mean 74.5
+field stddev 10.606601717798
+field min 67
+field max 82
+field sum 149
+field sqrsum 11213
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S20 hopCount:stats
+field count 2
+field mean 67.5
+field stddev 10.606601717798
+field min 60
+field max 75
+field sum 135
+field sqrsum 9225
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S21 hopCount:stats
+field count 2
+field mean 58.5
+field stddev 10.606601717798
+field min 51
+field max 66
+field sum 117
+field sqrsum 6957
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S22 hopCount:stats
+field count 2
+field mean 82.5
+field stddev 10.606601717798
+field min 75
+field max 90
+field sum 165
+field sqrsum 13725
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S23 hopCount:stats
+field count 2
+field mean 68.5
+field stddev 10.606601717798
+field min 61
+field max 76
+field sum 137
+field sqrsum 9497
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+statistic EarthquakeDetector.S24 hopCount:stats
+field count 2
+field mean 57.5
+field stddev 10.606601717798
+field min 50
+field max 65
+field sum 115
+field sqrsum 6725
+attr interpolationmode none
+attr source arrival
+attr title "energy, stats"
+

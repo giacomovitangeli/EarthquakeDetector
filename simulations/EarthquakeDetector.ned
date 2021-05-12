@@ -35,6 +35,7 @@ network EarthquakeDetector
         @display("bgb=1000,1000;bgg=100,1,grey95");
         //@figure[title](type=label; pos=0,-1; anchor=sw; color=darkblue);
 
+		
     types:
         channel C extends ned.DelayChannel
         {

@@ -45,12 +45,15 @@ void Slave::initialize()
 {
     // Initialize variables
 
+        arrivalSignal = registerSignal("arrival");
         numSent = 0;
         numReceived = 0;
         WATCH(numSent);
         WATCH(numReceived);
         state = new State();
         state->printPosition();
+        int b = state->getBatteryState();
+        emit(arrivalSignal, b);
         numCH = 8;
         numCHnear = 1;
         numSN = 2;
@@ -62,6 +65,7 @@ void Slave::initialize()
 
         rowNet=0;
         colNet=0;
+        sendEnergy = 10;
 }
 
 void Slave::handleMessage(cMessage *cmsg)
@@ -136,6 +140,11 @@ void Slave::handleMessage(cMessage *cmsg)
                 if(!isClusterHead)
                 {
                 numSent++;
+                state->decBatteryState(sendEnergy);
+                //energyVector.record(state->getBatteryState());
+                //energyStats.collect(state->getBatteryState());
+                int b = state->getBatteryState();
+                emit(arrivalSignal, b);
                 send(msg, "gate$o", 1);
                 }else if(isClusterHead)
                 {
@@ -195,6 +204,11 @@ void Slave::handleMessage(cMessage *cmsg)
                     Message *ackCHnear = generateMessage(kindAckCHnear);
                     numSent++;
                     float delay = (float)(intuniform(10, 90))/(float)100000;
+                    state->decBatteryState(sendEnergy);
+                    //energyVector.record(state->getBatteryState());
+                    //energyStats.collect(state->getBatteryState());
+                    int b = state->getBatteryState();
+                    emit(arrivalSignal, b);
                     sendDelayed(ackCHnear, delay,"gate$o", gate);
                 }
             }
@@ -223,7 +237,12 @@ void Slave::handleMessage(cMessage *cmsg)
                     Message *ack = generateMessage(kindAck);
                     float delay = (float)(intuniform(100, 200))/(float)100000;
                     EV << "Slave"<<id<<" have delay: "<<delay<<"\n";
-                    //scheduleAt(delay, ack);
+                    numSent++;
+                    state->decBatteryState(sendEnergy);
+                    //energyVector.record(state->getBatteryState());
+                    //energyStats.collect(state->getBatteryState());
+                    int b = state->getBatteryState();
+                                    emit(arrivalSignal, b);
                     sendDelayed(ack, delay,"gate$o", 0);
 
                 }
@@ -239,6 +258,11 @@ void Slave::handleMessage(cMessage *cmsg)
 
             if(isClusterHead){
                 numSent++;
+                state->decBatteryState(sendEnergy);
+                //energyVector.record(state->getBatteryState());
+                //energyStats.collect(state->getBatteryState());
+                int b = state->getBatteryState();
+                                emit(arrivalSignal, b);
                 send(msg, "gate$o", 0); //gate out verso il master
             }
         }else {
@@ -305,6 +329,11 @@ void Slave::broadcastInCluster(Message *msg)
         }
         EV << "Broadcasting message " << copy <<" in Cluster"<< id << " on gate[" << i+3 << "]\n";
         numSent++;
+        state->decBatteryState(sendEnergy);
+        //energyVector.record(state->getBatteryState());
+        //energyStats.collect(state->getBatteryState());
+        int b = state->getBatteryState();
+                        emit(arrivalSignal, b);
         send(copy, "gate$o", i+3);
     }
     delete msg;
@@ -323,6 +352,11 @@ void Slave::broadcastToNearCH(Message *msg)
         }*/
         EV << "Broadcasting message " << copy <<" to near CH from S"<< id << " on gate[" << i+1 << "]\n";
         numSent++;
+        state->decBatteryState(sendEnergy);
+        //energyVector.record(state->getBatteryState());
+        //energyStats.collect(state->getBatteryState());
+        int b = state->getBatteryState();
+        emit(arrivalSignal, b);
         send(copy, "gate$o", i+1);
     }
     delete msg;
@@ -425,6 +459,23 @@ void Slave::printNetwork() const
         EV<<"\n";
     }
 }
+/*
+void Slave::finish()
+{
+    if(isClusterHead)
+    {
+        EV << "Sent:     " << numSent << endl;
+        EV << "Received: " << numReceived << endl;
+        EV << "Energy, min:    " << energyStats.getMin() << endl;
+        EV << "Energy, max:    " << energyStats.getMax() << endl;
+        EV << "Energy, mean:   " << energyStats.getMean() << endl;
+        EV << "Energy, stddev: " << energyStats.getStddev() << endl;
 
+        recordScalar("#sent", numSent);
+        recordScalar("#received", numReceived);
+
+        energyStats.recordAs("energy");
+    }
+}*/
 
 }; // namespace

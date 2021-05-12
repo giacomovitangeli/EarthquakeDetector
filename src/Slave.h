@@ -35,6 +35,9 @@ class Slave : public cSimpleModule{
     private:
         long numSent;
         long numReceived;
+        simsignal_t arrivalSignal;
+        //cLongHistogram energyStats;
+        //cOutVector energyVector;
         int id;
         State* state;
         bool isClusterHead = false;
@@ -48,6 +51,7 @@ class Slave : public cSimpleModule{
         int** network;
         int rowNet;
         int colNet;
+        int sendEnergy;
 
     protected:
         virtual Message *generateMessage(int kindMsg);
@@ -55,6 +59,7 @@ class Slave : public cSimpleModule{
         virtual void broadcastToNearCH(Message *msg);
         virtual void forwardMessage(Message *msg);
         virtual void initialize() override;
+        //virtual void finish() override;
         virtual void handleMessage(cMessage *cmsg) override;
         virtual void refreshDisplay() const override;
         virtual int** createNetwork(int **&net, int row, int col);

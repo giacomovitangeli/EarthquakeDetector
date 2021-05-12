@@ -22,6 +22,9 @@ package earthquakedetector;
 simple Slave
 {
     parameters:
+        @signal[arrival](type="int");
+        @statistic[hopCount](title="energy"; source="arrival"; record=vector,stats; interpolationmode=none);
+        
         @display("i=block/routing");
     gates:
         inout gate[];  // declare two way connections
