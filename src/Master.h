@@ -39,7 +39,7 @@ class Master : public cSimpleModule{
         int** network;
         int rowNet;
         int colNet;
-
+        int numCH; //number of Cluster Head
 
     protected:
         virtual Message *generateMessage(int kindMsg);

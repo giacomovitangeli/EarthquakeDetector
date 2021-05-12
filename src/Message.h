@@ -37,6 +37,7 @@ class Message : public ::omnetpp::cMessage
     int netdetId;
     float pos[3]{0};
     int gateCHConfig[4]{0};
+    int batterySrc;
 
   private:
     void copy(const Message& other);
@@ -67,6 +68,8 @@ class Message : public ::omnetpp::cMessage
     virtual void setPos(float pos[]);
     virtual int * getGateCHConfig();
     virtual void setGateCHConfig(int gateCHConfig[]);
+    virtual int getBatterySrc() const;
+    virtual void setBatterySrc(int battery);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const Message& obj) {obj.parsimPack(b);}

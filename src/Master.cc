@@ -52,6 +52,7 @@ void Master::initialize()
         int kindPower = 0; //power message
         int kindNetDet = 1; //request netdet message
 
+        numCH = 8;
         rowNet = 25;
         colNet = 25;
         network = createNetwork(network, rowNet, colNet);
@@ -94,11 +95,23 @@ void Master::handleMessage(cMessage *cmsg)
                 for(int i=0; i<3; i++)
                     this->slavePos[row][i] = msg->getPos()[i];
 
+                int idSrc = msg->getSource();
+                int batterySrc = msg->getBatterySrc();
                 delete msg;
                 numReceived++;
                 bubble("ACK ARRIVED!");
                 printSlavePos();
                 printNetwork();
+
+                if(batterySrc < 50)
+                {
+                    int kindPower = 0; //power message
+                    Message *power = generateMessage(kindPower);
+                    numSent++;
+                    int gate = idSrc--;
+                    sendDelayed(power, 0.0,"gate$o", gate);
+                }
+
             }
         }
         else if(msg->getDestination() == 1000000){

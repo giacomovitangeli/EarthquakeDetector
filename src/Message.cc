@@ -295,6 +295,16 @@ void Message::setGateCHConfig(int gateCHConfig[])
         }
 }
 
+int Message::getBatterySrc() const
+{
+    return this->batterySrc;
+}
+
+void Message::setBatterySrc(int battery)
+{
+    this->batterySrc = battery;
+}
+
 int Message::getHopCount() const
 {
     return this->hopCount;

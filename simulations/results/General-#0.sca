@@ -1,14 +1,14 @@
 version 2
-run General-0-20210512-19:19:50-27981
+run General-0-20210512-22:51:06-32009
 attr configname General
-attr datetime 20210512-19:19:50
+attr datetime 20210512-22:51:06
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network EarthquakeDetector
-attr processid 27981
+attr processid 32009
 attr repetition 0
 attr replication #0
 attr resultdir results

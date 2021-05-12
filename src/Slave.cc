@@ -242,7 +242,7 @@ void Slave::handleMessage(cMessage *cmsg)
                     //energyVector.record(state->getBatteryState());
                     //energyStats.collect(state->getBatteryState());
                     int b = state->getBatteryState();
-                                    emit(arrivalSignal, b);
+                    emit(arrivalSignal, b);
                     sendDelayed(ack, delay,"gate$o", 0);
 
                 }
@@ -262,7 +262,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 //energyVector.record(state->getBatteryState());
                 //energyStats.collect(state->getBatteryState());
                 int b = state->getBatteryState();
-                                emit(arrivalSignal, b);
+                emit(arrivalSignal, b);
                 send(msg, "gate$o", 0); //gate out verso il master
             }
         }else {
@@ -308,6 +308,7 @@ Message *Slave::generateMessage(int kindMsg)
     if(isClusterHead)
         msg->setPos(state->getPosition());
         msg->setGateCHConfig(gateCHConfig);
+        msg->setBatterySrc(state->getBatteryState());
     return msg;
 }
 
