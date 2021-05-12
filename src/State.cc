@@ -18,7 +18,7 @@
 namespace earthquakedetector {
 
 State::State() {
-    batteryState = intuniform(0, 75);
+    batteryState = intuniform(50, 75);
     for(int i=0; i<3; i++)
         position[i] = (float)intuniform(1, 1000)/10;
 }
@@ -27,12 +27,26 @@ State::~State() {
 
 }
 
-void State::setBatteryState(float b){
+void State::setBatteryState(int b){
     batteryState = b;
+    if(batteryState > 100)
+        batteryState = 100;
 }
 
 float State::getBatteryState(){
     return batteryState;
+}
+
+void State::decBatteryState(int b){
+    batteryState -= b;
+    if(batteryState < 0)
+        batteryState = 0;
+}
+
+void State::incBatteryState(int b){
+    batteryState += b;
+    if(batteryState > 100)
+        batteryState = 100;
 }
 
 void State::setPosition(float pos[]){

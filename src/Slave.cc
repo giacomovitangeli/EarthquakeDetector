@@ -74,16 +74,10 @@ void Slave::handleMessage(cMessage *cmsg)
 
             if(msg->getKind() == 0) //kind == 0 -> power
             {
-                int battery = state->getBatteryState();
-                battery += 25;
-                if(battery > 100)
-                    battery = 100;
-                state->setBatteryState(battery);
-
+                state->incBatteryState(25);//increase battery level by 25%
                 delete msg;
                 bubble("Power Arrived! +25%");
                 EV << "Battery state: " << state->getBatteryState() << "%"<<"\n";
-
             }
             else if(msg->getKind() == 1) //kind == 1 -> net detection
             {
@@ -104,14 +98,13 @@ void Slave::handleMessage(cMessage *cmsg)
                 //inoltro la req netdet ai sottonodi
                 int kindNetDetsn = 3; //kind net det subnode
                 Message *reqNetDetsn = generateMessage(kindNetDetsn);
-                scheduleAt(0.1, reqNetDetsn);
-
+                scheduleAt(0.015, reqNetDetsn);
             }
         }else if(msg->getDestination() == 2000000){ //dest == 2000000 --> broadcast in cluster
 
             if(msg->getKind() == 3)
             {
-                if(isClusterHead)
+                if(isClusterHead && msg->isSelfMessage())
                 {
                     broadcastInCluster(msg);
 
@@ -130,7 +123,7 @@ void Slave::handleMessage(cMessage *cmsg)
                     //EV << "Sub-Node "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
                     int kindAcksn = 5; //ack sub-nodes
                     Message *acksn = generateMessage(kindAcksn);
-                    float delay = (float)(intuniform(100, 1000))/(float)1000;
+                    float delay = (float)(intuniform(2000, 2500))/(float)100000;
                     EV << "Sub-Node "<<id<<" have delay: "<<delay<<"\n";
                     scheduleAt(delay, acksn);
                 }
@@ -157,11 +150,12 @@ void Slave::handleMessage(cMessage *cmsg)
 
                         bubble("ALL ACK sn Arrived!");
 
-                        //todo inviare getID ai CH vicini in broadcast
+                        //inviare getID ai CH vicini in broadcast
                         int kindReqCHnear = 6; //req CH near
                         Message *reqCHnear = generateMessage(kindReqCHnear);
-                        float delay = (float)(intuniform(50, 1000))/(float)100;
-                        scheduleAt(delay, reqCHnear);//fixme check delay time
+                        float delay = (float)(intuniform(3000, 3500))/(float)100000;
+                        scheduleAt(delay, reqCHnear);
+
                     }
                 }
             }
@@ -200,11 +194,8 @@ void Slave::handleMessage(cMessage *cmsg)
                     int kindAckCHnear = 7; //ack CHnear
                     Message *ackCHnear = generateMessage(kindAckCHnear);
                     numSent++;
-                    send(ackCHnear, "gate$o", gate);
-
-                    //todo schedulare in time random
-                    //float delay = (float)(intuniform(0, 1000))/(float)1000;
-                    //scheduleAt(delay, ackCHnear);
+                    float delay = (float)(intuniform(10, 90))/(float)100000;
+                    sendDelayed(ackCHnear, delay,"gate$o", gate);
                 }
             }
 
@@ -230,9 +221,10 @@ void Slave::handleMessage(cMessage *cmsg)
                     //risposta al master, inviata dopo ACK CH vicini
                     int kindAck = 2; //ack con position e gateConfig
                     Message *ack = generateMessage(kindAck);
-                    float delay = (float)(intuniform(100, 1000))/(float)50;
+                    float delay = (float)(intuniform(100, 200))/(float)100000;
                     EV << "Slave"<<id<<" have delay: "<<delay<<"\n";
-                    scheduleAt(delay, ack);
+                    //scheduleAt(delay, ack);
+                    sendDelayed(ack, delay,"gate$o", 0);
 
                 }
             }

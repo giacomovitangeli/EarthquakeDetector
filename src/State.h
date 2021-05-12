@@ -32,8 +32,10 @@ private:
 public:
     State();
     virtual ~State();
-    void setBatteryState(float b);
+    void setBatteryState(int b);
     float getBatteryState();
+    void decBatteryState(int b);
+    void incBatteryState(int b);
     void setPosition(float pos[]);
     float* getPosition();
     void printPosition();
