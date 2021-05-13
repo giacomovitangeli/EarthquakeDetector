@@ -45,7 +45,7 @@ void Slave::initialize()
 {
     // Initialize variables
 
-        arrivalSignal = registerSignal("arrival");
+        energySignal = registerSignal("energy");
         numSent = 0;
         numReceived = 0;
         WATCH(numSent);
@@ -53,7 +53,7 @@ void Slave::initialize()
         state = new State();
         state->printPosition();
         int b = state->getBatteryState();
-        emit(arrivalSignal, b);
+        emit(energySignal, b);
         numCH = 8;
         numCHnear = 1;
         numSN = 2;
@@ -82,7 +82,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 delete msg;
                 bubble("Power Arrived! +25%");
                 int b = state->getBatteryState();
-                emit(arrivalSignal, b);
+                emit(energySignal, b);
                 EV << "Battery state powered: " << state->getBatteryState() << "%"<<"\n";
             }
             else if(msg->getKind() == 1) //kind == 1 -> net detection
@@ -146,7 +146,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 //energyVector.record(state->getBatteryState());
                 //energyStats.collect(state->getBatteryState());
                 int b = state->getBatteryState();
-                emit(arrivalSignal, b);
+                emit(energySignal, b);
                 send(msg, "gate$o", 1);
                 }else if(isClusterHead)
                 {
@@ -205,12 +205,12 @@ void Slave::handleMessage(cMessage *cmsg)
                     int kindAckCHnear = 7; //ack CHnear
                     Message *ackCHnear = generateMessage(kindAckCHnear);
                     numSent++;
-                    float delay = (float)(intuniform(10, 90))/(float)100000;
+                    float delay = (float)(intuniform(100, 500))/(float)100000;
                     state->decBatteryState(sendEnergy);
                     //energyVector.record(state->getBatteryState());
                     //energyStats.collect(state->getBatteryState());
                     int b = state->getBatteryState();
-                    emit(arrivalSignal, b);
+                    emit(energySignal, b);
                     sendDelayed(ackCHnear, delay,"gate$o", gate);
                 }
             }
@@ -244,7 +244,7 @@ void Slave::handleMessage(cMessage *cmsg)
                     //energyVector.record(state->getBatteryState());
                     //energyStats.collect(state->getBatteryState());
                     int b = state->getBatteryState();
-                    emit(arrivalSignal, b);
+                    emit(energySignal, b);
                     sendDelayed(ack, delay,"gate$o", 0);
 
                 }
@@ -264,7 +264,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 //energyVector.record(state->getBatteryState());
                 //energyStats.collect(state->getBatteryState());
                 int b = state->getBatteryState();
-                emit(arrivalSignal, b);
+                emit(energySignal, b);
                 send(msg, "gate$o", 0); //gate out verso il master
             }
         }else {
@@ -336,7 +336,7 @@ void Slave::broadcastInCluster(Message *msg)
         //energyVector.record(state->getBatteryState());
         //energyStats.collect(state->getBatteryState());
         int b = state->getBatteryState();
-                        emit(arrivalSignal, b);
+        emit(energySignal, b);
         send(copy, "gate$o", i+3);
     }
     delete msg;
@@ -359,7 +359,7 @@ void Slave::broadcastToNearCH(Message *msg)
         //energyVector.record(state->getBatteryState());
         //energyStats.collect(state->getBatteryState());
         int b = state->getBatteryState();
-        emit(arrivalSignal, b);
+        emit(energySignal, b);
         send(copy, "gate$o", i+1);
     }
     delete msg;
@@ -462,23 +462,5 @@ void Slave::printNetwork() const
         EV<<"\n";
     }
 }
-/*
-void Slave::finish()
-{
-    if(isClusterHead)
-    {
-        EV << "Sent:     " << numSent << endl;
-        EV << "Received: " << numReceived << endl;
-        EV << "Energy, min:    " << energyStats.getMin() << endl;
-        EV << "Energy, max:    " << energyStats.getMax() << endl;
-        EV << "Energy, mean:   " << energyStats.getMean() << endl;
-        EV << "Energy, stddev: " << energyStats.getStddev() << endl;
-
-        recordScalar("#sent", numSent);
-        recordScalar("#received", numReceived);
-
-        energyStats.recordAs("energy");
-    }
-}*/
 
 }; // namespace

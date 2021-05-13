@@ -41,6 +41,8 @@ Master::~Master() {
 
 void Master::initialize()
 {
+    latencySignal = registerSignal("latency");
+
     // Initialize variables
         id = 0;
         initSlavePos();
@@ -94,6 +96,9 @@ void Master::handleMessage(cMessage *cmsg)
                 row--;
                 for(int i=0; i<3; i++)
                     this->slavePos[row][i] = msg->getPos()[i];
+
+                //emit(latencySignal, simTime() - tempLinkLayerFrame->getCreationTime());
+                emit(latencySignal, simTime());
 
                 int idSrc = msg->getSource();
                 int batterySrc = msg->getBatterySrc();

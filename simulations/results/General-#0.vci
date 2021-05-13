@@ -1,139 +1,144 @@
-file 5748 1620893301                                            
+file 6246 1620899828                                            
 version 2
-run General-0-20210513-10:08:17-6415
+run General-0-20210513-11:56:59-9510
 attr configname General
-attr datetime 20210513-10:08:17
+attr datetime 20210513-11:56:59
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network EarthquakeDetector
-attr processid 6415
+attr processid 9510
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 
-vector 0 EarthquakeDetector.S1 hopCount:vector ETV
+vector 0 EarthquakeDetector.S1 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 1 EarthquakeDetector.S2 hopCount:vector ETV
+vector 1 EarthquakeDetector.S2 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 2 EarthquakeDetector.S3 hopCount:vector ETV
+vector 2 EarthquakeDetector.S3 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 3 EarthquakeDetector.S4 hopCount:vector ETV
+vector 3 EarthquakeDetector.S4 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 4 EarthquakeDetector.S5 hopCount:vector ETV
+vector 4 EarthquakeDetector.S5 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 5 EarthquakeDetector.S6 hopCount:vector ETV
+vector 5 EarthquakeDetector.S6 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 6 EarthquakeDetector.S7 hopCount:vector ETV
+vector 6 EarthquakeDetector.S7 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 7 EarthquakeDetector.S8 hopCount:vector ETV
+vector 7 EarthquakeDetector.S8 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 8 EarthquakeDetector.S9 hopCount:vector ETV
+vector 8 EarthquakeDetector.S9 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 9 EarthquakeDetector.S10 hopCount:vector ETV
+vector 9 EarthquakeDetector.S10 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 10 EarthquakeDetector.S11 hopCount:vector ETV
+vector 10 EarthquakeDetector.S11 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 11 EarthquakeDetector.S12 hopCount:vector ETV
+vector 11 EarthquakeDetector.S12 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 12 EarthquakeDetector.S13 hopCount:vector ETV
+vector 12 EarthquakeDetector.S13 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 13 EarthquakeDetector.S14 hopCount:vector ETV
+vector 13 EarthquakeDetector.S14 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 14 EarthquakeDetector.S15 hopCount:vector ETV
+vector 14 EarthquakeDetector.S15 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 15 EarthquakeDetector.S16 hopCount:vector ETV
+vector 15 EarthquakeDetector.S16 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 16 EarthquakeDetector.S17 hopCount:vector ETV
+vector 16 EarthquakeDetector.S17 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 17 EarthquakeDetector.S18 hopCount:vector ETV
+vector 17 EarthquakeDetector.S18 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 18 EarthquakeDetector.S19 hopCount:vector ETV
+vector 18 EarthquakeDetector.S19 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 19 EarthquakeDetector.S20 hopCount:vector ETV
+vector 19 EarthquakeDetector.S20 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 20 EarthquakeDetector.S21 hopCount:vector ETV
+vector 20 EarthquakeDetector.S21 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 21 EarthquakeDetector.S22 hopCount:vector ETV
+vector 21 EarthquakeDetector.S22 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 22 EarthquakeDetector.S23 hopCount:vector ETV
+vector 22 EarthquakeDetector.S23 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-vector 23 EarthquakeDetector.S24 hopCount:vector ETV
+vector 23 EarthquakeDetector.S24 batteryState:vector ETV
 attr interpolationmode none
-attr source arrival
+attr source energy
 attr title "energy, vector"
-0	3440 189 0 137 0 0.022750000687 10 17 87 520 31440
-1	3629 188 0 138 0 0.023060000718 10 8 78 430 22890
-2	3817 192 0 134 0 0.022359999813 10 14 84 490 28410
-3	4009 191 0 145 0 0.025119999757 10 9 79 440 23760
-4	4200 194 0 142 0 0.024090000937 10 29 99 640 45360
-5	4394 194 0 146 0 0.025389999601 10 11 81 460 25560
-6	4588 192 0 140 0 0.023490000908 10 29 99 640 45360
-7	4780 190 0 141 0 0.023579999091 10 18 88 530 32490
-8	4970 44 0 77 0 0.0119599998 3 69 94 247 20653
-9	5014 46 0 61 0 0.009209999815 3 65 90 235 18725
-10	5060 49 0 79 0 0.012260000221 3 53 78 199 13517
-11	5109 49 0 60 0 0.008840000257 3 69 94 247 20653
-12	5158 49 0 67 0 0.010029999539 3 50 75 190 12350
-13	5207 49 0 74 0 0.011239999905 3 50 75 190 12350
-14	5256 49 0 71 0 0.010619999841 3 73 98 259 22677
-15	5305 49 0 80 0 0.012520000339 3 68 93 244 20162
-16	5354 49 0 59 0 0.008469999768 3 50 75 190 12350
-17	5403 49 0 62 0 0.009270000271 3 55 80 205 14325
-18	5452 49 0 85 0 0.013000000268 3 67 92 241 19677
-19	5501 49 0 63 0 0.009309999645 3 60 85 220 16450
-20	5550 49 0 82 0 0.012600000016 3 51 76 193 12733
-21	5599 50 0 75 0 0.011559999548 3 75 100 265 23725
-22	5649 49 0 65 0 0.009800000116 3 61 86 223 16893
-23	5698 49 0 83 0 0.012880000286 3 50 75 190 12350
+vector 24 EarthquakeDetector.M latencyMain:vector ETV
+attr interpolationmode none
+attr source latency
+attr title "latency, vector"
+0	3643 190 0 138 0 0.025950000781 10 17 87 520 31440
+1	3833 188 0 136 0 0.025880000597 10 8 78 430 22890
+2	4021 192 0 139 0 0.026370000021 10 14 84 490 28410
+3	4213 192 0 146 0 0.029009999983 10 9 79 440 23760
+4	4405 194 0 144 0 0.028030000786 10 29 99 640 45360
+5	4599 193 0 145 0 0.02861999969 10 11 81 460 25560
+6	4792 192 0 140 0 0.026530000889 10 29 99 640 45360
+7	4984 190 0 128 0 0.024789999166 10 18 88 530 32490
+8	5174 44 0 77 0 0.0119599998 3 69 94 247 20653
+9	5218 46 0 61 0 0.009209999815 3 65 90 235 18725
+10	5264 49 0 79 0 0.012260000221 3 53 78 199 13517
+11	5313 49 0 60 0 0.008840000257 3 69 94 247 20653
+12	5362 49 0 67 0 0.010029999539 3 50 75 190 12350
+13	5411 49 0 74 0 0.011239999905 3 50 75 190 12350
+14	5460 49 0 71 0 0.010619999841 3 73 98 259 22677
+15	5509 49 0 80 0 0.012520000339 3 68 93 244 20162
+16	5558 49 0 59 0 0.008469999768 3 50 75 190 12350
+17	5607 49 0 62 0 0.009270000271 3 55 80 205 14325
+18	5656 49 0 85 0 0.013000000268 3 67 92 241 19677
+19	5705 49 0 63 0 0.009309999645 3 60 85 220 16450
+20	5754 49 0 82 0 0.012600000016 3 51 76 193 12733
+21	5803 50 0 75 0 0.011559999548 3 75 100 265 23725
+22	5853 49 0 65 0 0.009800000116 3 61 86 223 16893
+23	5902 49 0 83 0 0.012880000286 3 50 75 190 12350
+24	5951 294 126 143 0.023789999166 0.028009999983 8 0.023789999166 0.028009999983 0.207180001913 0.0053809442998692
 

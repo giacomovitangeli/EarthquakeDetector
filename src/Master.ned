@@ -22,6 +22,9 @@ package earthquakedetector;
 simple Master
 {
     parameters:
+        @signal[latency](type="int");
+        @statistic[latencyMain](title="latency"; source="latency"; record=vector,stats; interpolationmode=none);
+         
         @display("i=block/routing");
     gates:
         inout gate[];  // declare two way connections

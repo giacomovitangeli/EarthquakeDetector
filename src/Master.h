@@ -33,6 +33,7 @@ class Master : public cSimpleModule{
     private:
         long numSent;
         long numReceived;
+        simsignal_t latencySignal;
         int id;
         bool usability;
         float slavePos[8][3];
