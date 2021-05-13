@@ -107,16 +107,14 @@ void Master::handleMessage(cMessage *cmsg)
                 bubble("ACK ARRIVED!");
                 printSlavePos();
                 printNetwork();
-                EV << "Battery state: " << batterySrc << "%"<<"\n";
+                //EV << "Battery state: " << batterySrc << "%"<<"\n";
 
-                if(batterySrc < 50)
-                {
-                    int kindPower = 0; //power message
-                    Message *power = generateMessage(kindPower);
-                    numSent++;
-                    int gate = idSrc-1;
-                    sendDelayed(power, 0.0,"gate$o", gate);
-                }
+                int kindPower = 0; //power message
+                Message *power = generateMessage(kindPower);
+                numSent++;
+                power->setBatterySrc(batterySrc);
+                int gate = idSrc-1;
+                sendDelayed(power, 0.0,"gate$o", gate);
 
                 if(numCH == numReceived)
                 {
@@ -152,14 +150,14 @@ Message *Master::generateMessage(int kindMsg)
             sprintf(msgname, "NetDet-master-to-all");
     }
 
-    //char msgname[20];
-    //sprintf(msgname, "msg-%d-to-%d", src, dest);
 
     // Create message object and set source and destination field.
     Message *msg = new Message(msgname);
     msg->setSource(src);
     msg->setDestination(dest);
     msg->setKind(kindMsg);
+    msg->setBatterySrc(25);
+
     return msg;
 }
 

@@ -78,12 +78,13 @@ void Slave::handleMessage(cMessage *cmsg)
 
             if(msg->getKind() == 0) //kind == 0 -> power
             {
-                state->incBatteryState(25);//increase battery level by 25%
-                delete msg;
-                bubble("Power Arrived! +25%");
-                int b = state->getBatteryState();
+                int b = msg->getBatterySrc();
+                state->incBatteryState(b);//increase battery level by 25%
+                bubble("Power Arrived!");
+                b = state->getBatteryState();
                 emit(energySignal, b);
-                EV << "Battery state powered: " << state->getBatteryState() << "%"<<"\n";
+                EV << "Battery state powered: " << b << "%"<<"\n";
+                delete msg;
             }
             else if(msg->getKind() == 1) //kind == 1 -> net detection
             {
@@ -143,8 +144,6 @@ void Slave::handleMessage(cMessage *cmsg)
                 {
                 numSent++;
                 state->decBatteryState(sendEnergy);
-                //energyVector.record(state->getBatteryState());
-                //energyStats.collect(state->getBatteryState());
                 int b = state->getBatteryState();
                 emit(energySignal, b);
                 send(msg, "gate$o", 1);
@@ -152,8 +151,6 @@ void Slave::handleMessage(cMessage *cmsg)
                 {
                     numReceived++;
                     numACKsn++;
-                    //this->network = sumMatrix(network, msg->getNetwork());
-                    //this->network[msg->getSource()][id] = 1;
                     delete msg;
                     bubble("ACK sn Arrived!");
 
@@ -207,8 +204,6 @@ void Slave::handleMessage(cMessage *cmsg)
                     numSent++;
                     float delay = (float)(intuniform(100, 500))/(float)100000;
                     state->decBatteryState(sendEnergy);
-                    //energyVector.record(state->getBatteryState());
-                    //energyStats.collect(state->getBatteryState());
                     int b = state->getBatteryState();
                     emit(energySignal, b);
                     sendDelayed(ackCHnear, delay,"gate$o", gate);
@@ -236,13 +231,12 @@ void Slave::handleMessage(cMessage *cmsg)
 
                     //risposta al master, inviata dopo ACK CH vicini
                     int kindAck = 2; //ack con position e gateConfig
+                    state->decBatteryState(sendEnergy);
                     Message *ack = generateMessage(kindAck);
                     float delay = (float)(intuniform(100, 200))/(float)100000;
                     EV << "Slave"<<id<<" have delay: "<<delay<<"\n";
                     numSent++;
-                    state->decBatteryState(sendEnergy);
-                    //energyVector.record(state->getBatteryState());
-                    //energyStats.collect(state->getBatteryState());
+
                     int b = state->getBatteryState();
                     emit(energySignal, b);
                     sendDelayed(ack, delay,"gate$o", 0);
@@ -261,8 +255,6 @@ void Slave::handleMessage(cMessage *cmsg)
             if(isClusterHead){
                 numSent++;
                 state->decBatteryState(sendEnergy);
-                //energyVector.record(state->getBatteryState());
-                //energyStats.collect(state->getBatteryState());
                 int b = state->getBatteryState();
                 emit(energySignal, b);
                 send(msg, "gate$o", 0); //gate out verso il master
@@ -307,10 +299,13 @@ Message *Slave::generateMessage(int kindMsg)
     msg->setDestination(dest);
     msg->setKind(kindMsg);
     //msg->setNet(network);
-    if(isClusterHead)
+    if(isClusterHead){
         msg->setPos(state->getPosition());
         msg->setGateCHConfig(gateCHConfig);
-        msg->setBatterySrc(state->getBatteryState());
+        if(msg->getKind() == 2){
+            msg->setBatterySrc((50-state->getBatteryState()));
+        }
+    }
     return msg;
 }
 
@@ -333,8 +328,6 @@ void Slave::broadcastInCluster(Message *msg)
         EV << "Broadcasting message " << copy <<" in Cluster"<< id << " on gate[" << i+3 << "]\n";
         numSent++;
         state->decBatteryState(sendEnergy);
-        //energyVector.record(state->getBatteryState());
-        //energyStats.collect(state->getBatteryState());
         int b = state->getBatteryState();
         emit(energySignal, b);
         send(copy, "gate$o", i+3);
@@ -356,8 +349,6 @@ void Slave::broadcastToNearCH(Message *msg)
         EV << "Broadcasting message " << copy <<" to near CH from S"<< id << " on gate[" << i+1 << "]\n";
         numSent++;
         state->decBatteryState(sendEnergy);
-        //energyVector.record(state->getBatteryState());
-        //energyStats.collect(state->getBatteryState());
         int b = state->getBatteryState();
         emit(energySignal, b);
         send(copy, "gate$o", i+1);
