@@ -81,7 +81,9 @@ void Slave::handleMessage(cMessage *cmsg)
                 state->incBatteryState(25);//increase battery level by 25%
                 delete msg;
                 bubble("Power Arrived! +25%");
-                EV << "Battery state: " << state->getBatteryState() << "%"<<"\n";
+                int b = state->getBatteryState();
+                emit(arrivalSignal, b);
+                EV << "Battery state powered: " << state->getBatteryState() << "%"<<"\n";
             }
             else if(msg->getKind() == 1) //kind == 1 -> net detection
             {
@@ -102,7 +104,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 //inoltro la req netdet ai sottonodi
                 int kindNetDetsn = 3; //kind net det subnode
                 Message *reqNetDetsn = generateMessage(kindNetDetsn);
-                scheduleAt(0.015, reqNetDetsn);
+                scheduleAt(0.004, reqNetDetsn);
             }
         }else if(msg->getDestination() == 2000000){ //dest == 2000000 --> broadcast in cluster
 
@@ -127,7 +129,7 @@ void Slave::handleMessage(cMessage *cmsg)
                     //EV << "Sub-Node "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
                     int kindAcksn = 5; //ack sub-nodes
                     Message *acksn = generateMessage(kindAcksn);
-                    float delay = (float)(intuniform(2000, 2500))/(float)100000;
+                    float delay = (float)(intuniform(800, 1300))/(float)100000;
                     EV << "Sub-Node "<<id<<" have delay: "<<delay<<"\n";
                     scheduleAt(delay, acksn);
                 }
@@ -162,7 +164,7 @@ void Slave::handleMessage(cMessage *cmsg)
                         //inviare getID ai CH vicini in broadcast
                         int kindReqCHnear = 6; //req CH near
                         Message *reqCHnear = generateMessage(kindReqCHnear);
-                        float delay = (float)(intuniform(3000, 3500))/(float)100000;
+                        float delay = (float)(intuniform(1500, 2000))/(float)100000;
                         scheduleAt(delay, reqCHnear);
 
                     }

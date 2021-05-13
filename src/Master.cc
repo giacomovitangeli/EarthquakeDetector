@@ -64,7 +64,7 @@ void Master::initialize()
 
         //NET DETECTION
         Message *requestNetDet = generateMessage(kindNetDet);
-        scheduleAt(0.01, requestNetDet);
+        scheduleAt(0.002, requestNetDet);
 
 }
 
@@ -102,14 +102,20 @@ void Master::handleMessage(cMessage *cmsg)
                 bubble("ACK ARRIVED!");
                 printSlavePos();
                 printNetwork();
+                EV << "Battery state: " << batterySrc << "%"<<"\n";
 
                 if(batterySrc < 50)
                 {
                     int kindPower = 0; //power message
                     Message *power = generateMessage(kindPower);
                     numSent++;
-                    int gate = idSrc--;
+                    int gate = idSrc-1;
                     sendDelayed(power, 0.0,"gate$o", gate);
+                }
+
+                if(numCH == numReceived)
+                {
+                    bubble("ALL ACK ARRIVED!");
                 }
 
             }
