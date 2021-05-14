@@ -47,6 +47,7 @@ void Slave::initialize()
 
         energySignal = registerSignal("energy");
         knowledgeSignal = registerSignal("knowledge");
+        interactivitySignal = registerSignal("interactivity");
         numSent = 0;
         numReceived = 0;
         numLost = 0;
@@ -77,6 +78,8 @@ void Slave::handleMessage(cMessage *cmsg)
         if(msg->getDestination() == 1000000) //dest == 1000000 -> broadcast
         {
             numReceived++;
+            //interactivity--;
+            //emit(interactivitySignal, interactivity);
 
             if(msg->getKind() == 0) //kind == 0 -> power
             {
@@ -84,7 +87,6 @@ void Slave::handleMessage(cMessage *cmsg)
 
                 state->incBatteryState(inc);//increase battery level by 25%
                 int b = state->getBatteryState();
-
                 emit(energySignal, b);
                 EV << "Battery state powered: " << b << "%"<<"  inc: "<<inc<<"\n";
                 delete msg;
@@ -128,6 +130,9 @@ void Slave::handleMessage(cMessage *cmsg)
                     EV << "Handling broadcast in cluster"<<id<<"\n";
                     bubble("Request NetDet Arrived!");
                     numReceived++;
+                    interactivity--;
+                    emit(interactivitySignal, interactivity);
+
                     fillNetwork();
                     printNetwork();
                     delete msg;
@@ -148,6 +153,9 @@ void Slave::handleMessage(cMessage *cmsg)
                 if(!isClusterHead)
                 {
                 numSent++;
+                interactivity++;
+                emit(interactivitySignal, interactivity);
+
                 state->decBatteryState(sendEnergy);
                 int b = state->getBatteryState();
                 emit(energySignal, b);
@@ -164,6 +172,9 @@ void Slave::handleMessage(cMessage *cmsg)
                     knowledge += 3;
                     emit(knowledgeSignal, knowledge);
                     numReceived++;
+                    interactivity--;
+                    emit(interactivitySignal, interactivity);
+
                     numACKsn++;
                     delete msg;
                     bubble("ACK sn Arrived!");
@@ -192,6 +203,8 @@ void Slave::handleMessage(cMessage *cmsg)
                     EV << "Handling broadcast To cluster near"<<id<<"\n";
                     bubble("RequestID to CH near Arrived!");
                     numReceived++;
+                    interactivity--;
+                    emit(interactivitySignal, interactivity);
 
                     int gate = 0;
 
@@ -215,6 +228,9 @@ void Slave::handleMessage(cMessage *cmsg)
                     int kindAckCHnear = 7; //ack CHnear
                     Message *ackCHnear = generateMessage(kindAckCHnear);
                     numSent++;
+                    interactivity++;
+                    emit(interactivitySignal, interactivity);
+
                     float delay = (float)(intuniform(100, 200))/(float)100000;
                     state->decBatteryState(sendEnergy);
                     int b = state->getBatteryState();
@@ -238,6 +254,9 @@ void Slave::handleMessage(cMessage *cmsg)
                 knowledge += 3;
                 emit(knowledgeSignal, knowledge);
                 numReceived++;
+                interactivity--;
+                emit(interactivitySignal, interactivity);
+
                 gateCHConfig[numACKch] = msg->getSource();
                 numACKch++;
 
@@ -258,6 +277,8 @@ void Slave::handleMessage(cMessage *cmsg)
                     float delay = (float)(intuniform(100, 200))/(float)100000;
                     EV << "Slave"<<id<<" have delay: "<<delay<<"\n";
                     numSent++;
+                    interactivity++;
+                    emit(interactivitySignal, interactivity);
 
                     int b = state->getBatteryState();
                     emit(energySignal, b);
@@ -282,6 +303,9 @@ void Slave::handleMessage(cMessage *cmsg)
 
             if(isClusterHead){
                 numSent++;
+                interactivity++;
+                emit(interactivitySignal, interactivity);
+
                 state->decBatteryState(sendEnergy);
                 int b = state->getBatteryState();
                 emit(energySignal, b);
@@ -358,6 +382,9 @@ void Slave::broadcastInCluster(Message *msg)
         }
         EV << "Broadcasting message " << copy <<" in Cluster"<< id << " on gate[" << i+3 << "]\n";
         numSent++;
+        interactivity++;
+        emit(interactivitySignal, interactivity);
+
         state->decBatteryState(sendEnergy);
         int b = state->getBatteryState();
         emit(energySignal, b);
@@ -367,7 +394,6 @@ void Slave::broadcastInCluster(Message *msg)
         if(copy->getIsLost())
             retransmitDelay = retransmitMsg(msg, retransmitDelay);
 
-        //fixme sim problem: S1 riceve sempre packet loss e gli altri no
         sendDelayed(copy, retransmitDelay, "gate$o", i+3);
     }
     delete msg;
@@ -386,6 +412,9 @@ void Slave::broadcastToNearCH(Message *msg)
         }*/
         EV << "Broadcasting message " << copy <<" to near CH from S"<< id << " on gate[" << i+1 << "]\n";
         numSent++;
+        interactivity++;
+        emit(interactivitySignal, interactivity);
+
         state->decBatteryState(sendEnergy);
         int b = state->getBatteryState();
         emit(energySignal, b);

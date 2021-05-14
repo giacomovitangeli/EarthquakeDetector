@@ -55,7 +55,8 @@ class Master : public cSimpleModule{
         virtual void printSlavePos() const;
         virtual int** createNetwork(int **&net, int row, int col);
         virtual void printNetwork() const;
-        virtual bool packetLoss();
+        virtual float retransmitMsg(Message *msg, float delay);
+
 };
 
 } /* namespace earthquakedetector */

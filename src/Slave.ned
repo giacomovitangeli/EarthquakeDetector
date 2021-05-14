@@ -26,7 +26,10 @@ simple Slave
         @statistic[batteryState](title="energy"; source="energy"; record=vector,stats; interpolationmode=none);
         
         @signal[knowledge](type="int");
-        @statistic[knowledgeNet](title="knowledge"; source="knowledge"; record=vector,stats; interpolationmode=none);
+        @statistic[knowledge](title="knowledge"; source="knowledge"; record=vector,stats; interpolationmode=none);
+        
+        @signal[interactivity](type="int");
+        @statistic[interactivity](title="interactivity"; source="interactivity"; record=vector,stats; interpolationmode=none);
         
         @display("i=block/routing");
     gates:

@@ -162,7 +162,7 @@ Message *Master::generateMessage(int kindMsg)
     msg->setKind(kindMsg);
     int b = 25;//default value
     msg->setBatterySrc(b);
-    msg->setIsLost(this->packetLoss());
+    msg->setIsLost(msg->packetLoss());
 
     return msg;
 }
@@ -188,27 +188,13 @@ void Master::broadcastMessage(Message *msg)
         network[id][k] = 1;
         k++;
         numSent++;
-/*
+
         float retransmitDelay = 0;
 
-        while(copy->getIsLost())//is lost
-        {
-            numLost++;
-            numSent++;
-            //state->decBatteryState(sendEnergy);
-            //int b = state->getBatteryState();
-            //emit(energySignal, b);
-            EV<<"Packet Loss \n";
-            bubble("Packet Loss");
-
-            copy->setIsLost(this->packetLoss());
-
-            retransmitDelay += (float)(intuniform(100, 200))/(float)100000;
-        }
+        if(copy->getIsLost() && copy->getKind() == 1)
+            retransmitDelay = retransmitMsg(msg, retransmitDelay);
 
         sendDelayed(copy, retransmitDelay, "gate$o", i);
-*/
-        send(copy, "gate$o", i);
     }
     delete msg;
 }
@@ -284,16 +270,24 @@ void Master::printNetwork() const
     }
 }
 
-bool Master::packetLoss()
+float Master::retransmitMsg(Message *msg, float delay)
 {
-    bool lost = false;
+    float retransmitDelay = delay;
+    numLost++;
+    numSent++;
+    //state->decBatteryState(sendEnergy);
+    //int b = state->getBatteryState();
+    //emit(energySignal, b);
+    EV<<"Packet Loss \n";
+    bubble("Packet Loss");
 
-    if(intuniform(1, 100)<10)//10% lost --> to try 1%
-    {
-        lost = true;
-    }
+    msg->setIsLost(msg->packetLoss());
+    retransmitDelay += (float)(intuniform(10, 100))/(float)100000;
 
-    return lost;
+    if(msg->getIsLost())
+        retransmitDelay = retransmitMsg(msg, retransmitDelay);
+
+    return retransmitDelay;
 }
 
 }; // namespace

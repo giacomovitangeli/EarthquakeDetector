@@ -28,6 +28,7 @@ using namespace omnetpp;
 namespace earthquakedetector {
 
 int knowledge = 0;
+int interactivity = 0;
 
 class Slave : public cSimpleModule{
     public:
@@ -35,14 +36,15 @@ class Slave : public cSimpleModule{
         virtual ~Slave();
 
     private:
+        simsignal_t energySignal;
+        simsignal_t knowledgeSignal;
+        simsignal_t interactivitySignal;
+        State* state;
         long numSent;
         long numReceived;
         long numLost;
-        simsignal_t energySignal;
-        simsignal_t knowledgeSignal;
-        int id;
-        State* state;
         bool isClusterHead = false;
+        int id;
         int numCH; //number of Cluster Head
         int numCHnear;
         int numSN;
