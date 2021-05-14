@@ -33,6 +33,7 @@ class Master : public cSimpleModule{
     private:
         long numSent;
         long numReceived;
+        long numLost;
         simsignal_t latencySignal;
         int id;
         bool usability;
@@ -53,9 +54,7 @@ class Master : public cSimpleModule{
         virtual void printSlavePos() const;
         virtual int** createNetwork(int **&net, int row, int col);
         virtual void printNetwork() const;
-
-
-
+        virtual bool packetLoss();
 };
 
 } /* namespace earthquakedetector */

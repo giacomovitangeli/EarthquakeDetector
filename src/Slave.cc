@@ -48,6 +48,7 @@ void Slave::initialize()
         energySignal = registerSignal("energy");
         numSent = 0;
         numReceived = 0;
+        numLost = 0;
         WATCH(numSent);
         WATCH(numReceived);
         state = new State();
@@ -149,7 +150,14 @@ void Slave::handleMessage(cMessage *cmsg)
                 state->decBatteryState(sendEnergy);
                 int b = state->getBatteryState();
                 emit(energySignal, b);
-                send(msg, "gate$o", 1);
+
+                float retransmitDelay = 0;
+
+                if(msg->getIsLost())
+                    retransmitDelay = retransmitMsg(msg, retransmitDelay);
+
+                sendDelayed(msg, retransmitDelay, "gate$o", 1);
+
                 }else if(isClusterHead)
                 {
                     numReceived++;
@@ -164,7 +172,7 @@ void Slave::handleMessage(cMessage *cmsg)
                         //inviare getID ai CH vicini in broadcast
                         int kindReqCHnear = 6; //req CH near
                         Message *reqCHnear = generateMessage(kindReqCHnear);
-                        float delay = (float)(intuniform(1500, 2000))/(float)100000;
+                        float delay = (float)(intuniform(2000, 2500))/(float)100000;
                         scheduleAt(delay, reqCHnear);
 
                     }
@@ -205,11 +213,18 @@ void Slave::handleMessage(cMessage *cmsg)
                     int kindAckCHnear = 7; //ack CHnear
                     Message *ackCHnear = generateMessage(kindAckCHnear);
                     numSent++;
-                    float delay = (float)(intuniform(100, 500))/(float)100000;
+                    float delay = (float)(intuniform(100, 200))/(float)100000;
                     state->decBatteryState(sendEnergy);
                     int b = state->getBatteryState();
                     emit(energySignal, b);
-                    sendDelayed(ackCHnear, delay,"gate$o", gate);
+
+                    float retransmitDelay = delay;
+
+                    if(ackCHnear->getIsLost())
+                        retransmitDelay = retransmitMsg(ackCHnear, retransmitDelay);
+
+
+                    sendDelayed(ackCHnear, retransmitDelay,"gate$o", gate);
                 }
             }
 
@@ -242,7 +257,13 @@ void Slave::handleMessage(cMessage *cmsg)
 
                     int b = state->getBatteryState();
                     emit(energySignal, b);
-                    sendDelayed(ack, delay,"gate$o", 0);
+
+                    float retransmitDelay = delay;
+
+                    if(ack->getIsLost())
+                        retransmitDelay = retransmitMsg(ack, retransmitDelay);
+
+                    sendDelayed(ack, retransmitDelay,"gate$o", 0);
 
                 }
             }
@@ -309,6 +330,9 @@ Message *Slave::generateMessage(int kindMsg)
             msg->setBatterySrc((50-state->getBatteryState()));
         }
     }
+
+    msg->setIsLost(msg->packetLoss());
+
     return msg;
 }
 
@@ -333,7 +357,14 @@ void Slave::broadcastInCluster(Message *msg)
         state->decBatteryState(sendEnergy);
         int b = state->getBatteryState();
         emit(energySignal, b);
-        send(copy, "gate$o", i+3);
+
+        float retransmitDelay = 0;
+
+        if(copy->getIsLost())
+            retransmitDelay = retransmitMsg(msg, retransmitDelay);
+
+        //fixme sim problem: S1 riceve sempre packet loss e gli altri no
+        sendDelayed(copy, retransmitDelay, "gate$o", i+3);
     }
     delete msg;
 }
@@ -354,7 +385,13 @@ void Slave::broadcastToNearCH(Message *msg)
         state->decBatteryState(sendEnergy);
         int b = state->getBatteryState();
         emit(energySignal, b);
-        send(copy, "gate$o", i+1);
+
+        float retransmitDelay = 0;
+
+        if(copy->getIsLost())
+            retransmitDelay = retransmitMsg(msg, retransmitDelay);
+
+        sendDelayed(copy, retransmitDelay,"gate$o", i+1);
     }
     delete msg;
 }
@@ -455,6 +492,26 @@ void Slave::printNetwork() const
         }
         EV<<"\n";
     }
+}
+
+float Slave::retransmitMsg(Message *msg, float delay)
+{
+    float retransmitDelay = delay;
+    numLost++;
+    numSent++;
+    state->decBatteryState(sendEnergy);
+    int b = state->getBatteryState();
+    emit(energySignal, b);
+    EV<<"Packet Loss \n";
+    bubble("Packet Loss");
+
+    msg->setIsLost(msg->packetLoss());
+    retransmitDelay += (float)(intuniform(10, 100))/(float)100000;
+
+    if(msg->getIsLost())
+        retransmitDelay = retransmitMsg(msg, retransmitDelay);
+
+    return retransmitDelay;
 }
 
 }; // namespace

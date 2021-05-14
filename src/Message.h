@@ -38,6 +38,7 @@ class Message : public ::omnetpp::cMessage
     float pos[3]{0};
     int gateCHConfig[4]{0};
     int batterySrc;
+    bool isLost;
 
   private:
     void copy(const Message& other);
@@ -70,6 +71,9 @@ class Message : public ::omnetpp::cMessage
     virtual void setGateCHConfig(int gateCHConfig[]);
     virtual int getBatterySrc() const;
     virtual void setBatterySrc(int battery);
+    virtual bool getIsLost() const;
+    virtual void setIsLost(bool lost);
+    virtual bool packetLoss();
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const Message& obj) {obj.parsimPack(b);}

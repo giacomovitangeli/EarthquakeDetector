@@ -35,6 +35,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <omnetpp.h>
 #include "Message.h"
 
 namespace omnetpp {
@@ -195,6 +196,7 @@ Message::Message(const char *name, short kind) : ::omnetpp::cMessage(name,kind)
     this->hopCount = 0;
     this->netdetId = 0;
     this->batterySrc = 0;
+    this->isLost = false;
 }
 
 Message::Message(const Message& other) : ::omnetpp::cMessage(other)
@@ -221,6 +223,7 @@ void Message::copy(const Message& other)
     this->hopCount = other.hopCount;
     this->netdetId = other.netdetId;
     this->batterySrc = other.batterySrc;
+    this->isLost = other.isLost;
 }
 
 void Message::parsimPack(omnetpp::cCommBuffer *b) const
@@ -231,6 +234,7 @@ void Message::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->hopCount);
     doParsimPacking(b,this->netdetId);
     doParsimPacking(b,this->batterySrc);
+    doParsimPacking(b,this->isLost);
 }
 
 void Message::parsimUnpack(omnetpp::cCommBuffer *b)
@@ -241,6 +245,7 @@ void Message::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->hopCount);
     doParsimUnpacking(b,this->netdetId);
     doParsimUnpacking(b,this->batterySrc);
+    doParsimUnpacking(b,this->isLost);
 
 }
 
@@ -310,6 +315,16 @@ void Message::setBatterySrc(int battery)
     this->batterySrc = battery;
 }
 
+bool Message::getIsLost() const
+{
+    return this->isLost;
+}
+
+void Message::setIsLost(bool lost)
+{
+    this->isLost = lost;
+}
+
 int Message::getHopCount() const
 {
     return this->hopCount;
@@ -318,6 +333,19 @@ int Message::getHopCount() const
 void Message::setHopCount(int hopCount)
 {
     this->hopCount = hopCount;
+}
+
+bool Message::packetLoss()
+{
+    bool lost = false;
+    int x = rand() % 100 + 1;
+
+    if(x<=1) //1% lost
+    {
+        lost = true;
+    }
+
+    return lost;
 }
 
 class MessageDescriptor : public omnetpp::cClassDescriptor

@@ -35,6 +35,7 @@ class Slave : public cSimpleModule{
     private:
         long numSent;
         long numReceived;
+        long numLost;
         simsignal_t energySignal;
         int id;
         State* state;
@@ -62,6 +63,7 @@ class Slave : public cSimpleModule{
         virtual int** createNetwork(int **&net, int row, int col);
         virtual void fillNetwork();
         virtual void printNetwork() const;
+        virtual float retransmitMsg(Message *msg, float delay);
 };
 
 } /* namespace earthquakedetector */

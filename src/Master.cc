@@ -49,6 +49,7 @@ void Master::initialize()
         //initNetwork();
         numSent = 0;
         numReceived = 0;
+        numLost = 0;
         WATCH(numSent);
         WATCH(numReceived);
 
@@ -160,6 +161,8 @@ Message *Master::generateMessage(int kindMsg)
     msg->setKind(kindMsg);
     int b = 25;//default value
     msg->setBatterySrc(b);
+    msg->setIsLost(this->packetLoss());
+
     return msg;
 }
 
@@ -184,6 +187,26 @@ void Master::broadcastMessage(Message *msg)
         network[id][k] = 1;
         k++;
         numSent++;
+/*
+        float retransmitDelay = 0;
+
+        while(copy->getIsLost())//is lost
+        {
+            numLost++;
+            numSent++;
+            //state->decBatteryState(sendEnergy);
+            //int b = state->getBatteryState();
+            //emit(energySignal, b);
+            EV<<"Packet Loss \n";
+            bubble("Packet Loss");
+
+            copy->setIsLost(this->packetLoss());
+
+            retransmitDelay += (float)(intuniform(100, 200))/(float)100000;
+        }
+
+        sendDelayed(copy, retransmitDelay, "gate$o", i);
+*/
         send(copy, "gate$o", i);
     }
     delete msg;
@@ -260,5 +283,16 @@ void Master::printNetwork() const
     }
 }
 
+bool Master::packetLoss()
+{
+    bool lost = false;
+
+    if(intuniform(1, 100)<10)//10% lost --> to try 1%
+    {
+        lost = true;
+    }
+
+    return lost;
+}
 
 }; // namespace
