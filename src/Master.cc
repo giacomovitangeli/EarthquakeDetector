@@ -51,14 +51,16 @@ void Master::initialize()
         numReceived = 0;
         WATCH(numSent);
         WATCH(numReceived);
-        int kindPower = 0; //power message
-        int kindNetDet = 1; //request netdet message
+
 
         numCH = 8;
         rowNet = 25;
         colNet = 25;
         network = createNetwork(network, rowNet, colNet);
         printNetwork();
+
+        int kindPower = 0; //power message
+        int kindNetDet = 1; //request netdet message
 
         //POWER to the slaves
         Message *power = generateMessage(kindPower);
@@ -101,7 +103,7 @@ void Master::handleMessage(cMessage *cmsg)
                 emit(latencySignal, simTime());
 
                 int idSrc = msg->getSource();
-                int batterySrc = msg->getBatterySrc();
+                int batterySrc = msg->getBatterySrc();//batteria richiesta dallo slave
                 delete msg;
                 numReceived++;
                 bubble("ACK ARRIVED!");
@@ -112,8 +114,8 @@ void Master::handleMessage(cMessage *cmsg)
                 int kindPower = 0; //power message
                 Message *power = generateMessage(kindPower);
                 numSent++;
-                power->setBatterySrc(batterySrc);
-                int gate = idSrc-1;
+                power->setBatterySrc(batterySrc);//batteria inviata allo slave, override default value
+                int gate = idSrc-1;//-1 because gate array start from 0, slaveID enum start from 1
                 sendDelayed(power, 0.0,"gate$o", gate);
 
                 if(numCH == numReceived)
@@ -156,8 +158,8 @@ Message *Master::generateMessage(int kindMsg)
     msg->setSource(src);
     msg->setDestination(dest);
     msg->setKind(kindMsg);
-    msg->setBatterySrc(25);
-
+    int b = 25;//default value
+    msg->setBatterySrc(b);
     return msg;
 }
 
@@ -165,7 +167,7 @@ Message *Master::generateMessage(int kindMsg)
 
 void Master::broadcastMessage(Message *msg)
 {
-    int n = 8; //number of cluster head
+    int n = numCH; //number of cluster head
     int k = 1;
     if(msg->getKind() == 0)// pwr msg
         n = gateSize("gate");

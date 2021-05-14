@@ -194,6 +194,7 @@ Message::Message(const char *name, short kind) : ::omnetpp::cMessage(name,kind)
     this->destination = 0;
     this->hopCount = 0;
     this->netdetId = 0;
+    this->batterySrc = 0;
 }
 
 Message::Message(const Message& other) : ::omnetpp::cMessage(other)
@@ -219,6 +220,7 @@ void Message::copy(const Message& other)
     this->destination = other.destination;
     this->hopCount = other.hopCount;
     this->netdetId = other.netdetId;
+    this->batterySrc = other.batterySrc;
 }
 
 void Message::parsimPack(omnetpp::cCommBuffer *b) const
@@ -228,6 +230,7 @@ void Message::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->destination);
     doParsimPacking(b,this->hopCount);
     doParsimPacking(b,this->netdetId);
+    doParsimPacking(b,this->batterySrc);
 }
 
 void Message::parsimUnpack(omnetpp::cCommBuffer *b)
@@ -237,6 +240,8 @@ void Message::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->destination);
     doParsimUnpacking(b,this->hopCount);
     doParsimUnpacking(b,this->netdetId);
+    doParsimUnpacking(b,this->batterySrc);
+
 }
 
 int Message::getSource() const

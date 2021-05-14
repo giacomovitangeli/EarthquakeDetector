@@ -78,13 +78,16 @@ void Slave::handleMessage(cMessage *cmsg)
 
             if(msg->getKind() == 0) //kind == 0 -> power
             {
-                int b = msg->getBatterySrc();
-                state->incBatteryState(b);//increase battery level by 25%
-                bubble("Power Arrived!");
-                b = state->getBatteryState();
+                int inc = msg->getBatterySrc();
+
+                state->incBatteryState(inc);//increase battery level by 25%
+                int b = state->getBatteryState();
+
                 emit(energySignal, b);
-                EV << "Battery state powered: " << b << "%"<<"\n";
+                EV << "Battery state powered: " << b << "%"<<"  inc: "<<inc<<"\n";
                 delete msg;
+                bubble("Power Arrived!");
+
             }
             else if(msg->getKind() == 1) //kind == 1 -> net detection
             {
