@@ -1,14 +1,14 @@
 version 2
-run General-0-20210514-17:38:21-22519
+run General-0-20210514-19:00:53-25048
 attr configname General
-attr datetime 20210514-17:38:21
+attr datetime 20210514-19:00:53
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network EarthquakeDetector
-attr processid 22519
+attr processid 25048
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -111,7 +111,39 @@ vector 23 EarthquakeDetector.S24 batteryState:vector ETV
 attr interpolationmode none
 attr source energy
 attr title "energy, vector"
-vector 24 EarthquakeDetector.M latencyMain:vector ETV
+vector 24 EarthquakeDetector.S1 knowledgeNet:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 25 EarthquakeDetector.S4 knowledgeNet:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 26 EarthquakeDetector.S5 knowledgeNet:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 27 EarthquakeDetector.S3 knowledgeNet:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 28 EarthquakeDetector.S7 knowledgeNet:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 29 EarthquakeDetector.S6 knowledgeNet:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 30 EarthquakeDetector.S8 knowledgeNet:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 31 EarthquakeDetector.S2 knowledgeNet:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 32 EarthquakeDetector.M latencyMain:vector ETV
 attr interpolationmode none
 attr source latency
 attr title "latency, vector"
@@ -243,12 +275,44 @@ attr title "latency, vector"
 23	0	0	56
 23	25	0.001	81
 23	73	0.011409999803	71
-24	128	0.026289999692	0.026289999692
-24	130	0.026849999416	0.026849999416
-24	131	0.02701000075	0.02701000075
-24	133	0.027580000318	0.027580000318
-24	138	0.028360000086	0.028360000086
-24	140	0.028649999735	0.028649999735
-24	143	0.029720000896	0.029720000896
-24	145	0.031060000157	0.031060000157
+24	65	0.010309999645	3
+24	90	0.014000000268	48
+24	121	0.025180000135	75
+24	126	0.025740000091	84
+25	66	0.010429999627	6
+25	78	0.012339999735	24
+25	127	0.026050000938	87
+25	129	0.026780000909	90
+26	67	0.010479999542	9
+26	71	0.011270000435	18
+26	110	0.02347999953	51
+26	116	0.02441999947	63
+27	69	0.010800000116	12
+27	89	0.013880000286	45
+27	115	0.024290000692	60
+27	117	0.02443000071	66
+28	70	0.011069999844	15
+28	85	0.012970000342	36
+28	120	0.025109999835	72
+28	125	0.025669999792	81
+29	76	0.011789999738	21
+29	87	0.013419999577	39
+29	119	0.024660000366	69
+29	124	0.025560000351	78
+30	79	0.012409999803	27
+30	83	0.012730000377	33
+30	111	0.02404999968	54
+30	114	0.024189999698	57
+31	81	0.012559999548	30
+31	88	0.013600000016	42
+31	134	0.027710000191	93
+31	137	0.028070000138	96
+32	128	0.026289999692	0.026289999692
+32	130	0.026849999416	0.026849999416
+32	131	0.02701000075	0.02701000075
+32	133	0.027580000318	0.027580000318
+32	138	0.028360000086	0.028360000086
+32	140	0.028649999735	0.028649999735
+32	143	0.029720000896	0.029720000896
+32	145	0.031060000157	0.031060000157
 

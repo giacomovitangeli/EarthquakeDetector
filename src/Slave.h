@@ -27,6 +27,8 @@ using namespace omnetpp;
 
 namespace earthquakedetector {
 
+int knowledge = 0;
+
 class Slave : public cSimpleModule{
     public:
         Slave();
@@ -37,6 +39,7 @@ class Slave : public cSimpleModule{
         long numReceived;
         long numLost;
         simsignal_t energySignal;
+        simsignal_t knowledgeSignal;
         int id;
         State* state;
         bool isClusterHead = false;

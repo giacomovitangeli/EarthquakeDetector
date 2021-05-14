@@ -106,6 +106,7 @@ void Master::handleMessage(cMessage *cmsg)
                 int idSrc = msg->getSource();
                 int batterySrc = msg->getBatterySrc();//batteria richiesta dallo slave
                 delete msg;
+
                 numReceived++;
                 bubble("ACK ARRIVED!");
                 printSlavePos();

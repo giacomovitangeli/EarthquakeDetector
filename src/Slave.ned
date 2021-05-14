@@ -25,6 +25,9 @@ simple Slave
         @signal[energy](type="int");
         @statistic[batteryState](title="energy"; source="energy"; record=vector,stats; interpolationmode=none);
         
+        @signal[knowledge](type="int");
+        @statistic[knowledgeNet](title="knowledge"; source="knowledge"; record=vector,stats; interpolationmode=none);
+        
         @display("i=block/routing");
     gates:
         inout gate[];  // declare two way connections

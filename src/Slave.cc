@@ -46,6 +46,7 @@ void Slave::initialize()
     // Initialize variables
 
         energySignal = registerSignal("energy");
+        knowledgeSignal = registerSignal("knowledge");
         numSent = 0;
         numReceived = 0;
         numLost = 0;
@@ -160,6 +161,8 @@ void Slave::handleMessage(cMessage *cmsg)
 
                 }else if(isClusterHead)
                 {
+                    knowledge += 3;
+                    emit(knowledgeSignal, knowledge);
                     numReceived++;
                     numACKsn++;
                     delete msg;
@@ -174,7 +177,6 @@ void Slave::handleMessage(cMessage *cmsg)
                         Message *reqCHnear = generateMessage(kindReqCHnear);
                         float delay = (float)(intuniform(2000, 2500))/(float)100000;
                         scheduleAt(delay, reqCHnear);
-
                     }
                 }
             }
@@ -233,6 +235,8 @@ void Slave::handleMessage(cMessage *cmsg)
             {
                 EV << "Handling broadcast To cluster near"<<id<<"\n";
                 bubble("ACK from CH near Arrived!");
+                knowledge += 3;
+                emit(knowledgeSignal, knowledge);
                 numReceived++;
                 gateCHConfig[numACKch] = msg->getSource();
                 numACKch++;
