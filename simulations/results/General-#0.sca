@@ -1,14 +1,14 @@
 version 2
-run General-0-20210514-20:59:33-27879
+run General-0-20210515-13:10:33-8413
 attr configname General
-attr datetime 20210514-20:59:33
+attr datetime 20210515-13:10:33
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network EarthquakeDetector
-attr processid 27879
+attr processid 8413
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -16,13 +16,13 @@ attr runnumber 0
 attr seedset 0
 
 statistic EarthquakeDetector.M latencyMain:stats
-field count 8
-field mean 0.028547500074125
-field stddev 0.0012354036948305
-field min 0.027049999542
+field count 16
+field mean 0.015273750037062
+field stddev 0.013735022380196
+field min 0.002
 field max 0.030090000454
-field sum 0.228380000593
-field sqrsum 0.0065303616398817
+field sum 0.244380000593
+field sqrsum 0.0065623616398817
 attr interpolationmode none
 attr source latency
 attr title "latency, stats"

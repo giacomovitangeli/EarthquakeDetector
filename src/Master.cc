@@ -41,7 +41,7 @@ Master::~Master() {
 
 void Master::initialize()
 {
-    latencySignal = registerSignal("latency");
+        latencySignal = registerSignal("latency");
 
     // Initialize variables
         id = 0;
@@ -123,6 +123,12 @@ void Master::handleMessage(cMessage *cmsg)
                 if(numCH == numReceived)
                 {
                     bubble("ALL ACK ARRIVED!");
+                    //END SIMULATION
+
+                    //reboot
+                    //int kindNetDet = 1;
+                    //Message *requestNetDet = generateMessage(kindNetDet);
+                    //broadcastMessage(requestNetDet);
                 }
 
             }
@@ -193,6 +199,9 @@ void Master::broadcastMessage(Message *msg)
 
         if(copy->getIsLost() && copy->getKind() == 1)
             retransmitDelay = retransmitMsg(msg, retransmitDelay);
+
+        if(copy->getKind() == 1)
+            emit(latencySignal, simTime());
 
         sendDelayed(copy, retransmitDelay, "gate$o", i);
     }
