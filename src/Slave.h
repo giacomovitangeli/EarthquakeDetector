@@ -44,6 +44,7 @@ class Slave : public cSimpleModule{
         long numReceived;
         long numLost;
         bool isClusterHead = false;
+        //int** network;
         int id;
         int numCH; //number of Cluster Head
         int numCHnear;
@@ -52,7 +53,6 @@ class Slave : public cSimpleModule{
         int numACKch;
         int gateCHConfig[4]{0};
         int gateSNConfig[2]{0};
-        int** network;
         int rowNet;
         int colNet;
         int sendEnergy;
@@ -65,9 +65,9 @@ class Slave : public cSimpleModule{
         virtual void initialize() override;
         virtual void handleMessage(cMessage *cmsg) override;
         virtual void refreshDisplay() const override;
-        virtual int** createNetwork(int **&net, int row, int col);
-        virtual void fillNetwork();
-        virtual void printNetwork() const;
+        //virtual int** createNetwork(int **&net, int row, int col);
+        //virtual void fillNetwork();
+        //virtual void printNetwork() const;
         virtual float retransmitMsg(Message *msg, float delay);
 };
 

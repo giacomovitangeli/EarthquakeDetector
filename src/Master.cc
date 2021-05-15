@@ -30,12 +30,13 @@ Master::Master() {
 
 Master::~Master() {
     //delete the network adj matrix
-    for (int i = 0; i < rowNet; i++)
+    /*for (int i = 0; i < rowNet; i++)
   {
     delete [] network[i];
   }
   delete [] network;
   network = 0;
+  */
 }
 
 
@@ -53,12 +54,18 @@ void Master::initialize()
         WATCH(numSent);
         WATCH(numReceived);
 
+        //4CH-20SN config
+        numCH = 4;
+        numSN = 5;
 
-        numCH = 8;
+        //8CH-16SN config
+        //numCH = 8;
+        //numSN = 2;
+
         rowNet = 25;
         colNet = 25;
-        network = createNetwork(network, rowNet, colNet);
-        printNetwork();
+        //network = createNetwork(network, rowNet, colNet);
+        //printNetwork();
 
         int kindPower = 0; //power message
         int kindNetDet = 1; //request netdet message
@@ -82,9 +89,9 @@ void Master::handleMessage(cMessage *cmsg)
             if(msg->getKind() == 2)//ack netdet
             {
                 int row = msg->getSource();
-                this->network[row][id] = 1;
+                //this->network[row][id] = 1;
                 //this->network = sumMatrix(network, msg->getNet());
-
+/*
                 for(int i=0; i<4; i++)
                 {
                     network[row][msg->getGateCHConfig()[i]] = 1;
@@ -95,7 +102,7 @@ void Master::handleMessage(cMessage *cmsg)
                         network[msg->getGateCHConfig()[i+1]][msg->getGateCHConfig()[i]] = 1;
                     }
                 }
-
+*/
                 row--;
                 for(int i=0; i<3; i++)
                     this->slavePos[row][i] = msg->getPos()[i];
@@ -110,7 +117,7 @@ void Master::handleMessage(cMessage *cmsg)
                 numReceived++;
                 bubble("ACK ARRIVED!");
                 printSlavePos();
-                printNetwork();
+                //printNetwork();
                 //EV << "Battery state: " << batterySrc << "%"<<"\n";
 
                 int kindPower = 0; //power message
@@ -191,7 +198,7 @@ void Master::broadcastMessage(Message *msg)
 
         }
         EV << "Broadcasting message " << copy << " on gate[" << i << "]\n";
-        network[id][k] = 1;
+        //network[id][k] = 1;
         k++;
         numSent++;
 
@@ -248,6 +255,7 @@ void Master::printSlavePos() const
     }
 }
 
+/*
 int** Master::createNetwork(int **&net, int row, int col)
 {
   //int** net = 0;
@@ -278,6 +286,7 @@ void Master::printNetwork() const
         EV<<"\n";
     }
 }
+*/
 
 float Master::retransmitMsg(Message *msg, float delay)
 {

@@ -30,14 +30,14 @@ Slave::Slave() {
 
 Slave::~Slave() {
     //delete the network adj matrix
-    for (int i = 0; i < rowNet; i++)
+    /*for (int i = 0; i < rowNet; i++)
   {
     delete [] network[i];
   }
   delete [] network;
   network = 0;
-
-  state = 0;
+*/
+  //state = 0;
 }
 
 
@@ -57,9 +57,16 @@ void Slave::initialize()
         state->printPosition();
         int b = state->getBatteryState();
         emit(energySignal, b);
-        numCH = 8;
+
+        //4CH-20SN config
+        numCH = 4;
+        numSN = 5;
+
+        //8CH-16SN config
+        //numCH = 8;
+        //numSN = 2;
+
         numCHnear = 1;
-        numSN = 2;
         numACKsn = 0;
         numACKch = 0;
 
@@ -100,7 +107,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 this->numCHnear = 2;
                 this->rowNet = numCHnear+numSN+2; //+2 sono il master e il CH a cui appartiene la matrice
                 this->colNet = numCHnear+numSN+2;
-                network = createNetwork(network, rowNet, colNet);
+                //network = createNetwork(network, rowNet, colNet);
                 delete msg;
 
                 bubble("Request NetDet Arrived!");
@@ -126,15 +133,15 @@ void Slave::handleMessage(cMessage *cmsg)
                     this->id = msg->getNetDetId();
                     this->rowNet = numSN+2; //+2 sono il master e il CH a cui appartiene il sub-node
                     this->colNet = numSN+2;
-                    network = createNetwork(network, rowNet, colNet);
+                    //network = createNetwork(network, rowNet, colNet);
                     EV << "Handling broadcast in cluster"<<id<<"\n";
                     bubble("Request NetDet Arrived!");
                     numReceived++;
                     interactivity--;
                     emit(interactivitySignal, interactivity);
 
-                    fillNetwork();
-                    printNetwork();
+                    //fillNetwork();
+                    //printNetwork();
                     delete msg;
 
                     //EV << "Sub-Node "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
@@ -267,8 +274,8 @@ void Slave::handleMessage(cMessage *cmsg)
                     bubble("ALL ACK from CH near Arrived!");
                     //riempire matrice di adiacenza di CH
 
-                    fillNetwork();
-                    printNetwork();
+                    //fillNetwork();
+                    //printNetwork();
 
                     //risposta al master, inviata dopo ACK CH vicini
                     int kindAck = 2; //ack con position e gateConfig
@@ -450,6 +457,7 @@ void Slave::refreshDisplay() const
     getDisplayString().setTagArg("t", 0, buf);
 }
 
+/*
 int** Slave::createNetwork(int **&net, int row, int col)
 {
   //int** net = 0;
@@ -526,6 +534,7 @@ void Slave::printNetwork() const
         EV<<"\n";
     }
 }
+*/
 
 float Slave::retransmitMsg(Message *msg, float delay)
 {

@@ -32,17 +32,18 @@ class Master : public cSimpleModule{
         virtual ~Master();
 
     private:
+        simsignal_t latencySignal;
         long numSent;
         long numReceived;
         long numLost;
-        simsignal_t latencySignal;
-        int id;
         bool usability;
         float slavePos[8][3];
-        int** network;
+        //int** network;
+        int id;
         int rowNet;
         int colNet;
         int numCH; //number of Cluster Head
+        int numSN;
 
     protected:
         virtual Message *generateMessage(int kindMsg);
@@ -53,8 +54,8 @@ class Master : public cSimpleModule{
         virtual void refreshDisplay() const override;
         virtual void initSlavePos();
         virtual void printSlavePos() const;
-        virtual int** createNetwork(int **&net, int row, int col);
-        virtual void printNetwork() const;
+        //virtual int** createNetwork(int **&net, int row, int col);
+        //virtual void printNetwork() const;
         virtual float retransmitMsg(Message *msg, float delay);
 
 };
