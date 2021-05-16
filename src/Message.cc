@@ -340,7 +340,7 @@ bool Message::packetLoss()
     bool lost = false;
     int x = rand() % 100 + 1;
 
-    if(x<=10) //10% lost
+    if(x<=1) //1% lost
     {
         lost = true;
     }

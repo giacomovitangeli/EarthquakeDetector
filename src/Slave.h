@@ -30,6 +30,8 @@ namespace earthquakedetector {
 int knowledge = 0;
 int interactivity = 0;
 int packetLoss = 0;
+simsignal_t knowledgeSignal = 0;
+simsignal_t interactivitySignal = 0;
 
 class Slave : public cSimpleModule{
     public:
@@ -38,8 +40,7 @@ class Slave : public cSimpleModule{
 
     private:
         simsignal_t energySignal;
-        simsignal_t knowledgeSignal;
-        simsignal_t interactivitySignal;
+
         simsignal_t packetLossSignal;
         State* state;
         long numSent;

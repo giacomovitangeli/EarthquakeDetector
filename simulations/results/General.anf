@@ -1,9 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
+<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
   <inputs>
     <inputs name="/EarthquakeDetector/simulations/results/General-*.vec"/>
     <inputs name="/EarthquakeDetector/simulations/results/General-*.sca"/>
   </inputs>
-  <datasets/>
-  <chartSheets/>
+  <datasets>
+    <datasets name="knowledge:vector">
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S2) AND name(knowledge:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S3) AND name(knowledge:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S6) AND name(knowledge:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S7) AND name(knowledge:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S5) AND name(knowledge:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S1) AND name(knowledge:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S8) AND name(knowledge:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S4) AND name(knowledge:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Group" name="knowledge:vector">
+        <items xsi:type="scave:Apply" operation="merger"/>
+        <items xsi:type="scave:LineChart" name="knowledge:vector" lineNameFormat="">
+          <properties name="Line.Type" value="Linear"/>
+        </items>
+      </items>
+      <items xsi:type="scave:Group" name="">
+        <items xsi:type="scave:Apply" operation="merger"/>
+        <items xsi:type="scave:LineChart" name="" lineNameFormat="">
+          <properties name="Symbols.Type" value="Dot"/>
+          <properties name="Line.Type" value="Linear"/>
+        </items>
+      </items>
+    </datasets>
+    <datasets name="batteryState:vector">
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S1) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S2) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S3) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S4) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S5) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S6) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S7) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S8) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S9) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S10) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S11) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S12) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S13) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S14) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S15) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S16) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S17) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S18) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S19) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S20) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S21) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S22) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S23) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S24) AND name(batteryState:vector)" type="VECTOR"/>
+      <items xsi:type="scave:LineChart" name="batteryState:vector" lineNameFormat="">
+        <properties name="Symbols.Type" value="Dot"/>
+        <properties name="Line.Type" value="SampleHold"/>
+      </items>
+    </datasets>
+    <datasets name="Energy">
+      <items xsi:type="scave:Group">
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S1) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S2) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S3) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S4) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S5) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S6) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S7) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S8) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S9) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S10) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S11) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S12) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S13) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S14) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S15) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S16) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S17) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S18) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S19) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S20) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S21) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S22) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S23) AND name(batteryState:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S24) AND name(batteryState:vector)" type="VECTOR"/>
+      </items>
+      <items xsi:type="scave:Group">
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S1) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S2) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S3) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S4) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S5) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S6) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S7) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S8) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S9) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S10) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S11) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S12) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S13) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S14) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S15) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S16) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S17) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S18) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S19) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S20) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S21) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S22) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S23) AND name(interactivity:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S24) AND name(interactivity:vector)" type="VECTOR"/>
+      </items>
+      <items xsi:type="scave:Group">
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S2) AND name(knowledge:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S3) AND name(knowledge:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S6) AND name(knowledge:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S7) AND name(knowledge:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S5) AND name(knowledge:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S1) AND name(knowledge:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S8) AND name(knowledge:vector)" type="VECTOR"/>
+        <items xsi:type="scave:Add" filterPattern="module(EarthquakeDetector.S4) AND name(knowledge:vector)" type="VECTOR"/>
+      </items>
+      <items xsi:type="scave:LineChart" name="Energy"/>
+    </datasets>
+  </datasets>
+  <chartSheets>
+    <chartSheets name="default" charts="//@datasets/@datasets.0/@items.9/@items.1"/>
+  </chartSheets>
 </scave:Analysis>
