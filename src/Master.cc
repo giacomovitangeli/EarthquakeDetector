@@ -59,12 +59,12 @@ void Master::initialize()
         //numSN = 5;
 
         //6CH-18SN config
-        numCH = 6;
-        numSN = 3;
+        //numCH = 6;
+        //numSN = 3;
 
         //8CH-16SN config
-        //numCH = 8;
-        //numSN = 2;
+        numCH = 8;
+        numSN = 2;
 
         rowNet = 25;
         colNet = 25;
@@ -80,7 +80,7 @@ void Master::initialize()
 
         //NET DETECTION
         Message *requestNetDet = generateMessage(kindNetDet);
-        scheduleAt(0.002, requestNetDet);
+        scheduleAt(0.001, requestNetDet);
 
 }
 

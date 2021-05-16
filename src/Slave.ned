@@ -31,6 +31,9 @@ simple Slave
         @signal[interactivity](type="int");
         @statistic[interactivity](title="interactivity"; source="interactivity"; record=vector,stats; interpolationmode=none);
         
+        @signal[packetLoss](type="int");
+        @statistic[packetLoss](title="packetLoss"; source="packetLoss"; record=vector,stats; interpolationmode=none);
+        
         @display("i=block/routing");
     gates:
         inout gate[];  // declare two way connections

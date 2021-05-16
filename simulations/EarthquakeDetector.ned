@@ -130,160 +130,160 @@ network EarthquakeDetector
 
 
         //START TOPOLOGY: 6CH-18SN
-        S1: Slave {
-            @display("p=499.99197,313.248");
-        }
-        S2: Slave {
-            @display("p=642.56,393.568");
-        }
-        S3: Slave {
-            @display("p=642.56,592.36");
-        }
-        S4: Slave {
-            @display("p=499.99197,678.704");
-        }
-        S5: Slave {
-            @display("p=345.37598,592.36");
-        }
-        S6: Slave {
-            @display("p=345.37598,393.568");
-        }
-        S7: Slave {
-            @display("p=375.496,100.399994");
-        }
-        S8: Slave {
-            @display("p=499.99197,54.216");
-        }
-
-        S9: Slave {
-            @display("p=614.448,100.399994");
-        }
-        S10: Slave {
-            @display("p=750.992,170.68");
-        }
-        S11: Slave {
-            @display("p=867.456,232.928");
-        }
-        S12: Slave {
-            @display("p=867.456,393.568");
-        }
-        S13: Slave {
-            @display("p=867.456,592.36");
-        }
-        S14: Slave {
-            @display("p=867.456,740.95197");
-        }
-        S15: Slave {
-            @display("p=750.992,821.272");
-        }
-        S16: Slave {
-            @display("p=614.448,901.592");
-        }
-        S17: Slave {
-            @display("p=499.99197,963.83997");
-        }
-        S18: Slave {
-            @display("p=375.496,901.592");
-        }
-
-        S19: Slave {
-            @display("p=228.91199,821.272");
-        }
-        S20: Slave {
-            @display("p=120.479996,726.896");
-        }
-        S21: Slave {
-            @display("p=120.479996,592.36");
-        }
-        S22: Slave {
-            @display("p=120.479996,375.496");
-        }
-        S23: Slave {
-            @display("p=106.423996,232.928");
-        }
-        S24: Slave {
-            @display("p=244.976,170.68");
-        }
+//        S1: Slave {
+//            @display("p=499.99197,313.248");
+//        }
+//        S2: Slave {
+//            @display("p=642.56,393.568");
+//        }
+//        S3: Slave {
+//            @display("p=642.56,592.36");
+//        }
+//        S4: Slave {
+//            @display("p=499.99197,678.704");
+//        }
+//        S5: Slave {
+//            @display("p=345.37598,592.36");
+//        }
+//        S6: Slave {
+//            @display("p=345.37598,393.568");
+//        }
+//        S7: Slave {
+//            @display("p=375.496,100.399994");
+//        }
+//        S8: Slave {
+//            @display("p=499.99197,54.216");
+//        }
+//
+//        S9: Slave {
+//            @display("p=614.448,100.399994");
+//        }
+//        S10: Slave {
+//            @display("p=750.992,170.68");
+//        }
+//        S11: Slave {
+//            @display("p=867.456,232.928");
+//        }
+//        S12: Slave {
+//            @display("p=867.456,393.568");
+//        }
+//        S13: Slave {
+//            @display("p=867.456,592.36");
+//        }
+//        S14: Slave {
+//            @display("p=867.456,740.95197");
+//        }
+//        S15: Slave {
+//            @display("p=750.992,821.272");
+//        }
+//        S16: Slave {
+//            @display("p=614.448,901.592");
+//        }
+//        S17: Slave {
+//            @display("p=499.99197,963.83997");
+//        }
+//        S18: Slave {
+//            @display("p=375.496,901.592");
+//        }
+//
+//        S19: Slave {
+//            @display("p=228.91199,821.272");
+//        }
+//        S20: Slave {
+//            @display("p=120.479996,726.896");
+//        }
+//        S21: Slave {
+//            @display("p=120.479996,592.36");
+//        }
+//        S22: Slave {
+//            @display("p=120.479996,375.496");
+//        }
+//        S23: Slave {
+//            @display("p=106.423996,232.928");
+//        }
+//        S24: Slave {
+//            @display("p=244.976,170.68");
+//        }
         //END TOPOLOGY: 6CH-18SN
 
 
 
 
         //START TOPOLOGY: 8CH-16SN
-//        S1: Slave {
-//            @display("p=624.275,200");
-//        }
-//        S2: Slave {
-//            @display("p=800,374.275");
-//        }
-//        S3: Slave {
-//            @display("p=800,624.275");
-//        }
-//        S4: Slave {
-//            @display("p=624.275,800");
-//        }
-//        S5: Slave {
-//            @display("p=374.275,800");
-//        }
-//        S6: Slave {
-//            @display("p=200,624.275");
-//        }
-//        S7: Slave {
-//            @display("p=200,374.275");
-//        }
-//        S8: Slave {
-//            @display("p=374.275,200");
-//        }
-//
-//        S9: Slave {
-//            @display("p=560.232,58.232");
-//        }
-//        S10: Slave {
-//            @display("p=783.12,124.495995");
-//        }
-//        S11: Slave {
-//            @display("p=861.43195,255.01599");
-//        }
-//        S12: Slave {
-//            @display("p=927.696,421.68");
-//        }
-//        S13: Slave {
-//            @display("p=927.696,562.24");
-//        }
-//        S14: Slave {
-//            @display("p=861.43195,769.06396");
-//        }
-//        S15: Slave {
-//            @display("p=765.048,847.376");
-//        }
-//        S16: Slave {
-//            @display("p=560.232,925.688");
-//        }
-//        S17: Slave {
-//            @display("p=435.736,925.688");
-//        }
-//        S18: Slave {
-//            @display("p=230.92,877.496");
-//        }
-//
-//        S19: Slave {
-//            @display("p=100.399994,769.06396");
-//        }
-//        S20: Slave {
-//            @display("p=58.232,578.30396");
-//        }
-//        S21: Slave {
-//            @display("p=58.232,407.624");
-//        }
-//        S22: Slave {
-//            @display("p=136.54399,234.93599");
-//        }
-//        S23: Slave {
-//            @display("p=230.92,124.495995");
-//        }
-//        S24: Slave {
-//            @display("p=421.68,58.232");
-//        }
+        S1: Slave {
+            @display("p=624.275,200");
+        }
+        S2: Slave {
+            @display("p=800,374.275");
+        }
+        S3: Slave {
+            @display("p=800,624.275");
+        }
+        S4: Slave {
+            @display("p=624.275,800");
+        }
+        S5: Slave {
+            @display("p=374.275,800");
+        }
+        S6: Slave {
+            @display("p=200,624.275");
+        }
+        S7: Slave {
+            @display("p=200,374.275");
+        }
+        S8: Slave {
+            @display("p=374.275,200");
+        }
+
+        S9: Slave {
+            @display("p=560.232,58.232");
+        }
+        S10: Slave {
+            @display("p=783.12,124.495995");
+        }
+        S11: Slave {
+            @display("p=861.43195,255.01599");
+        }
+        S12: Slave {
+            @display("p=927.696,421.68");
+        }
+        S13: Slave {
+            @display("p=927.696,562.24");
+        }
+        S14: Slave {
+            @display("p=861.43195,769.06396");
+        }
+        S15: Slave {
+            @display("p=765.048,847.376");
+        }
+        S16: Slave {
+            @display("p=560.232,925.688");
+        }
+        S17: Slave {
+            @display("p=435.736,925.688");
+        }
+        S18: Slave {
+            @display("p=230.92,877.496");
+        }
+
+        S19: Slave {
+            @display("p=100.399994,769.06396");
+        }
+        S20: Slave {
+            @display("p=58.232,578.30396");
+        }
+        S21: Slave {
+            @display("p=58.232,407.624");
+        }
+        S22: Slave {
+            @display("p=136.54399,234.93599");
+        }
+        S23: Slave {
+            @display("p=230.92,124.495995");
+        }
+        S24: Slave {
+            @display("p=421.68,58.232");
+        }
         //END TOPOLOGY: 8CH-16SN
 
 
@@ -318,7 +318,7 @@ network EarthquakeDetector
         M.gate++ <--> C <--> S24.gate++;
 
         //START TOPOLOGY: 4CH 20SN
-////        //Near Cluster Head:
+//        //Near Cluster Head:
 //        S1.gate++ <--> C <--> S2.gate++;
 //        S2.gate++ <--> C <--> S3.gate++;
 //        S3.gate++ <--> C <--> S4.gate++;
@@ -377,60 +377,60 @@ network EarthquakeDetector
 
 
         //START TOPOLOGY: 6CH 18SN
-        S1.gate++ <--> C <--> S2.gate++;
-        S2.gate++ <--> C <--> S3.gate++;
-        S3.gate++ <--> C <--> S4.gate++;
-        S4.gate++ <--> C <--> S5.gate++;
-        S5.gate++ <--> C <--> S6.gate++;
-        S6.gate++ <--> C <--> S1.gate++;
-
-        //Cluster 1:
-        S1.gate++ <--> C <--> S7.gate++;
-        S1.gate++ <--> C <--> S8.gate++;
-        S1.gate++ <--> C <--> S9.gate++;
-        S7.gate++ <--> C <--> S8.gate++;
-        S8.gate++ <--> C <--> S9.gate++;
-        S9.gate++ <--> C <--> S7.gate++;
-
-        //Cluster 2:
-        S2.gate++ <--> C <--> S10.gate++;
-        S2.gate++ <--> C <--> S11.gate++;
-        S2.gate++ <--> C <--> S12.gate++;
-        S10.gate++ <--> C <--> S11.gate++;
-        S11.gate++ <--> C <--> S12.gate++;
-        S12.gate++ <--> C <--> S10.gate++;
-
-        //Cluster 3:
-        S3.gate++ <--> C <--> S13.gate++;
-        S3.gate++ <--> C <--> S14.gate++;
-        S3.gate++ <--> C <--> S15.gate++;
-        S13.gate++ <--> C <--> S14.gate++;
-        S14.gate++ <--> C <--> S15.gate++;
-        S15.gate++ <--> C <--> S13.gate++;
-
-        //Cluster 4:
-        S4.gate++ <--> C <--> S16.gate++;
-        S4.gate++ <--> C <--> S17.gate++;
-        S4.gate++ <--> C <--> S18.gate++;
-        S16.gate++ <--> C <--> S17.gate++;
-        S17.gate++ <--> C <--> S18.gate++;
-        S18.gate++ <--> C <--> S16.gate++;
-
-        //Cluster 5:
-        S5.gate++ <--> C <--> S19.gate++;
-        S5.gate++ <--> C <--> S20.gate++;
-        S5.gate++ <--> C <--> S21.gate++;
-        S19.gate++ <--> C <--> S20.gate++;
-        S20.gate++ <--> C <--> S21.gate++;
-        S21.gate++ <--> C <--> S19.gate++;
-
-        //Cluster 6:
-        S6.gate++ <--> C <--> S22.gate++;
-        S6.gate++ <--> C <--> S23.gate++;
-        S6.gate++ <--> C <--> S24.gate++;
-        S22.gate++ <--> C <--> S23.gate++;
-        S23.gate++ <--> C <--> S24.gate++;
-        S24.gate++ <--> C <--> S22.gate++;
+//        S1.gate++ <--> C <--> S2.gate++;
+//        S2.gate++ <--> C <--> S3.gate++;
+//        S3.gate++ <--> C <--> S4.gate++;
+//        S4.gate++ <--> C <--> S5.gate++;
+//        S5.gate++ <--> C <--> S6.gate++;
+//        S6.gate++ <--> C <--> S1.gate++;
+//
+//        //Cluster 1:
+//        S1.gate++ <--> C <--> S7.gate++;
+//        S1.gate++ <--> C <--> S8.gate++;
+//        S1.gate++ <--> C <--> S9.gate++;
+//        S7.gate++ <--> C <--> S8.gate++;
+//        S8.gate++ <--> C <--> S9.gate++;
+//        S9.gate++ <--> C <--> S7.gate++;
+//
+//        //Cluster 2:
+//        S2.gate++ <--> C <--> S10.gate++;
+//        S2.gate++ <--> C <--> S11.gate++;
+//        S2.gate++ <--> C <--> S12.gate++;
+//        S10.gate++ <--> C <--> S11.gate++;
+//        S11.gate++ <--> C <--> S12.gate++;
+//        S12.gate++ <--> C <--> S10.gate++;
+//
+//        //Cluster 3:
+//        S3.gate++ <--> C <--> S13.gate++;
+//        S3.gate++ <--> C <--> S14.gate++;
+//        S3.gate++ <--> C <--> S15.gate++;
+//        S13.gate++ <--> C <--> S14.gate++;
+//        S14.gate++ <--> C <--> S15.gate++;
+//        S15.gate++ <--> C <--> S13.gate++;
+//
+//        //Cluster 4:
+//        S4.gate++ <--> C <--> S16.gate++;
+//        S4.gate++ <--> C <--> S17.gate++;
+//        S4.gate++ <--> C <--> S18.gate++;
+//        S16.gate++ <--> C <--> S17.gate++;
+//        S17.gate++ <--> C <--> S18.gate++;
+//        S18.gate++ <--> C <--> S16.gate++;
+//
+//        //Cluster 5:
+//        S5.gate++ <--> C <--> S19.gate++;
+//        S5.gate++ <--> C <--> S20.gate++;
+//        S5.gate++ <--> C <--> S21.gate++;
+//        S19.gate++ <--> C <--> S20.gate++;
+//        S20.gate++ <--> C <--> S21.gate++;
+//        S21.gate++ <--> C <--> S19.gate++;
+//
+//        //Cluster 6:
+//        S6.gate++ <--> C <--> S22.gate++;
+//        S6.gate++ <--> C <--> S23.gate++;
+//        S6.gate++ <--> C <--> S24.gate++;
+//        S22.gate++ <--> C <--> S23.gate++;
+//        S23.gate++ <--> C <--> S24.gate++;
+//        S24.gate++ <--> C <--> S22.gate++;
         //END TOPOLOGY: 6CH 18SN
 
 
@@ -438,54 +438,54 @@ network EarthquakeDetector
 
         //START TOPOLOGY: 8CH-16SN
 //        //Near Cluster Head:
-//        S1.gate++ <--> C <--> S2.gate++;
-//        S2.gate++ <--> C <--> S3.gate++;
-//        S3.gate++ <--> C <--> S4.gate++;
-//        S4.gate++ <--> C <--> S5.gate++;
-//        S5.gate++ <--> C <--> S6.gate++;
-//        S6.gate++ <--> C <--> S7.gate++;
-//        S7.gate++ <--> C <--> S8.gate++;
-//        S8.gate++ <--> C <--> S1.gate++;
-//
-//        //Cluster 1:
-//        S1.gate++ <--> C <--> S9.gate++;
-//        S1.gate++ <--> C <--> S10.gate++;
-//        S9.gate++ <--> C <--> S10.gate++;
-//
-//		//Cluster 2:
-//        S2.gate++ <--> C <--> S11.gate++;
-//        S2.gate++ <--> C <--> S12.gate++;
-//        S11.gate++ <--> C <--> S12.gate++;
-//
-//        //Cluster 3:
-//        S3.gate++ <--> C <--> S13.gate++;
-//        S3.gate++ <--> C <--> S14.gate++;
-//        S13.gate++ <--> C <--> S14.gate++;
-//
-//        //Cluster 4:
-//        S4.gate++ <--> C <--> S15.gate++;
-//        S4.gate++ <--> C <--> S16.gate++;
-//        S15.gate++ <--> C <--> S16.gate++;
-//
-//        //Cluster 5:
-//        S5.gate++ <--> C <--> S17.gate++;
-//        S5.gate++ <--> C <--> S18.gate++;
-//        S17.gate++ <--> C <--> S18.gate++;
-//
-//		//Cluster 6:
-//        S6.gate++ <--> C <--> S19.gate++;
-//        S6.gate++ <--> C <--> S20.gate++;
-//        S19.gate++ <--> C <--> S20.gate++;
-//
-//		//Cluster 7:
-//        S7.gate++ <--> C <--> S21.gate++;
-//        S7.gate++ <--> C <--> S22.gate++;
-//        S21.gate++ <--> C <--> S22.gate++;
-//
-//        //Cluster 8:
-//        S8.gate++ <--> C <--> S23.gate++;
-//        S8.gate++ <--> C <--> S24.gate++;
-//        S23.gate++ <--> C <--> S24.gate++;
+        S1.gate++ <--> C <--> S2.gate++;
+        S2.gate++ <--> C <--> S3.gate++;
+        S3.gate++ <--> C <--> S4.gate++;
+        S4.gate++ <--> C <--> S5.gate++;
+        S5.gate++ <--> C <--> S6.gate++;
+        S6.gate++ <--> C <--> S7.gate++;
+        S7.gate++ <--> C <--> S8.gate++;
+        S8.gate++ <--> C <--> S1.gate++;
+
+        //Cluster 1:
+        S1.gate++ <--> C <--> S9.gate++;
+        S1.gate++ <--> C <--> S10.gate++;
+        S9.gate++ <--> C <--> S10.gate++;
+
+		//Cluster 2:
+        S2.gate++ <--> C <--> S11.gate++;
+        S2.gate++ <--> C <--> S12.gate++;
+        S11.gate++ <--> C <--> S12.gate++;
+
+        //Cluster 3:
+        S3.gate++ <--> C <--> S13.gate++;
+        S3.gate++ <--> C <--> S14.gate++;
+        S13.gate++ <--> C <--> S14.gate++;
+
+        //Cluster 4:
+        S4.gate++ <--> C <--> S15.gate++;
+        S4.gate++ <--> C <--> S16.gate++;
+        S15.gate++ <--> C <--> S16.gate++;
+
+        //Cluster 5:
+        S5.gate++ <--> C <--> S17.gate++;
+        S5.gate++ <--> C <--> S18.gate++;
+        S17.gate++ <--> C <--> S18.gate++;
+
+		//Cluster 6:
+        S6.gate++ <--> C <--> S19.gate++;
+        S6.gate++ <--> C <--> S20.gate++;
+        S19.gate++ <--> C <--> S20.gate++;
+
+		//Cluster 7:
+        S7.gate++ <--> C <--> S21.gate++;
+        S7.gate++ <--> C <--> S22.gate++;
+        S21.gate++ <--> C <--> S22.gate++;
+
+        //Cluster 8:
+        S8.gate++ <--> C <--> S23.gate++;
+        S8.gate++ <--> C <--> S24.gate++;
+        S23.gate++ <--> C <--> S24.gate++;
         //END TOPOLOGY: 8CH-16SN
 
 

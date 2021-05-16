@@ -48,6 +48,7 @@ void Slave::initialize()
         energySignal = registerSignal("energy");
         knowledgeSignal = registerSignal("knowledge");
         interactivitySignal = registerSignal("interactivity");
+        packetLossSignal = registerSignal("packetLoss");
         numSent = 0;
         numReceived = 0;
         numLost = 0;
@@ -63,12 +64,12 @@ void Slave::initialize()
         //numSN = 5;
 
         //6CH-18SN config
-        numCH = 6;
-        numSN = 3;
+        //numCH = 6;
+        //numSN = 3;
 
         //8CH-16SN config
-        //numCH = 8;
-        //numSN = 2;
+        numCH = 8;
+        numSN = 2;
 
         numCHnear = 1;
         numACKsn = 0;
@@ -123,7 +124,7 @@ void Slave::handleMessage(cMessage *cmsg)
                 //inoltro la req netdet ai sottonodi
                 int kindNetDetsn = 3; //kind net det subnode
                 Message *reqNetDetsn = generateMessage(kindNetDetsn);
-                scheduleAt(0.004, reqNetDetsn);
+                scheduleAt(0.0025, reqNetDetsn);
             }
         }else if(msg->getDestination() == 2000000){ //dest == 2000000 --> broadcast in cluster
 
@@ -151,7 +152,7 @@ void Slave::handleMessage(cMessage *cmsg)
                     //EV << "Sub-Node "<< id <<" is in position: [" << position[0] <<", "<< position[1] <<", "<< position[2] <<"] "<<"\n";
                     int kindAcksn = 5; //ack sub-nodes
                     Message *acksn = generateMessage(kindAcksn);
-                    float delay = (float)(intuniform(800, 1300))/(float)100000;
+                    float delay = (float)(intuniform(400, 900))/(float)100000;
                     EV << "Sub-Node "<<id<<" have delay: "<<delay<<"\n";
                     scheduleAt(delay, acksn);
                 }
@@ -197,7 +198,7 @@ void Slave::handleMessage(cMessage *cmsg)
                         //inviare getID ai CH vicini in broadcast
                         int kindReqCHnear = 6; //req CH near
                         Message *reqCHnear = generateMessage(kindReqCHnear);
-                        float delay = (float)(intuniform(2000, 2500))/(float)100000;
+                        float delay = (float)(intuniform(1000, 1500))/(float)100000;
                         scheduleAt(delay, reqCHnear);
                     }
                 }
@@ -544,6 +545,8 @@ float Slave::retransmitMsg(Message *msg, float delay)
 {
     float retransmitDelay = delay;
     numLost++;
+    packetLoss++;
+    emit(packetLossSignal, packetLoss);
     numSent++;
     state->decBatteryState(sendEnergy);
     int b = state->getBatteryState();
