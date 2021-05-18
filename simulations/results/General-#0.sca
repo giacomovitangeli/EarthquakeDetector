@@ -1,14 +1,14 @@
 version 2
-run General-0-20210516-20:44:55-19025
+run General-0-20210518-22:38:46-25195
 attr configname General
-attr datetime 20210516-20:44:55
+attr datetime 20210518-22:38:46
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network EarthquakeDetector
-attr processid 19025
+attr processid 25195
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -16,13 +16,13 @@ attr runnumber 0
 attr seedset 0
 
 statistic EarthquakeDetector.M latencyMain:stats
-field count 16
-field mean 0.009773749974125
-field stddev 0.0091007053486984
-field min 0.001
-field max 0.020089999746
-field sum 0.156379999586
-field sqrsum 0.0027707615845648
+field count 0
+field mean -nan
+field stddev -nan
+field min -nan
+field max -nan
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source latency
 attr title "latency, stats"
@@ -38,35 +38,35 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S1 interactivity:stats
-field count 14
-field mean 21.428571428571
-field stddev 17.644847954592
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 45
-field sum 300
-field sqrsum 10476
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
 statistic EarthquakeDetector.S1 knowledge:stats
-field count 5
-field mean 33.6
-field stddev 22.187834504521
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 54
-field sum 168
-field sqrsum 7614
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S1 batteryState:stats
-field count 10
-field mean 51.8
-field stddev 22.220111010824
-field min 17
-field max 87
-field sum 518
-field sqrsum 31276
+field count 1
+field mean 62
+field stddev -nan
+field min 62
+field max 62
+field sum 62
+field sqrsum 3844
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -82,35 +82,35 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S2 interactivity:stats
-field count 14
-field mean 18.642857142857
-field stddev 11.112066503492
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 36
-field sum 261
-field sqrsum 6471
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
 statistic EarthquakeDetector.S2 knowledge:stats
-field count 5
-field mean 28.8
-field stddev 35.407626297169
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 69
-field sum 144
-field sqrsum 9162
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S2 batteryState:stats
-field count 10
-field mean 44.7
-field stddev 21.909155873997
-field min 8
-field max 78
-field sum 447
-field sqrsum 24301
+field count 1
+field mean 53
+field stddev -nan
+field min 53
+field max 53
+field sum 53
+field sqrsum 2809
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -126,35 +126,35 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S3 interactivity:stats
-field count 14
-field mean 23.571428571429
-field stddev 14.643004555677
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 45
-field sum 330
-field sqrsum 10566
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
 statistic EarthquakeDetector.S3 knowledge:stats
-field count 5
-field mean 38.4
-field stddev 32.26918034286
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 72
-field sum 192
-field sqrsum 11538
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S3 batteryState:stats
-field count 10
-field mean 50.1
-field stddev 21.829897948558
-field min 14
-field max 84
-field sum 501
-field sqrsum 29389
+field count 1
+field mean 59
+field stddev -nan
+field min 59
+field max 59
+field sum 59
+field sqrsum 3481
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -170,35 +170,35 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S4 interactivity:stats
-field count 14
-field mean 19.285714285714
-field stddev 10.636863125135
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 33
-field sum 270
-field sqrsum 6678
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
 statistic EarthquakeDetector.S4 knowledge:stats
-field count 5
-field mean 46.2
-field stddev 33.04088376542
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 81
-field sum 231
-field sqrsum 15039
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S4 batteryState:stats
-field count 10
-field mean 45.6
-field stddev 21.884545536367
-field min 9
-field max 79
-field sum 456
-field sqrsum 25104
+field count 1
+field mean 54
+field stddev -nan
+field min 54
+field max 54
+field sum 54
+field sqrsum 2916
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -214,35 +214,35 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S5 interactivity:stats
-field count 14
-field mean 26.785714285714
-field stddev 16.535177286987
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 45
-field sum 375
-field sqrsum 13599
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
 statistic EarthquakeDetector.S5 knowledge:stats
-field count 5
-field mean 36
-field stddev 26.067220795474
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 60
-field sum 180
-field sqrsum 9198
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S5 batteryState:stats
-field count 10
-field mean 51.8
-field stddev 22.220111010824
-field min 17
-field max 87
-field sum 518
-field sqrsum 31276
+field count 1
+field mean 62
+field stddev -nan
+field min 62
+field max 62
+field sum 62
+field sqrsum 3844
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -258,35 +258,35 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S6 interactivity:stats
-field count 14
-field mean 23.571428571429
-field stddev 14.595648907567
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 42
-field sum 330
-field sqrsum 10548
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
 statistic EarthquakeDetector.S6 knowledge:stats
-field count 5
-field mean 43.8
-field stddev 42.298936156835
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 93
-field sum 219
-field sqrsum 16749
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S6 batteryState:stats
-field count 10
-field mean 48.3
-field stddev 21.83804020511
-field min 12
-field max 82
-field sum 483
-field sqrsum 27621
+field count 1
+field mean 57
+field stddev -nan
+field min 57
+field max 57
+field sum 57
+field sqrsum 3249
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -302,35 +302,35 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S7 interactivity:stats
-field count 14
-field mean 28.928571428571
-field stddev 15.504164630161
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 45
-field sum 405
-field sqrsum 14841
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
 statistic EarthquakeDetector.S7 knowledge:stats
-field count 5
-field mean 43.8
-field stddev 44.324936548178
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 96
-field sum 219
-field sqrsum 17451
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S7 batteryState:stats
-field count 10
-field mean 57.3
-field stddev 21.980041451786
-field min 22
-field max 92
-field sum 573
-field sqrsum 37181
+field count 1
+field mean 67
+field stddev -nan
+field min 67
+field max 67
+field sum 67
+field sqrsum 4489
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -346,35 +346,35 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S8 interactivity:stats
-field count 14
-field mean 25.071428571429
-field stddev 15.324511716223
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 48
-field sum 351
-field sqrsum 11853
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
 statistic EarthquakeDetector.S8 knowledge:stats
-field count 5
-field mean 46.2
-field stddev 37.204838395026
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 90
-field sum 231
-field sqrsum 16209
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S8 batteryState:stats
-field count 10
-field mean 49.2
-field stddev 21.831679326662
-field min 13
-field max 83
-field sum 492
-field sqrsum 28496
+field count 1
+field mean 58
+field stddev -nan
+field min 58
+field max 58
+field sum 58
+field sqrsum 3364
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -390,13 +390,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S9 interactivity:stats
-field count 3
-field mean 18
-field stddev 23.811761799581
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 45
-field sum 54
-field sqrsum 2106
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -412,13 +412,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S9 batteryState:stats
-field count 3
-field mean 79.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 66
+field stddev -nan
 field min 66
-field max 91
-field sum 238
-field sqrsum 19198
+field max 66
+field sum 66
+field sqrsum 4356
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -434,13 +434,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S10 interactivity:stats
-field count 3
-field mean 17
-field stddev 22.113344387496
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 42
-field sum 51
-field sqrsum 1845
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -456,13 +456,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S10 batteryState:stats
-field count 3
-field mean 78.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 65
+field stddev -nan
 field min 65
-field max 90
-field sum 235
-field sqrsum 18725
+field max 65
+field sum 65
+field sqrsum 4225
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -478,13 +478,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S11 interactivity:stats
-field count 3
-field mean 14
-field stddev 21.702534414211
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 39
-field sum 42
-field sqrsum 1530
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -500,13 +500,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S11 batteryState:stats
-field count 3
-field mean 80.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 67
+field stddev -nan
 field min 67
-field max 92
-field sum 241
-field sqrsum 19677
+field max 67
+field sum 67
+field sqrsum 4489
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -522,13 +522,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S12 interactivity:stats
-field count 3
-field mean 14
-field stddev 19.287301521986
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 36
-field sum 42
-field sqrsum 1332
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -544,13 +544,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S12 batteryState:stats
-field count 3
-field mean 82.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 69
+field stddev -nan
 field min 69
-field max 94
-field sum 247
-field sqrsum 20653
+field max 69
+field sum 69
+field sqrsum 4761
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -566,13 +566,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S13 interactivity:stats
-field count 3
-field mean 16
-field stddev 16.522711641858
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 33
-field sum 48
-field sqrsum 1314
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -588,13 +588,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S13 batteryState:stats
-field count 3
-field mean 64.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 51
+field stddev -nan
 field min 51
-field max 76
-field sum 193
-field sqrsum 12733
+field max 51
+field sum 51
+field sqrsum 2601
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -610,13 +610,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S14 interactivity:stats
-field count 3
-field mean 13
-field stddev 15.394804318341
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 30
-field sum 39
-field sqrsum 981
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -632,13 +632,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S14 batteryState:stats
-field count 3
-field mean 63.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 50
+field stddev -nan
 field min 50
-field max 75
-field sum 190
-field sqrsum 12350
+field max 50
+field sum 50
+field sqrsum 2500
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -654,13 +654,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S15 interactivity:stats
-field count 3
-field mean 12
-field stddev 13.747727084868
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 27
-field sum 36
-field sqrsum 810
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -676,13 +676,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S15 batteryState:stats
-field count 3
-field mean 66.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 53
+field stddev -nan
 field min 53
-field max 78
-field sum 199
-field sqrsum 13517
+field max 53
+field sum 53
+field sqrsum 2809
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -698,13 +698,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S16 interactivity:stats
-field count 3
-field mean 12
-field stddev 12
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 24
-field sum 36
-field sqrsum 720
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -720,13 +720,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S16 batteryState:stats
-field count 3
-field mean 65.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 52
+field stddev -nan
 field min 52
-field max 77
-field sum 196
-field sqrsum 13122
+field max 52
+field sum 52
+field sqrsum 2704
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -742,13 +742,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S17 interactivity:stats
-field count 3
-field mean 12
-field stddev 10.816653826392
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 21
-field sum 36
-field sqrsum 666
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -764,13 +764,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S17 batteryState:stats
-field count 3
-field mean 68.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 55
+field stddev -nan
 field min 55
-field max 80
-field sum 205
-field sqrsum 14325
+field max 55
+field sum 55
+field sqrsum 3025
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -786,13 +786,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S18 interactivity:stats
-field count 3
-field mean 10
-field stddev 9.1651513899117
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 18
-field sum 30
-field sqrsum 468
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -808,13 +808,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S18 batteryState:stats
-field count 3
-field mean 80.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 67
+field stddev -nan
 field min 67
-field max 92
-field sum 241
-field sqrsum 19677
+field max 67
+field sum 67
+field sqrsum 4489
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -830,13 +830,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S19 interactivity:stats
-field count 3
-field mean 8
-field stddev 7.5498344352707
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 15
-field sum 24
-field sqrsum 306
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -852,13 +852,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S19 batteryState:stats
-field count 3
-field mean 73.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 60
+field stddev -nan
 field min 60
-field max 85
-field sum 220
-field sqrsum 16450
+field max 60
+field sum 60
+field sqrsum 3600
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -874,13 +874,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S20 interactivity:stats
-field count 3
-field mean 8
-field stddev 6.9282032302755
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 12
-field sum 24
-field sqrsum 288
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -896,13 +896,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S20 batteryState:stats
-field count 3
-field mean 64.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 51
+field stddev -nan
 field min 51
-field max 76
-field sum 193
-field sqrsum 12733
+field max 51
+field sum 51
+field sqrsum 2601
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -918,13 +918,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S21 interactivity:stats
-field count 3
-field mean 7
-field stddev 6.2449979983984
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 12
-field sum 21
-field sqrsum 225
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -940,13 +940,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S21 batteryState:stats
-field count 3
-field mean 66.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 53
+field stddev -nan
 field min 53
-field max 78
-field sum 199
-field sqrsum 13517
+field max 53
+field sum 53
+field sqrsum 2809
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -962,13 +962,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S22 interactivity:stats
-field count 3
-field mean 8
-field stddev 9.1651513899117
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 18
-field sum 24
-field sqrsum 360
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -984,13 +984,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S22 batteryState:stats
-field count 3
-field mean 77.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 64
+field stddev -nan
 field min 64
-field max 89
-field sum 232
-field sqrsum 18258
+field max 64
+field sum 64
+field sqrsum 4096
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -1006,13 +1006,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S23 interactivity:stats
-field count 3
-field mean 3
-field stddev 3
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 6
-field sum 9
-field sqrsum 45
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -1028,13 +1028,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S23 batteryState:stats
-field count 3
-field mean 77.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 64
+field stddev -nan
 field min 64
-field max 89
-field sum 232
-field sqrsum 18258
+field max 64
+field sum 64
+field sqrsum 4096
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
@@ -1050,13 +1050,13 @@ attr interpolationmode none
 attr source packetLoss
 attr title "packetLoss, stats"
 statistic EarthquakeDetector.S24 interactivity:stats
-field count 3
-field mean 4
-field stddev 6.9282032302755
+field count 1
+field mean 0
+field stddev -nan
 field min 0
-field max 12
-field sum 12
-field sqrsum 144
+field max 0
+field sum 0
+field sqrsum 0
 attr interpolationmode none
 attr source interactivity
 attr title "interactivity, stats"
@@ -1072,13 +1072,13 @@ attr interpolationmode none
 attr source knowledge
 attr title "knowledge, stats"
 statistic EarthquakeDetector.S24 batteryState:stats
-field count 3
-field mean 73.333333333333
-field stddev 12.583057392118
+field count 1
+field mean 60
+field stddev -nan
 field min 60
-field max 85
-field sum 220
-field sqrsum 16450
+field max 60
+field sum 60
+field sqrsum 3600
 attr interpolationmode none
 attr source energy
 attr title "energy, stats"
