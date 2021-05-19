@@ -55,16 +55,16 @@ void Master::initialize()
         WATCH(numReceived);
 
         //4CH-20SN config
-        numCH = 4;
-        numSN = 5;
+        //numCH = 4;
+        //numSN = 5;
 
         //6CH-18SN config
         //numCH = 6;
         //numSN = 3;
 
         //8CH-16SN config
-        //numCH = 8;
-        //numSN = 2;
+        numCH = 8;
+        numSN = 2;
 
         rowNet = 25;
         colNet = 25;
@@ -209,7 +209,7 @@ void Master::broadcastMessage(Message *msg)
         if(copy->getIsLost() && copy->getKind() == 1)
             retransmitDelay = retransmitMsg(msg, retransmitDelay);
 
-        if(copy->getKind() == 1)
+        //if(copy->getKind() == 1)
             //emit(latencySignal, simTime());
 
         sendDelayed(copy, retransmitDelay, "gate$o", i);

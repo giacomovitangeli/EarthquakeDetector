@@ -64,16 +64,16 @@ void Slave::initialize()
         emit(energySignal, b);
 
         //4CH-20SN config
-        numCH = 4;
-        numSN = 5;
+        //numCH = 4;
+        //numSN = 5;
 
         //6CH-18SN config
         //numCH = 6;
         //numSN = 3;
 
         //8CH-16SN config
-        //numCH = 8;
-        //numSN = 2;
+        numCH = 8;
+        numSN = 2;
 
         numCHnear = 1;
         numACKsn = 0;
