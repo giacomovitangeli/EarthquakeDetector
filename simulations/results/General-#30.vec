@@ -1,0 +1,755 @@
+version 2
+run General-30-20210520-10:45:37-10939
+attr configname General
+attr datetime 20210520-10:45:37
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network EarthquakeDetector
+attr processid 10939
+attr repetition 30
+attr replication #30
+attr resultdir results
+attr runnumber 30
+attr seedset 30
+
+vector 0 EarthquakeDetector.S1 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 1 EarthquakeDetector.S1 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 2 EarthquakeDetector.S1 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 3 EarthquakeDetector.S2 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 4 EarthquakeDetector.S2 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 5 EarthquakeDetector.S2 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 6 EarthquakeDetector.S3 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 7 EarthquakeDetector.S3 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 8 EarthquakeDetector.S3 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 9 EarthquakeDetector.S4 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 10 EarthquakeDetector.S4 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 11 EarthquakeDetector.S4 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 12 EarthquakeDetector.S5 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 13 EarthquakeDetector.S5 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 14 EarthquakeDetector.S5 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 15 EarthquakeDetector.S6 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 16 EarthquakeDetector.S6 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 17 EarthquakeDetector.S6 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 18 EarthquakeDetector.S7 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 19 EarthquakeDetector.S7 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 20 EarthquakeDetector.S7 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 21 EarthquakeDetector.S8 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 22 EarthquakeDetector.S8 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 23 EarthquakeDetector.S8 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 24 EarthquakeDetector.S9 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 25 EarthquakeDetector.S9 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 26 EarthquakeDetector.S9 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 27 EarthquakeDetector.S10 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 28 EarthquakeDetector.S10 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 29 EarthquakeDetector.S10 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 30 EarthquakeDetector.S11 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 31 EarthquakeDetector.S11 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 32 EarthquakeDetector.S11 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 33 EarthquakeDetector.S12 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 34 EarthquakeDetector.S12 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 35 EarthquakeDetector.S12 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 36 EarthquakeDetector.S13 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 37 EarthquakeDetector.S13 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 38 EarthquakeDetector.S13 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 39 EarthquakeDetector.S14 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 40 EarthquakeDetector.S14 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 41 EarthquakeDetector.S14 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 42 EarthquakeDetector.S15 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 43 EarthquakeDetector.S15 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 44 EarthquakeDetector.S15 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 45 EarthquakeDetector.S16 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 46 EarthquakeDetector.S16 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 47 EarthquakeDetector.S16 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 48 EarthquakeDetector.S17 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 49 EarthquakeDetector.S17 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 50 EarthquakeDetector.S17 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 51 EarthquakeDetector.S18 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 52 EarthquakeDetector.S18 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 53 EarthquakeDetector.S18 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 54 EarthquakeDetector.S19 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 55 EarthquakeDetector.S19 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 56 EarthquakeDetector.S19 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 57 EarthquakeDetector.S20 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 58 EarthquakeDetector.S20 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 59 EarthquakeDetector.S20 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 60 EarthquakeDetector.S21 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 61 EarthquakeDetector.S21 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 62 EarthquakeDetector.S21 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 63 EarthquakeDetector.S22 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 64 EarthquakeDetector.S22 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 65 EarthquakeDetector.S22 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 66 EarthquakeDetector.S23 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 67 EarthquakeDetector.S23 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 68 EarthquakeDetector.S23 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 69 EarthquakeDetector.S24 knowledge:vector ETV
+attr interpolationmode none
+attr source knowledge
+attr title "knowledge, vector"
+vector 70 EarthquakeDetector.S24 interactivity:vector ETV
+attr interpolationmode none
+attr source interactivity
+attr title "interactivity, vector"
+vector 71 EarthquakeDetector.S24 batteryState:vector ETV
+attr interpolationmode none
+attr source energy
+attr title "energy, vector"
+vector 72 EarthquakeDetector.S2 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 73 EarthquakeDetector.S4 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 74 EarthquakeDetector.S15 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 75 EarthquakeDetector.S6 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 76 EarthquakeDetector.S13 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 77 EarthquakeDetector.S22 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 78 EarthquakeDetector.S17 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 79 EarthquakeDetector.S5 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 80 EarthquakeDetector.S24 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 81 EarthquakeDetector.S8 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 82 EarthquakeDetector.S14 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 83 EarthquakeDetector.S18 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 84 EarthquakeDetector.S10 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 85 EarthquakeDetector.S3 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 86 EarthquakeDetector.S1 packetLoss:vector ETV
+attr interpolationmode none
+attr source packetLoss
+attr title "packetLoss, vector"
+vector 87 EarthquakeDetector.M latencyMain:vector ETV
+attr interpolationmode none
+attr source latency
+attr title "latency, vector"
+0	0	0	0
+0	71	0.00745999983	15
+0	75	0.007969999988	24
+0	81	0.008360000163	27
+0	86	0.008990000129	36
+0	92	0.010640000179	54
+0	110	0.018080000205	72
+0	112	0.019270000186	78
+1	0	0	0
+1	31	0.0025	3
+1	31	0.0025	6
+1	31	0.0025	9
+1	31	0.0025	12
+1	31	0.0025	15
+1	71	0.00745999983	21
+1	75	0.007969999988	15
+1	81	0.008360000163	27
+1	86	0.008990000129	24
+1	92	0.010640000179	6
+1	98	0.014609999791	15
+1	98	0.014609999791	18
+1	100	0.014770000242	21
+1	100	0.014770000242	24
+1	104	0.015600000344	21
+1	104	0.015600000344	24
+1	110	0.018080000205	15
+1	112	0.019270000186	9
+1	112	0.019270000186	12
+2	0	0	55
+2	3	0.001	80
+2	31	0.0025	70
+2	31	0.0025	60
+2	31	0.0025	50
+2	31	0.0025	40
+2	31	0.0025	30
+2	98	0.014609999791	20
+2	100	0.014770000242	10
+2	100	0.014770000242	0
+2	104	0.015600000344	0
+2	104	0.015600000344	0
+2	112	0.019270000186	0
+2	112	0.019270000186	0
+2	120	0.023900000189	50
+3	0	0	0
+3	64	0.006620000011	9
+3	87	0.009150000125	39
+3	88	0.00929000026	42
+3	91	0.010320000419	51
+3	93	0.011039999616	57
+3	107	0.01674999974	63
+3	108	0.01692999983	66
+4	0	0	0
+4	32	0.0025	18
+4	32	0.0025	21
+4	32	0.0025	24
+4	32	0.0025	27
+4	32	0.0025	30
+4	64	0.006620000011	12
+4	87	0.009150000125	21
+4	88	0.00929000026	18
+4	91	0.010320000419	9
+4	93	0.011039999616	3
+4	95	0.013609999791	3
+4	95	0.013609999791	6
+4	101	0.015349999838	21
+4	101	0.015349999838	24
+4	105	0.015770000242	21
+4	105	0.015770000242	24
+4	107	0.01674999974	21
+4	108	0.01692999983	18
+4	108	0.01692999983	21
+5	0	0	70
+5	4	0.001	95
+5	32	0.0025	85
+5	32	0.0025	75
+5	32	0.0025	65
+5	32	0.0025	55
+5	32	0.0025	45
+5	32	0.0025	35
+5	95	0.013609999791	25
+5	95	0.013609999791	15
+5	101	0.015349999838	5
+5	105	0.015770000242	0
+5	108	0.01692999983	0
+5	108	0.01692999983	0
+5	115	0.021569999909	50
+6	0	0	0
+6	59	0.00529000007	3
+6	62	0.006060000112	6
+6	73	0.007750000175	21
+6	83	0.008570000191	30
+6	94	0.011049999924	60
+6	109	0.017909999842	69
+6	113	0.020069999759	81
+7	0	0	0
+7	33	0.0025	33
+7	33	0.0025	36
+7	33	0.0025	39
+7	33	0.0025	42
+7	33	0.0025	45
+7	59	0.00529000007	9
+7	62	0.006060000112	12
+7	73	0.007750000175	15
+7	83	0.008570000191	27
+7	94	0.011049999924	0
+7	96	0.014349999838	9
+7	96	0.014349999838	12
+7	99	0.014609999791	15
+7	99	0.014609999791	18
+7	103	0.015600000344	21
+7	103	0.015600000344	24
+7	109	0.017909999842	18
+7	113	0.020069999759	9
+7	113	0.020069999759	12
+8	0	0	67
+8	5	0.001	92
+8	33	0.0025	82
+8	33	0.0025	72
+8	33	0.0025	62
+8	33	0.0025	52
+8	33	0.0025	42
+8	96	0.014349999838	32
+8	96	0.014349999838	22
+8	99	0.014609999791	12
+8	103	0.015600000344	2
+8	103	0.015600000344	0
+8	103	0.015600000344	0
+8	103	0.015600000344	0
+8	103	0.015600000344	0
+8	103	0.015600000344	0
+8	103	0.015600000344	0
+8	113	0.020069999759	0
+8	119	0.023159999793	50
+9	0	0	0
+9	67	0.007039999891	12
+9	72	0.00771999983	18
+9	85	0.008799999788	33
+9	89	0.00968999958	45
+9	90	0.009750000153	48
+9	111	0.018180000268	75
+9	117	0.022169999916	84
+10	0	0	0
+10	34	0.0025	48
+10	34	0.0025	51
+10	34	0.0025	54
+10	34	0.0025	57
+10	34	0.0025	60
+10	67	0.007039999891	15
+10	72	0.00771999983	18
+10	85	0.008799999788	27
+10	89	0.00968999958	15
+10	90	0.009750000153	12
+10	97	0.014600000344	15
+10	97	0.014600000344	18
+10	102	0.015349999838	21
+10	102	0.015349999838	24
+10	106	0.015770000242	21
+10	106	0.015770000242	24
+10	111	0.018180000268	12
+10	117	0.022169999916	9
+10	117	0.022169999916	12
+11	0	0	57
+11	6	0.001	82
+11	34	0.0025	72
+11	34	0.0025	62
+11	34	0.0025	52
+11	34	0.0025	42
+11	34	0.0025	32
+11	34	0.0025	22
+11	97	0.014600000344	12
+11	97	0.014600000344	2
+11	102	0.015349999838	0
+11	102	0.015349999838	0
+11	102	0.015349999838	0
+11	106	0.015770000242	0
+11	106	0.015770000242	0
+11	106	0.015770000242	0
+11	117	0.022169999916	0
+11	122	0.025189999883	50
+12	0	0	0
+13	0	0	0
+13	35	0.0035	57
+13	68	0.007110000122	18
+14	0	0	63
+14	7	0.001	88
+14	68	0.007110000122	78
+14	68	0.007110000122	68
+15	0	0	0
+16	0	0	0
+16	36	0.0035	54
+16	57	0.005080000032	9
+17	0	0	68
+17	8	0.001	93
+17	57	0.005080000032	83
+17	57	0.005080000032	73
+17	57	0.005080000032	63
+17	57	0.005080000032	53
+17	57	0.005080000032	43
+18	0	0	0
+19	0	0	0
+19	37	0.0035	51
+19	70	0.007360000163	24
+20	0	0	66
+20	9	0.001	91
+20	70	0.007360000163	81
+21	0	0	0
+22	0	0	0
+22	38	0.0035	48
+22	76	0.008030000143	18
+23	0	0	64
+23	10	0.001	89
+23	76	0.008030000143	79
+23	76	0.008030000143	69
+23	76	0.008030000143	59
+23	76	0.008030000143	49
+24	0	0	0
+25	0	0	0
+25	39	0.0035	45
+25	63	0.00645999983	15
+26	0	0	61
+26	11	0.001	86
+26	63	0.00645999983	76
+27	0	0	0
+28	0	0	0
+28	56	0.004309999998	6
+28	82	0.008449999616	30
+29	0	0	63
+29	12	0.001	88
+29	82	0.008449999616	78
+29	82	0.008449999616	68
+29	82	0.008449999616	58
+29	82	0.008449999616	48
+30	0	0	0
+31	0	0	0
+31	40	0.0035	42
+31	80	0.00829000026	30
+32	0	0	67
+32	13	0.001	92
+32	80	0.00829000026	82
+33	0	0	0
+34	0	0	0
+34	41	0.0035	39
+34	79	0.008150000125	27
+35	0	0	58
+35	14	0.001	83
+35	79	0.008150000125	73
+36	0	0	0
+37	0	0	0
+37	42	0.0035	36
+37	58	0.005080000032	12
+38	0	0	55
+38	15	0.001	80
+38	58	0.005080000032	70
+38	58	0.005080000032	60
+39	0	0	0
+40	0	0	0
+40	43	0.0035	33
+40	77	0.008070000447	21
+41	0	0	59
+41	16	0.001	84
+41	77	0.008070000447	74
+41	77	0.008070000447	64
+41	77	0.008070000447	54
+42	0	0	0
+43	0	0	0
+43	44	0.0035	30
+43	54	0.004110000096	6
+44	0	0	57
+44	17	0.001	82
+44	54	0.004110000096	72
+44	54	0.004110000096	62
+44	54	0.004110000096	52
+45	0	0	0
+46	0	0	0
+46	45	0.0035	27
+46	55	0.00429000007	9
+47	0	0	66
+47	18	0.001	91
+47	55	0.00429000007	81
+48	0	0	0
+49	0	0	0
+49	46	0.0035	24
+49	66	0.007000000216	18
+50	0	0	64
+50	19	0.001	89
+50	66	0.007000000216	79
+50	66	0.007000000216	69
+51	0	0	0
+52	0	0	0
+52	47	0.0035	21
+52	78	0.008129999973	24
+53	0	0	67
+53	20	0.001	92
+53	78	0.008129999973	82
+53	78	0.008129999973	72
+53	78	0.008129999973	62
+53	78	0.008129999973	52
+54	0	0	0
+55	0	0	0
+55	48	0.0035	18
+55	65	0.006750000175	15
+56	0	0	52
+56	21	0.001	77
+56	65	0.006750000175	67
+57	0	0	0
+58	0	0	0
+58	53	0.004079999993	3
+58	74	0.007799999788	18
+59	0	0	62
+59	22	0.001	87
+59	74	0.007799999788	77
+60	0	0	0
+61	0	0	0
+61	49	0.0035	15
+61	61	0.006039999891	15
+62	0	0	66
+62	23	0.001	91
+62	61	0.006039999891	81
+63	0	0	0
+64	0	0	0
+64	50	0.0035	12
+64	60	0.00578999985	12
+65	0	0	61
+65	24	0.001	86
+65	60	0.00578999985	76
+65	60	0.00578999985	66
+66	0	0	0
+67	0	0	0
+67	51	0.0035	9
+67	84	0.00868999958	30
+68	0	0	60
+68	25	0.001	85
+68	84	0.00868999958	75
+69	0	0	0
+70	0	0	0
+70	52	0.0035	6
+70	69	0.007110000122	21
+71	0	0	67
+71	26	0.001	92
+71	69	0.007110000122	82
+71	69	0.007110000122	72
+71	69	0.007110000122	62
+71	69	0.007110000122	52
+71	69	0.007110000122	42
+72	32	0.0025	1
+72	108	0.01692999983	39
+73	34	0.0025	2
+73	102	0.015349999838	28
+73	102	0.015349999838	29
+73	106	0.015770000242	37
+73	106	0.015770000242	38
+74	54	0.004110000096	3
+74	54	0.004110000096	4
+75	57	0.005080000032	5
+75	57	0.005080000032	6
+75	57	0.005080000032	7
+75	57	0.005080000032	8
+76	58	0.005080000032	9
+77	60	0.00578999985	10
+78	66	0.007000000216	11
+79	68	0.007110000122	12
+80	69	0.007110000122	13
+80	69	0.007110000122	14
+80	69	0.007110000122	15
+80	69	0.007110000122	16
+81	76	0.008030000143	17
+81	76	0.008030000143	18
+81	76	0.008030000143	19
+82	77	0.008070000447	20
+82	77	0.008070000447	21
+83	78	0.008129999973	22
+83	78	0.008129999973	23
+83	78	0.008129999973	24
+84	82	0.008449999616	25
+84	82	0.008449999616	26
+84	82	0.008449999616	27
+85	103	0.015600000344	30
+85	103	0.015600000344	31
+85	103	0.015600000344	32
+85	103	0.015600000344	33
+85	103	0.015600000344	34
+85	103	0.015600000344	35
+86	104	0.015600000344	36
+86	112	0.019270000186	40
+87	121	0.024189999883	0.024189999883
+
